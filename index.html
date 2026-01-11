@@ -2,181 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Polymorphic × PublicLogic — Engineering CASE Workspace</title>
+  <title>Polymorphic × PublicLogic — CASE Workspace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #ffffff;
+      margin: 40px;
       color: #111827;
-      margin: 0;
-      padding: 40px;
       line-height: 1.6;
     }
-
     main {
-      max-width: 960px;
-      margin: 0 auto;
+      max-width: 900px;
     }
-
     h1 {
-      font-size: 2rem;
       margin-bottom: 0.25rem;
     }
-
-    h2 {
-      font-size: 1.25rem;
-      margin-top: 2.5rem;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 0.25rem;
-    }
-
     p.meta {
       color: #374151;
       margin-top: 0;
-      font-size: 0.95rem;
     }
-
     ul {
-      list-style: none;
-      padding-left: 0;
+      padding-left: 1.2rem;
     }
-
-    li {
-      margin: 0.4rem 0;
-    }
-
     a {
       color: #0f172a;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
-
     .note {
       background: #f9fafb;
       border-left: 4px solid #111827;
       padding: 1rem;
       margin: 2rem 0;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      margin-top: 4rem;
-      font-size: 0.85rem;
-      color: #6b7280;
     }
   </style>
 </head>
-
 <body>
 <main>
 
-  <h1>Polymorphic × PublicLogic</h1>
-  <p class="meta">
-    Engineering CASE Workspace<br/>
-    CASE ID: POLI-ENG-CASE-001 • Status: Active
-  </p>
+<h1>Polymorphic × PublicLogic</h1>
+<p class="meta">
+Engineering CASE Workspace<br/>
+CASE ID: POLI-ENG-CASE-001
+</p>
 
-  <div class="note">
-    This repository is a <strong>Chartered CASE Workspace</strong>.  
-    It is the authoritative container for scoped engineering governance, architecture,
-    and lifecycle specifications supporting VAULT framework integration.
-    <br/><br/>
-    If work is not represented here, it is <strong>out of scope by definition</strong>.
-  </div>
+<div class="note">
+If you are seeing this page, GitHub Pages is functioning correctly.
+<br/><br/>
+This repository is a Chartered CASE Workspace governing the Polymorphic × PublicLogic
+engineering collaboration.
+</div>
 
-  <h2>Orientation (Start Here)</h2>
-  <ul>
-    <li><a href="Welcome.md">Welcome</a></li>
-    <li><a href="Read_First.md">Read First</a></li>
-    <li><a href="CASE_Workspace.md">CASE Workspace Definition</a></li>
-    <li><a href="Audience_and_Use.md">Audience and Intended Use</a></li>
-  </ul>
+<h2>Start Here</h2>
+<ul>
+  <li><a href="Welcome.md">Welcome</a></li>
+  <li><a href="Read_First.md">Read First</a></li>
+  <li><a href="CASE_Workspace.md">CASE Workspace</a></li>
+  <li><a href="Authority_and_Scope.md">Authority and Scope</a></li>
+</ul>
 
-  <h2>Authority, Scope, and Constraints</h2>
-  <ul>
-    <li><a href="Authority_and_Scope.md">Authority and Scope</a></li>
-    <li><a href="What_Is_Non_Negotiable.md">What Is Non-Negotiable</a></li>
-    <li><a href="What_Engineers_May_Choose.md">What Engineers May Choose</a></li>
-    <li><a href="What_Is_Out_of_Scope.md">What Is Out of Scope</a></li>
-    <li><a href="Escalation_SLA.md">Escalation and SLA</a></li>
-  </ul>
+<h2>Module Charters</h2>
+<ul>
+  <li><a href="00_PRR_Charter.md">VAULT PRR</a></li>
+  <li><a href="00_CLERK_Charter.md">VAULT Clerk</a></li>
+  <li><a href="00_FISCAL_Charter.md">VAULT Fiscal</a></li>
+  <li><a href="00_FIX_Charter.md">VAULT Fix</a></li>
+  <li><a href="00_TIME_Charter.md">VAULT Time</a></li>
+  <li><a href="00_ONBOARD_Charter.md">VAULT Onboard</a></li>
+</ul>
 
-  <h2>Canonical Index</h2>
-  <ul>
-    <li><a href="INDEX.md">Canonical Document Index</a></li>
-    <li><a href="Glossary.md">Glossary</a></li>
-    <li><a href="VERSION_HISTORY.md">Version History</a></li>
-  </ul>
-
-  <h2>Lifecycle, Records, and Enforcement</h2>
-  <ul>
-    <li><a href="Record_Classes.md">Record Classes</a></li>
-    <li><a href="Timer_and_Deadline_Model.md">Timer and Deadline Model</a></li>
-    <li><a href="Audit_and_Evidence_Model.md">Audit and Evidence Model</a></li>
-    <li><a href="Error_Handling_Recovery.md">Error Handling and Recovery</a></li>
-  </ul>
-
-  <h2>System Architecture and Flow</h2>
-  <ul>
-    <li><a href="SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md">System Architectures (All Modules)</a></li>
-    <li><a href="FLOWCHARTS_ALL_MODULES_v1.md">Process Flowcharts (All Modules)</a></li>
-    <li><a href="Cross_Module_Interactions.md">Cross-Module Interactions</a></li>
-  </ul>
-
-  <h2>Module Charters</h2>
-  <ul>
-    <li><a href="00_PRR_Charter.md">VAULT PRR Charter</a></li>
-    <li><a href="00_CLERK_Charter.md">VAULT Clerk Charter</a></li>
-    <li><a href="00_FISCAL_Charter.md">VAULT Fiscal Charter</a></li>
-    <li><a href="00_FIX_Charter.md">VAULT Fix Charter</a></li>
-    <li><a href="00_TIME_Charter.md">VAULT Time Charter</a></li>
-    <li><a href="00_ONBOARD_Charter.md">VAULT Onboard Charter</a></li>
-    <li><a href="MODULE_CHARTERS_v1.md">All Module Charters (Consolidated)</a></li>
-  </ul>
-
-  <h2>Encoding & Governance Specifications</h2>
-  <ul>
-    <li><a href="VAULTPRR_Governance_Architecture_v1.md">VAULT PRR Governance Architecture</a></li>
-    <li><a href="VAULTPRR_System_Architecture_v1.md">VAULT PRR System Architecture</a></li>
-    <li><a href="VAULTPRR_Process_Flowchart_v1.md">VAULT PRR Process Flow</a></li>
-    <li><a href="VAULTPRR_Encoding_Specification_v1.md">VAULT PRR Encoding Specification</a></li>
-
-    <li><a href="VAULT_CLERK_Governance_Architecture_v1.md">VAULT Clerk Governance Architecture</a></li>
-    <li><a href="VAULT_CLERK_Process_Flowchart_v1.md">VAULT Clerk Process Flow</a></li>
-    <li><a href="VAULT_CLERK_Encoding_Specification_v1.md">VAULT Clerk Encoding Specification</a></li>
-
-    <li><a href="VAULT_FISCAL_Governance_Architecture_v1.md">VAULT Fiscal Governance Architecture</a></li>
-    <li><a href="VAULT_FISCAL_Encoding_Specification_v1.md">VAULT Fiscal Encoding Specification</a></li>
-
-    <li><a href="VAULT_FIX_Governance_Architecture_v1.md">VAULT Fix Governance Architecture</a></li>
-    <li><a href="VAULT_FIX_Encoding_Specification_v1.md">VAULT Fix Encoding Specification</a></li>
-
-    <li><a href="VAULT_ONBOARD_Governance_Encoding_v1.md">VAULT Onboard Governance Encoding</a></li>
-    <li><a href="VAULT_TIME_Governance_Encoding_v1.md">VAULT Time Governance Encoding</a></li>
-  </ul>
-
-  <h2>Delivery, Audit, and Completion</h2>
-  <ul>
-    <li><a href="PRE_RELEASE_AUDIT.md">Pre-Release Audit</a></li>
-    <li><a href="Testing_Validation_Checklist.md">Testing and Validation Checklist</a></li>
-    <li><a href="POST_FIX_VERIFICATION.md">Post-Fix Verification</a></li>
-    <li><a href="DELIVERY_SUMMARY.md">Delivery Summary</a></li>
-    <li><a href="COMPLETION_SUMMARY.md">Completion Summary</a></li>
-    <li><a href="CONSOLIDATION_SUMMARY.md">Consolidation Summary</a></li>
-    <li><a href="FINAL_CONSOLIDATION_COMPLETE.md">Final Consolidation Confirmation</a></li>
-    <li><a href="VAULT_Master_Packet_COMPLETE_SUMMARY.md">VAULT Master Packet Summary</a></li>
-  </ul>
-
-  <footer>
-    Maintained by PublicLogic.  
-    Engineering collaboration with Polymorphic.  
-    Governance-first. Implementation-agnostic.
-  </footer>
+<footer style="margin-top:4rem;color:#6b7280;font-size:0.85rem;">
+Maintained by PublicLogic. Engineering collaboration with Polymorphic.
+</footer>
 
 </main>
 </body>
