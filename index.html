@@ -4,82 +4,215 @@
   <meta charset="UTF-8" />
   <title>Polymorphic × PublicLogic — CASE Workspace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Mermaid -->
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      }
+    });
+  </script>
+
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      margin: 40px;
-      max-width: 960px;
-      line-height: 1.6;
+    :root {
+      --ink: #0e141b;
+      --muted: #6b7280;
+      --rule: #e5e7eb;
+      --panel: #f9fafb;
+      --accent: #0f172a;
     }
-    h1, h2 {
+
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: white;
+      line-height: 1.55;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 2px solid var(--rule);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 0;
       font-weight: 600;
     }
+
+    h2 {
+      margin-top: 48px;
+      font-size: 1.4rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 6px;
+    }
+
+    h3 {
+      margin-top: 28px;
+      font-size: 1.1rem;
+    }
+
+    p {
+      max-width: 900px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
     ul {
       padding-left: 20px;
     }
-    li {
-      margin: 6px 0;
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
     }
-    .section {
-      margin-top: 32px;
+
+    a:hover {
+      text-decoration: underline;
     }
-    .meta {
-      color: #555;
-      font-size: 0.95rem;
+
+    footer {
+      margin-top: 64px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .mermaid {
+      margin-top: 24px;
     }
   </style>
 </head>
+
 <body>
+<main>
 
-  <h1>Polymorphic × PublicLogic</h1>
-  <h2>Chartered CASE Workspace</h2>
+  <header>
+    <h1>Polymorphic × PublicLogic</h1>
+    <div class="meta">
+      Chartered CASE Workspace · Engineering & Governance Integration<br/>
+      Status: Active · Authority Bound · Canonical
+    </div>
+  </header>
 
-  <p class="meta">
-    Authoritative governance artifacts, lifecycle models, and scope-bound specifications
-    governing VAULT framework engineering integration.
-  </p>
+  <section>
+    <h2>Purpose</h2>
+    <p>
+      This repository is a <strong>Chartered CASE Workspace</strong> supporting engineering collaboration
+      between Polymorphic and PublicLogic. It contains the authoritative governance models,
+      lifecycle definitions, and system constraints required to implement VAULT-aligned
+      municipal workflows safely and defensibly.
+    </p>
 
-  <div class="section">
-    <h2>Read First</h2>
-    <ul>
-      <li><a href="./Read_First.md">Read First</a></li>
-      <li><a href="./Audience_and_Use.md">Audience and Use</a></li>
-      <li><a href="./What_Is_Non_Negotiable.md">What Is Non-Negotiable</a></li>
-      <li><a href="./What_Is_Out_of_Scope.md">What Is Out of Scope</a></li>
-    </ul>
-  </div>
+    <p>
+      This is not a demo repository, a backlog, or an exploratory prototype.
+      It is a governed workspace in which scope, authority, and lifecycle rules are explicit.
+    </p>
+  </section>
 
-  <div class="section">
-    <h2>CASE Governance</h2>
-    <ul>
-      <li><a href="./CASE_Workspace.md">CASE Workspace Definition</a></li>
-      <li><a href="./Authority_and_Scope.md">Authority and Scope</a></li>
-      <li><a href="./Record_Classes.md">Record Classes</a></li>
-      <li><a href="./Timer_and_Deadline_Model.md">Timer and Deadline Model</a></li>
-      <li><a href="./Audit_and_Evidence_Model.md">Audit and Evidence Model</a></li>
-    </ul>
-  </div>
+  <section>
+    <h2>CASE Lifecycle (Canonical)</h2>
 
-  <div class="section">
-    <h2>Module Charters</h2>
-    <ul>
-      <li><a href="./00_PRR_Charter.md">PRR Charter</a></li>
-      <li><a href="./00_CLERK_Charter.md">Clerk Charter</a></li>
-      <li><a href="./00_FISCAL_Charter.md">Fiscal Charter</a></li>
-      <li><a href="./00_FIX_Charter.md">Fix Charter</a></li>
-      <li><a href="./00_TIME_Charter.md">Time Charter</a></li>
-      <li><a href="./00_ONBOARD_Charter.md">Onboard Charter</a></li>
-    </ul>
-  </div>
+    <div class="panel">
+      <pre class="mermaid">
+flowchart LR
+  CW["Chartered Workspace<br/>Authority Defined<br/>Statute • Policy • Delegation"]
 
-  <div class="section">
-    <h2>Architectures & Flows</h2>
-    <ul>
-      <li><a href="./SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md">System Architectures</a></li>
-      <li><a href="./FLOWCHARTS_ALL_MODULES_v1.md">Process Flowcharts</a></li>
-      <li><a href="./Cross_Module_Interactions.md">Cross-Module Interactions</a></li>
-    </ul>
-  </div>
+  CW --> CREATE["Instantiate CASE Workspace<br/>CASE = Chartered Accountability<br/>and Succession Environment"]
 
+  CREATE --> ID["Record Identity<br/>CaseID (Immutable)<br/>CaseType (Immutable)<br/>Subject Captured"]
+
+  ID --> SCOPE["Define Scope v1<br/>Scope Versioned<br/>History Preserved"]
+
+  SCOPE --> DEADLINES["Compute Deadlines<br/>Statutory or Business<br/>Enforcement Rules Loaded"]
+
+  DEADLINES --> EXECUTE["Execute Work<br/>All Activity Inside CASE<br/>No External Work"]
+
+  EXECUTE --> ASSETS["Create Assets<br/>Forms • Decisions • Letters<br/>Versioned • Retention Set"]
+
+  ASSETS --> GATES["Evaluate Gates<br/>Legal • Compliance • Time • Payment"]
+
+  GATES -->|Gate Failed| BLOCK["Set Transition Blockers<br/>Enforcement Flags Triggered"]
+  BLOCK --> EXECUTE
+
+  GATES -->|All Gates Pass| DECISION["Record Decision<br/>Authority Applied<br/>Reason Logged"]
+
+  DECISION --> LOCK_ASSETS["Lock Final Assets<br/>Immutable<br/>New Versions Only"]
+
+  LOCK_ASSETS --> CLOSE["Close CASE<br/>Closure Reason Recorded<br/>Timestamp Set"]
+
+  CLOSE --> LOCK_CASE["Lock CASE<br/>Audit Log Sealed<br/>CASE Immutable"]
+
+  LOCK_CASE --> RETAIN["Retention Period<br/>Per Policy or Statute"]
+
+  RETAIN --> DESTROY["Destroy or Archive<br/>Per Retention Rules<br/>Event Logged"]
+
+  DESTROY --> CW
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Repository Structure</h2>
+    <div class="panel">
+      <ul>
+        <li><strong>00_CASE_METADATA</strong> — Charter, scope, contacts, change log</li>
+        <li><strong>01_AUTHORITY</strong> — Delegation, constraints, governance basis</li>
+        <li><strong>02_CANONICAL_MODELS</strong> — Lifecycle, record classes, gates</li>
+        <li><strong>03_DIAGRAMS</strong> — Rendered SVG artifacts</li>
+        <li><strong>04_MODULES</strong> — VAULTPRR, VAULTCLERK, VAULTONBOARD</li>
+        <li><strong>05_ENGINEERING_INTERFACE</strong> — Contracts, invariants, anti-patterns</li>
+        <li><strong>06_DECISIONS</strong> — Decision log and assumptions</li>
+        <li><strong>99_APPENDICES</strong> — References and archival material</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contacts</h2>
+    <p>
+      <strong>PublicLogic</strong><br/>
+      Nathan Boudreau · Principal<br/>
+      Allison Weiss Rothschild, PhD · Behavioral Systems Partner
+    </p>
+
+    <p>
+      <strong>Polymorphic</strong><br/>
+      Engineering liaison per internal assignment
+    </p>
+  </section>
+
+  <footer>
+    This CASE Workspace is authoritative for governance and lifecycle rules.
+    Implementation details may vary by runtime but must satisfy the constraints defined herein.
+  </footer>
+
+</main>
 </body>
 </html>
