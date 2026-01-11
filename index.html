@@ -2,78 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CASE Workspace Index — Polymorphic × PublicLogic</title>
-  <meta name="description" content="Central index for the CASE workspace documentation, including authority models, canonical references, and engineering interfaces." />
+  <title>PublicLogic × Polymorphic — CASE Workspace</title>
+  <meta name="description" content="Authoritative governance workspace combining navigation index and institutional record for the PublicLogic-Polymorphic collaboration." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script>
     mermaid.initialize({ startOnLoad: true });
   </script>
   <style>
+    :root {
+      --ink: #0e141b;
+      --muted: #6b7280;
+      --rule: #111827;
+      --panel: #f9fafb;
+      --accent: #0f172a;
+      --link: #3b82f6;
+      --link-hover: #2563eb;
+    }
+
+    :root.dark {
+      --ink: #e5e7eb;
+      --muted: #9ca3af;
+      --rule: #e5e7eb;
+      --panel: #1f2937;
+      --accent: #60a5fa;
+      --link: #60a5fa;
+      --link-hover: #93c5fd;
+      --bg: #111827;
+      --tree-bg: #0a0e14;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       margin: 0;
       padding: 40px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: white;
       line-height: 1.6;
-      color: #0e141b;
-      background: #ffffff;
       transition: background 0.3s, color 0.3s;
     }
-    
-    /* Dark mode */
+
     body.dark {
-      background: #0f172a;
-      color: #e2e8f0;
+      background: var(--bg);
     }
-    
-    body.dark h2 {
-      border-bottom-color: #334155;
-      background: #0f172a;
-    }
-    
-    body.dark a {
-      color: #60a5fa;
-    }
-    
-    body.dark li:hover {
-      background: #1e293b;
-    }
-    
-    body.dark .theme-toggle {
-      background: #334155;
-      color: #e2e8f0;
-    }
-    
-    body.dark .theme-toggle:hover {
-      background: #475569;
-    }
-    
-    body.dark .back-to-top {
-      background: #334155;
-      color: #e2e8f0;
-    }
-    
-    body.dark .back-to-top:hover {
-      background: #475569;
-    }
-    
-    body.dark .mermaid {
-      background: #1e293b;
-      border: 1px solid #334155;
-    }
-    
-    /* Skip to content link for accessibility */
+
+    /* Skip link for accessibility */
     .skip-link {
       position: absolute;
       top: -40px;
       left: 0;
-      background: #3b82f6;
+      background: var(--link);
       color: white;
       padding: 8px 16px;
       text-decoration: none;
@@ -81,119 +65,232 @@
       font-weight: 500;
       z-index: 100;
     }
-    
+
     .skip-link:focus {
       top: 0;
     }
-    
+
     main {
       max-width: 1000px;
-      margin: auto;
+      margin: 0 auto;
     }
-    
+
+    /* Header - Governance Style */
     header {
+      border-bottom: 3px solid var(--rule);
+      padding-bottom: 24px;
       margin-bottom: 32px;
     }
-    
+
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
     h1 {
-      font-size: 2rem;
-      margin-bottom: 12px;
+      font-size: 32px;
+      margin: 0 0 12px;
+      font-weight: 700;
     }
-    
+
     .subtitle {
-      color: #64748b;
-      font-size: 1rem;
-      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 15px;
+      margin: 8px 0;
+      max-width: 760px;
     }
-    
-    body.dark .subtitle {
-      color: #94a3b8;
-    }
-    
+
     .last-updated {
-      font-size: 0.875rem;
-      color: #64748b;
-      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
     }
-    
-    body.dark .last-updated {
-      color: #94a3b8;
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--muted);
     }
-    
+
+    .meta > div strong {
+      color: var(--ink);
+    }
+
+    /* Section Headers */
     h2 {
+      font-size: 18px;
       margin-top: 48px;
-      font-size: 1.4rem;
-      border-bottom: 2px solid #e5e7eb;
+      border-bottom: 2px solid var(--rule);
       padding-bottom: 8px;
+      padding-top: 8px;
       position: sticky;
       top: 0;
-      background: #ffffff;
+      background: white;
       z-index: 10;
-      padding-top: 8px;
+      transition: background 0.3s;
     }
-    
+
+    body.dark h2 {
+      background: var(--bg);
+    }
+
     .section-desc {
-      font-size: 0.9rem;
-      color: #64748b;
-      margin-top: 8px;
-      margin-bottom: 12px;
+      font-size: 14px;
+      color: var(--muted);
+      margin: 8px 0 16px 0;
       font-style: italic;
+      max-width: 760px;
     }
-    
-    body.dark .section-desc {
-      color: #94a3b8;
+
+    /* Paragraph text */
+    p {
+      margin: 12px 0;
+      max-width: 760px;
     }
-    
+
+    /* Panel - Governance Callouts */
+    .panel {
+      background: var(--panel);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 24px 0;
+      max-width: 760px;
+    }
+
+    .panel strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    /* Navigation Lists */
     ul {
       padding-left: 20px;
       list-style: none;
+      margin: 16px 0;
     }
-    
+
     li {
       margin-bottom: 4px;
       padding: 8px 12px;
       border-radius: 6px;
       transition: all 0.2s ease;
     }
-    
+
     li:hover {
-      background: #f1f5f9;
+      background: var(--panel);
       transform: translateX(4px);
     }
-    
+
+    li::before {
+      content: "→";
+      margin-right: 8px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    li:hover::before {
+      color: var(--accent);
+    }
+
+    /* Links */
     a {
-      color: #0f172a;
+      color: var(--link);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s ease;
     }
-    
+
     a:hover {
-      color: #3b82f6;
+      color: var(--link-hover);
+      text-decoration: underline;
     }
-    
+
     a:focus {
-      outline: 2px solid #3b82f6;
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
       border-radius: 2px;
     }
-    
-    .mermaid {
-      margin-top: 24px;
+
+    /* File Tree */
+    .tree {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: #0e141b;
+      color: #e5e7eb;
       padding: 20px;
-      background: #f8fafc;
-      border-radius: 8px;
-      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 13px;
+      overflow-x: auto;
+      margin: 20px 0;
+      line-height: 1.5;
     }
-    
-    /* Fixed UI elements */
+
+    body.dark .tree {
+      background: var(--tree-bg);
+    }
+
+    /* Mermaid Diagram */
+    .mermaid {
+      margin: 24px 0;
+      padding: 20px;
+      background: var(--panel);
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+    }
+
+    /* Quick Links Grid */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .quick-link-card {
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+
+    .quick-link-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    body.dark .quick-link-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .quick-link-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .quick-link-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Fixed UI Controls */
     .theme-toggle {
       position: fixed;
       top: 20px;
       right: 20px;
       padding: 10px 16px;
       border: none;
-      background: #3b82f6;
+      background: var(--accent);
       color: white;
       border-radius: 6px;
       cursor: pointer;
@@ -202,24 +299,28 @@
       transition: all 0.2s;
       z-index: 100;
     }
-    
+
+    body.dark .theme-toggle {
+      background: var(--panel);
+      color: var(--ink);
+    }
+
     .theme-toggle:hover {
-      background: #2563eb;
       transform: scale(1.05);
     }
-    
+
     .theme-toggle:focus {
-      outline: 2px solid #3b82f6;
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
-    
+
     .back-to-top {
       position: fixed;
       bottom: 20px;
       right: 20px;
       padding: 12px 16px;
       border: none;
-      background: #3b82f6;
+      background: var(--accent);
       color: white;
       border-radius: 6px;
       cursor: pointer;
@@ -230,65 +331,104 @@
       visibility: hidden;
       z-index: 100;
     }
-    
+
+    body.dark .back-to-top {
+      background: var(--panel);
+      color: var(--ink);
+    }
+
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
     }
-    
+
     .back-to-top:hover {
-      background: #2563eb;
       transform: translateY(-2px);
     }
-    
+
     .back-to-top:focus {
-      outline: 2px solid #3b82f6;
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
-    
-    /* Mobile responsive */
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 2px solid var(--rule);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+
+    /* Mobile Responsive */
     @media (max-width: 768px) {
       body {
         padding: 20px 16px;
       }
-      
+
       h1 {
-        font-size: 1.5rem;
+        font-size: 24px;
       }
-      
+
       h2 {
-        font-size: 1.2rem;
+        font-size: 16px;
         margin-top: 32px;
       }
-      
+
+      .meta {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .quick-links {
+        grid-template-columns: 1fr;
+      }
+
       .theme-toggle,
       .back-to-top {
         padding: 8px 12px;
         font-size: 0.9rem;
       }
-      
+
       .theme-toggle {
         top: 10px;
         right: 10px;
       }
-      
+
       .back-to-top {
         bottom: 10px;
         right: 10px;
       }
-      
+
       li {
         padding: 6px 10px;
       }
+
+      .tree {
+        font-size: 11px;
+        padding: 16px;
+      }
     }
-    
+
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.3rem;
+        font-size: 20px;
       }
-      
-      .subtitle {
-        font-size: 0.9rem;
+
+      .kicker {
+        font-size: 10px;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -304,91 +444,292 @@
   <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">↑ Top</button>
 
   <main id="main-content">
+
     <header>
-      <h1>Polymorphic × PublicLogic — CASE Workspace Index</h1>
-      <p class="subtitle">Central navigation hub for all CASE documentation and resources</p>
+      <div class="kicker">Governance Case Workspace</div>
+      <h1>PublicLogic × Polymorphic</h1>
+      <p class="subtitle">
+        This repository constitutes a governed CASE workspace—the authoritative record defining governance contracts, boundaries, and implementation obligations for the collaboration.
+      </p>
+
+      <div class="meta">
+        <div><strong>Status:</strong> Active Governance Record</div>
+        <div><strong>Model:</strong> VAULT Framework</div>
+        <div><strong>Version:</strong> v1.0</div>
+        <div><strong>Type:</strong> Institutional CASE</div>
+      </div>
+
       <p class="last-updated">Last updated: <time datetime="2026-01-11">January 11, 2026</time></p>
     </header>
 
-    <h2 id="case-metadata">📋 CASE Metadata</h2>
-    <p class="section-desc">Core project information, charter, and scope documentation</p>
-    <ul>
-      <li><a href="00_CASE_METADATA/case-charter.md">Case Charter</a></li>
-      <li><a href="00_CASE_METADATA/scope-definition.md">Scope Definition</a></li>
-      <li><a href="00_CASE_METADATA/contacts.md">Contacts</a></li>
-      <li><a href="00_CASE_METADATA/change-log.md">Change Log</a></li>
-    </ul>
+    <!-- Quick Navigation -->
+    <section>
+      <h2 id="quick-nav">🎯 Quick Navigation</h2>
+      <p class="section-desc">Jump directly to key governance and documentation areas</p>
+      
+      <div class="quick-links">
+        <a href="#authority-statement" class="quick-link-card">
+          <h3>⚖️ Authority Statement</h3>
+          <p>Governance framework and authoritative basis</p>
+        </a>
+        <a href="#workspace-structure" class="quick-link-card">
+          <h3>📁 Workspace Structure</h3>
+          <p>Complete file tree and organization</p>
+        </a>
+        <a href="#case-metadata" class="quick-link-card">
+          <h3>📋 CASE Metadata</h3>
+          <p>Charter, scope, and contacts</p>
+        </a>
+        <a href="#lifecycle-overview" class="quick-link-card">
+          <h3>🔄 Case Lifecycle</h3>
+          <p>Visual workflow diagram</p>
+        </a>
+      </div>
+    </section>
 
-    <h2 id="authority">⚖️ Authority &amp; Delegation</h2>
-    <p class="section-desc">Authorization models, delegation frameworks, and project constraints</p>
-    <ul>
-      <li><a href="01_AUTHORITY/authority-basis.md">Authority Basis</a></li>
-      <li><a href="01_AUTHORITY/delegation-model.md">Delegation Model</a></li>
-      <li><a href="01_AUTHORITY/constraints-and-non-goals.md">Constraints &amp; Non-Goals</a></li>
-    </ul>
+    <!-- Authority Statement -->
+    <section>
+      <h2 id="authority-statement">⚖️ Authority Statement</h2>
+      <p>
+        This workspace is governed under the VAULT framework.
+        The contents of this repository are authoritative only in relation
+        to this cover record.
+      </p>
 
-    <h2 id="canonical-models">🏗️ Canonical Models</h2>
-    <p class="section-desc">Reference architectures, lifecycle models, and classification systems</p>
-    <ul>
-      <li><a href="02_CANONICAL_MODELS/case-lifecycle.md">Case Lifecycle (MD)</a></li>
-      <li><a href="02_CANONICAL_MODELS/case-lifecycle.mmd">Case Lifecycle (Mermaid Source)</a></li>
-      <li><a href="02_CANONICAL_MODELS/record-classes.md">Record Classes</a></li>
-      <li><a href="02_CANONICAL_MODELS/gate-model.md">Gate Model</a></li>
-      <li><a href="02_CANONICAL_MODELS/retention-and-immutability.md">Retention &amp; Immutability</a></li>
-    </ul>
+      <div class="panel">
+        <strong>Governing Rule</strong>
+        No document, diagram, schema, or reference within this repository
+        creates independent authority. All artifacts are subordinate to
+        this cover and must be interpreted accordingly.
+      </div>
+    </section>
 
-    <h2 id="diagrams">📊 Diagrams</h2>
-    <p class="section-desc">Visual representations and flowcharts</p>
-    <ul>
-      <li><a href="03_DIAGRAMS/case-lifecycle.svg">Case Lifecycle Diagram (SVG)</a></li>
-    </ul>
+    <!-- Purpose -->
+    <section>
+      <h2 id="purpose">🎯 Purpose of the CASE</h2>
+      <p>
+        This CASE exists to define how institutional governance is designed
+        by PublicLogic and implemented by Polymorphic without overlap,
+        ambiguity, or informal risk transfer.
+      </p>
+      <p>
+        It establishes authority boundaries, record obligations, workflow
+        constraints, and survivability requirements before implementation
+        occurs.
+      </p>
+    </section>
 
-    <h2 id="vault-modules">🔐 VAULT Modules</h2>
-    <p class="section-desc">Module-specific architecture documentation and specifications</p>
-    <ul>
-      <li><a href="04_MODULES/VAULTPRR/architecture.md">VAULTPRR Architecture</a></li>
-      <li><a href="04_MODULES/VAULTCLERK/architecture.md">VAULTCLERK Architecture</a></li>
-      <li><a href="04_MODULES/VAULTONBOARD/architecture.md">VAULTONBOARD Architecture</a></li>
-    </ul>
+    <!-- Scope and Limits -->
+    <section>
+      <h2 id="scope">📐 Scope and Limits</h2>
+      <p>
+        This CASE governs governance structure, not software behavior.
+        Implementation decisions must conform to the contracts defined here.
+      </p>
 
-    <h2 id="engineering">⚙️ Engineering Interface</h2>
-    <p class="section-desc">Implementation contracts, system invariants, and anti-patterns</p>
-    <ul>
-      <li><a href="05_ENGINEERING_INTERFACE/implementation-contract.md">Implementation Contract</a></li>
-      <li><a href="05_ENGINEERING_INTERFACE/invariants.md">Invariants</a></li>
-      <li><a href="05_ENGINEERING_INTERFACE/forbidden-patterns.md">Forbidden Patterns</a></li>
-    </ul>
+      <div class="panel">
+        <strong>Explicit Exclusions</strong>
+        UI design, performance characteristics, infrastructure choices,
+        and platform-specific implementation details are outside the scope
+        of this CASE.
+      </div>
+    </section>
 
-    <h2 id="decisions">💡 Decisions</h2>
-    <p class="section-desc">Decision records and foundational assumptions</p>
-    <ul>
-      <li><a href="06_DECISIONS/decision-log.md">Decision Log</a></li>
-      <li><a href="06_DECISIONS/accepted-assumptions.md">Accepted Assumptions</a></li>
-    </ul>
+    <!-- Workspace Structure -->
+    <section>
+      <h2 id="workspace-structure">📁 CASE Workspace Structure</h2>
+      <p class="section-desc">Complete file tree showing governance organization and artifact hierarchy</p>
+      <p>
+        Artifacts are organized by governance role, not by format.
+        This structure is intentional and enforced.
+      </p>
 
-    <h2 id="appendices">📚 Appendices</h2>
-    <p class="section-desc">Terminology, references, and archived materials</p>
-    <ul>
-      <li><a href="99_APPENDICES/terminology.md">Terminology</a></li>
-      <li><a href="99_APPENDICES/references.md">References</a></li>
-      <li><a href="99_APPENDICES/archive/">Archive</a></li>
-    </ul>
+      <div class="tree" role="img" aria-label="File tree structure of the CASE workspace">
+publiclogic-polymorphic-governance/
+├── index.html                         ← This file (Governing CASE Cover)
+├── README.md                          ← Textual Governing Record
+│
+├── 00_CASE_METADATA/                  ← Core project information
+│   ├── case-charter.md
+│   ├── scope-definition.md
+│   ├── contacts.md
+│   └── change-log.md
+│
+├── 01_AUTHORITY/                      ← Decision rights & boundaries
+│   ├── authority-basis.md
+│   ├── delegation-model.md
+│   ├── boundary-declarations.md
+│   ├── decision-rights.md
+│   └── constraints-and-non-goals.md
+│
+├── 02_CANONICAL_MODELS/               ← Reference architectures
+│   ├── case-lifecycle.md
+│   ├── case-lifecycle.mmd
+│   ├── record-classes.md
+│   ├── gate-model.md
+│   └── retention-and-immutability.md
+│
+├── 03_DIAGRAMS/                       ← Visual representations
+│   └── case-lifecycle.svg
+│
+├── 04_MODULES/                        ← VAULT module architectures
+│   ├── VAULTPRR/
+│   │   └── architecture.md
+│   ├── VAULTCLERK/
+│   │   └── architecture.md
+│   └── VAULTONBOARD/
+│       └── architecture.md
+│
+├── 05_ENGINEERING_INTERFACE/          ← Implementation contracts
+│   ├── implementation-contract.md
+│   ├── invariants.md
+│   └── forbidden-patterns.md
+│
+├── 06_DECISIONS/                      ← Decision records
+│   ├── decision-log.md
+│   └── accepted-assumptions.md
+│
+└── 99_APPENDICES/                     ← References & archive
+    ├── terminology.md
+    ├── references.md
+    └── archive/
+      </div>
+    </section>
 
-    <h2 id="lifecycle-overview">🔄 Case Lifecycle Overview</h2>
-    <p class="section-desc">High-level visualization of the CASE workflow</p>
-    <p>A high-level view of the CASE lifecycle is shown below. For detailed models, see the <a href="#canonical-models">Canonical Models</a> section.</p>
-    <div class="mermaid" role="img" aria-label="Case lifecycle flowchart showing progression from Chartered Workspace to CASE Created to Work Happens to CASE Closed and back to Chartered Workspace">
+    <!-- Detailed Navigation -->
+    <section>
+      <h2 id="case-metadata">📋 CASE Metadata</h2>
+      <p class="section-desc">Core project information, charter, and scope documentation</p>
+      <ul>
+        <li><a href="00_CASE_METADATA/case-charter.md">Case Charter</a></li>
+        <li><a href="00_CASE_METADATA/scope-definition.md">Scope Definition</a></li>
+        <li><a href="00_CASE_METADATA/contacts.md">Contacts</a></li>
+        <li><a href="00_CASE_METADATA/change-log.md">Change Log</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="authority">⚖️ Authority &amp; Delegation</h2>
+      <p class="section-desc">Authorization models, delegation frameworks, decision rights, and project constraints</p>
+      <ul>
+        <li><a href="01_AUTHORITY/authority-basis.md">Authority Basis</a></li>
+        <li><a href="01_AUTHORITY/delegation-model.md">Delegation Model</a></li>
+        <li><a href="01_AUTHORITY/boundary-declarations.md">Boundary Declarations</a></li>
+        <li><a href="01_AUTHORITY/decision-rights.md">Decision Rights</a></li>
+        <li><a href="01_AUTHORITY/constraints-and-non-goals.md">Constraints &amp; Non-Goals</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="canonical-models">🏗️ Canonical Models</h2>
+      <p class="section-desc">Reference architectures, lifecycle models, and classification systems</p>
+      <ul>
+        <li><a href="02_CANONICAL_MODELS/case-lifecycle.md">Case Lifecycle (Markdown)</a></li>
+        <li><a href="02_CANONICAL_MODELS/case-lifecycle.mmd">Case Lifecycle (Mermaid Source)</a></li>
+        <li><a href="02_CANONICAL_MODELS/record-classes.md">Record Classes</a></li>
+        <li><a href="02_CANONICAL_MODELS/gate-model.md">Gate Model</a></li>
+        <li><a href="02_CANONICAL_MODELS/retention-and-immutability.md">Retention &amp; Immutability</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="diagrams">📊 Diagrams</h2>
+      <p class="section-desc">Visual representations and flowcharts</p>
+      <ul>
+        <li><a href="03_DIAGRAMS/case-lifecycle.svg">Case Lifecycle Diagram (SVG)</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="vault-modules">🔐 VAULT Modules</h2>
+      <p class="section-desc">Module-specific architecture documentation and specifications</p>
+      <ul>
+        <li><a href="04_MODULES/VAULTPRR/architecture.md">VAULTPRR Architecture</a></li>
+        <li><a href="04_MODULES/VAULTCLERK/architecture.md">VAULTCLERK Architecture</a></li>
+        <li><a href="04_MODULES/VAULTONBOARD/architecture.md">VAULTONBOARD Architecture</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="engineering">⚙️ Engineering Interface</h2>
+      <p class="section-desc">Implementation contracts, system invariants, and anti-patterns</p>
+      <ul>
+        <li><a href="05_ENGINEERING_INTERFACE/implementation-contract.md">Implementation Contract</a></li>
+        <li><a href="05_ENGINEERING_INTERFACE/invariants.md">Invariants</a></li>
+        <li><a href="05_ENGINEERING_INTERFACE/forbidden-patterns.md">Forbidden Patterns</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="decisions">💡 Decisions</h2>
+      <p class="section-desc">Decision records and foundational assumptions</p>
+      <ul>
+        <li><a href="06_DECISIONS/decision-log.md">Decision Log</a></li>
+        <li><a href="06_DECISIONS/accepted-assumptions.md">Accepted Assumptions</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="appendices">📚 Appendices</h2>
+      <p class="section-desc">Terminology, references, and archived materials</p>
+      <ul>
+        <li><a href="99_APPENDICES/terminology.md">Terminology</a></li>
+        <li><a href="99_APPENDICES/references.md">References</a></li>
+        <li><a href="99_APPENDICES/archive/">Archive</a></li>
+      </ul>
+    </section>
+
+    <!-- Lifecycle Diagram -->
+    <section>
+      <h2 id="lifecycle-overview">🔄 Case Lifecycle Overview</h2>
+      <p class="section-desc">High-level visualization of the CASE workflow and state transitions</p>
+      <p>
+        A high-level view of the CASE lifecycle is shown below. For detailed models, 
+        see the <a href="#canonical-models">Canonical Models</a> section.
+      </p>
+      <div class="mermaid" role="img" aria-label="Case lifecycle flowchart showing progression from Chartered Workspace to CASE Created to Work Happens to CASE Closed and back to Chartered Workspace">
 flowchart LR
   CW["Chartered Workspace"] --> CREATE["CASE Created"]
   CREATE --> EXECUTE["Work Happens"]
   EXECUTE --> CLOSE["CASE Closed"]
   CLOSE --> CW
-    </div>
+      </div>
+    </section>
+
+    <!-- Change Control -->
+    <section>
+      <h2 id="change-control">🔄 Change Control</h2>
+      <p>
+        This CASE evolves through explicit governance change.
+        Git history is the audit trail.
+      </p>
+
+      <div class="panel">
+        <strong>Change Discipline</strong>
+        Proposals do not alter authority.
+        Approved changes are captured through tagged releases,
+        representing institutional state.
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        This CASE workspace is designed to survive turnover,
+        pressure, audit, and reuse.
+        Interpretation defaults upward to this cover.
+      </p>
+      <p>
+        <strong>PublicLogic × Polymorphic · Governance First · Structure Holds</strong>
+      </p>
+    </footer>
+
   </main>
 
   <script>
     // Theme toggle functionality
     function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
       document.body.classList.toggle('dark');
       const isDark = document.body.classList.contains('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -396,6 +737,7 @@ flowchart LR
     
     // Load saved theme preference
     if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
     }
     
