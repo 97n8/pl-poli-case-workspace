@@ -2,97 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Polymorphic × PublicLogic — Engineering CASE Workspace</title>
+  <title>PublicLogic × Polymorphic — VAULT Engineering Case Workspace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Mermaid -->
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: "default",
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true
-      }
-    });
-  </script>
-
   <style>
-    :root {
-      --ink: #0e141b;
-      --muted: #6b7280;
-      --rule: #e5e7eb;
-      --panel: #f9fafb;
-      --accent: #0f172a;
-    }
-
     body {
-      margin: 0;
-      padding: 40px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--ink);
-      background: white;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 48px;
+      max-width: 980px;
+      color: #111;
       line-height: 1.55;
     }
 
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    header {
-      border-bottom: 2px solid var(--rule);
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin: 0;
+    h1, h2, h3 {
       font-weight: 600;
     }
 
-    h2 {
-      margin-top: 56px;
-      font-size: 1.5rem;
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 6px;
+    h1 {
+      margin-bottom: 0.25em;
     }
 
-    h3 {
-      margin-top: 32px;
-      font-size: 1.1rem;
+    h2 {
+      margin-top: 2.5em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.25em;
     }
 
     p {
-      max-width: 900px;
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-top: 8px;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 22px;
-      margin-top: 20px;
+      margin: 0.75em 0;
     }
 
     ul {
-      padding-left: 20px;
+      margin-left: 1.25em;
     }
 
     li {
-      margin: 6px 0;
+      margin: 0.35em 0;
     }
 
     a {
-      color: var(--accent);
+      color: #0645ad;
       text-decoration: none;
     }
 
@@ -100,176 +49,145 @@
       text-decoration: underline;
     }
 
-    footer {
-      margin-top: 72px;
-      padding-top: 24px;
-      border-top: 1px solid var(--rule);
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .mermaid {
-      margin-top: 24px;
+    .meta {
+      color: #555;
+      font-size: 0.95em;
+      margin-top: 0.75em;
     }
 
     .callout {
-      background: #ffffff;
-      border-left: 4px solid var(--accent);
+      background: #f7f7f7;
       padding: 16px 20px;
-      margin-top: 24px;
+      border-left: 4px solid #000;
+      margin: 24px 0;
     }
   </style>
 </head>
 
 <body>
-<main>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Polymorphic × PublicLogic</h1>
-    <div class="meta">
-      Engineering CASE Workspace<br/>
-      Status: Active · Authority Bound · Canonical
-    </div>
-  </header>
+<h1>VAULT Master Engineering Packet v1.0</h1>
 
-  <!-- PURPOSE -->
-  <section>
-    <h2>Purpose</h2>
-    <p>
-      This repository is a <strong>Chartered CASE Workspace</strong> governing the engineering
-      collaboration between Polymorphic and PublicLogic.
-    </p>
-    <p>
-      It contains the authoritative governance models, lifecycle definitions,
-      and system constraints required to implement VAULT-aligned municipal workflows
-      safely, defensibly, and with continuity through turnover.
-    </p>
-    <div class="callout">
-      This is not a backlog, a demo, or an exploratory prototype.<br/>
-      Work that is not represented here is <strong>out of scope by definition</strong>.
-    </div>
-  </section>
+<p class="meta">
+  Chartered CASE workspace governing the PublicLogic × Polymorphic engineering collaboration.
+</p>
 
-  <!-- HOW TO USE -->
-  <section>
-    <h2>How to Use This Workspace</h2>
-    <div class="panel">
-      <ol>
-        <li>Read <a href="Read_First.md">Read First</a></li>
-        <li>Review <a href="CASE_Workspace.md">CASE Workspace Definition</a></li>
-        <li>Confirm <a href="Authority_and_Scope.md">Authority and Scope</a></li>
-        <li>Understand constraints in <a href="What_Is_Non_Negotiable.md">What Is Non-Negotiable</a></li>
-        <li>Then proceed to module-level materials</li>
-      </ol>
-    </div>
-  </section>
+<div class="callout">
+  <p><strong>Purpose:</strong> This repository is the authoritative governance and engineering specification
+  for the VAULT framework. It defines authority, lifecycle, enforcement, and audit requirements
+  that Polymorphic implements as runtime modules.</p>
+</div>
 
-  <!-- CANONICAL LIFECYCLE -->
-  <section>
-    <h2>Canonical CASE Lifecycle</h2>
-    <p>
-      All work governed by this CASE follows the lifecycle below.
-      Implementations may vary, but this structure must be satisfied.
-    </p>
+---
 
-    <div class="panel">
-      <pre class="mermaid">
-flowchart LR
-  CW["Chartered Workspace<br/>Authority Defined<br/>Statute • Policy • Delegation"]
+<h2>Start Here</h2>
 
-  CW --> CREATE["Instantiate CASE Workspace<br/>CASE = Chartered Accountability<br/>and Succession Environment"]
+<ul>
+  <li><a href="Welcome.md">Welcome — PublicLogic, VAULT, and How to Use This Packet</a></li>
+  <li><a href="Read_First.md">Read First — Scope, Intent, and How to Engage</a></li>
+  <li><a href="Audience_and_Use.md">Audience and Intended Use</a></li>
+  <li><a href="What_Is_Out_of_Scope.md">What Is Explicitly Out of Scope</a></li>
+</ul>
 
-  CREATE --> ID["Record Identity<br/>CaseID (Immutable)<br/>CaseType (Immutable)<br/>Subject Captured"]
+---
 
-  ID --> SCOPE["Define Scope v1<br/>Scope Versioned<br/>History Preserved"]
+<h2>VAULT Core Canon (Applies to All Frameworks)</h2>
 
-  SCOPE --> DEADLINES["Compute Deadlines<br/>Statutory or Business<br/>Enforcement Rules Loaded"]
+<p>
+  These documents define the non-negotiable governance layer.
+  All VAULT frameworks inherit from this canon.
+</p>
 
-  DEADLINES --> EXECUTE["Execute Work<br/>All Activity Inside CASE<br/>No External Work"]
+<ul>
+  <li><a href="CASE_Workspace.md">CASE Workspace — The Governed Unit of Work</a></li>
+  <li><a href="Authority_and_Scope.md">Authority and Scope</a></li>
+  <li><a href="Record_Classes.md">Record Classes and Immutability Rules</a></li>
+  <li><a href="Timer_and_Deadline_Model.md">Timer and Deadline Model</a></li>
+  <li><a href="Audit_and_Evidence_Model.md">Audit and Evidence Model</a></li>
+  <li><a href="Cross_Module_Interactions.md">Cross-Framework Interactions (v1.0 Independence)</a></li>
+</ul>
 
-  EXECUTE --> ASSETS["Create Assets<br/>Forms • Decisions • Letters<br/>Versioned • Retention Set"]
+---
 
-  ASSETS --> GATES["Evaluate Gates<br/>Legal • Compliance • Time • Payment"]
+<h2>VAULT Frameworks (Implemented as Modules)</h2>
 
-  GATES -->|Gate Failed| BLOCK["Set Transition Blockers<br/>Enforcement Flags Triggered"]
-  BLOCK --> EXECUTE
+<p>
+  Each VAULT framework defines the governance, authority, lifecycle,
+  and enforcement rules for a municipal function.
+  These frameworks are implemented by Polymorphic as runtime modules,
+  but their structure and constraints are defined here and do not change
+  by technology choice.
+</p>
 
-  GATES -->|All Gates Pass| DECISION["Record Decision<br/>Authority Applied<br/>Reason Logged"]
+<ul>
+  <li><a href="00_PRR_Charter.md">PRR Framework — Public Records (Implemented as Module)</a></li>
+  <li><a href="00_CLERK_Charter.md">CLERK Framework — Licensing and Permitting (Implemented as Module)</a></li>
+  <li><a href="00_FISCAL_Charter.md">FISCAL Framework — Finance and Procurement (Implemented as Module)</a></li>
+  <li><a href="00_FIX_Charter.md">FIX Framework — Maintenance and Work Orders (Implemented as Module)</a></li>
+  <li><a href="00_TIME_Charter.md">TIME Framework — Timesheets and Payroll (Implemented as Module)</a></li>
+  <li><a href="00_ONBOARD_Charter.md">ONBOARD Framework — Employee Onboarding (Implemented as Module)</a></li>
+</ul>
 
-  DECISION --> LOCK_ASSETS["Lock Final Assets<br/>Immutable<br/>New Versions Only"]
+<p class="meta">
+  Frameworks define what must be true. Modules define how it is executed.
+</p>
 
-  LOCK_ASSETS --> CLOSE["Close CASE<br/>Closure Reason Recorded<br/>Timestamp Set"]
+---
 
-  CLOSE --> LOCK_CASE["Lock CASE<br/>Audit Log Sealed<br/>CASE Immutable"]
+<h2>Reference Implementation — PRR</h2>
 
-  LOCK_CASE --> RETAIN["Retention Period<br/>Per Policy or Statute"]
+<p>
+  Public Records is the reference implementation.
+  All other modules follow the same pattern with domain-specific governance.
+</p>
 
-  RETAIN --> DESTROY["Destroy or Archive<br/>Per Retention Rules<br/>Event Logged"]
+<ul>
+  <li><a href="VAULTPRR_Governance_Architecture_v1.md">PRR Governance Architecture</a></li>
+  <li><a href="VAULTPRR_Encoding_Specification_v1.md">PRR Encoding Specification</a></li>
+  <li><a href="VAULTPRR_Process_Flowchart_v1.md">PRR Process Flowchart</a></li>
+  <li><a href="VAULTPRR_System_Architecture_v1.md">PRR System Architecture</a></li>
+</ul>
 
-  DESTROY --> CW
-      </pre>
-    </div>
-  </section>
+---
 
-  <!-- NAVIGATION -->
-  <section>
-    <h2>Canonical Materials</h2>
-    <div class="panel">
-      <h3>Authority & Governance</h3>
-      <ul>
-        <li><a href="Authority_and_Scope.md">Authority and Scope</a></li>
-        <li><a href="Escalation_SLA.md">Escalation and SLA</a></li>
-        <li><a href="Audit_and_Evidence_Model.md">Audit and Evidence Model</a></li>
-      </ul>
+<h2>Implementation Guidance (For Engineering)</h2>
 
-      <h3>Core Models</h3>
-      <ul>
-        <li><a href="Record_Classes.md">Record Classes</a></li>
-        <li><a href="Timer_and_Deadline_Model.md">Timer and Deadline Model</a></li>
-        <li><a href="SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md">System Architectures</a></li>
-      </ul>
+<ul>
+  <li><a href="What_Engineers_May_Choose.md">What Engineers May Choose</a></li>
+  <li><a href="What_Is_Non_Negotiable.md">What Is Non-Negotiable</a></li>
+  <li><a href="Error_Handling_Recovery.md">Error Handling and Recovery</a></li>
+  <li><a href="Testing_Validation_Checklist.md">Testing and Validation Checklist</a></li>
+  <li><a href="Technology_Trade_Off_Analysis.md">Technology Trade-Off Analysis</a></li>
+  <li><a href="Escalation_SLA.md">Governance Gap Escalation SLA</a></li>
+</ul>
 
-      <h3>Modules</h3>
-      <ul>
-        <li><a href="00_PRR_Charter.md">VAULT PRR</a></li>
-        <li><a href="00_CLERK_Charter.md">VAULT Clerk</a></li>
-        <li><a href="00_FISCAL_Charter.md">VAULT Fiscal</a></li>
-        <li><a href="00_FIX_Charter.md">VAULT Fix</a></li>
-        <li><a href="00_TIME_Charter.md">VAULT Time</a></li>
-        <li><a href="00_ONBOARD_Charter.md">VAULT Onboard</a></li>
-      </ul>
+---
 
-      <h3>Completion & Verification</h3>
-      <ul>
-        <li><a href="PRE_RELEASE_AUDIT.md">Pre-Release Audit</a></li>
-        <li><a href="Testing_Validation_Checklist.md">Testing and Validation</a></li>
-        <li><a href="FINAL_CONSOLIDATION_COMPLETE.md">Final Consolidation</a></li>
-      </ul>
-    </div>
-  </section>
+<h2>Appendices and Status</h2>
 
-  <!-- CONTACTS -->
-  <section>
-    <h2>Stewardship & Contacts</h2>
-    <p>
-      <strong>PublicLogic</strong><br/>
-      Nathan Boudreau, Principal<br/>
-      Allison Weiss Rothschild, PhD, Behavioral Systems Partner
-    </p>
+<ul>
+  <li><a href="MODULE_CHARTERS_v1.md">All Frameworks — Consolidated Overview</a></li>
+  <li><a href="REFERENCE_AND_APPENDICES_v1.md">Glossary, Version History, and Amendments</a></li>
+  <li><a href="VERSION_HISTORY.md">Version History (Detailed)</a></li>
+  <li><a href="WELCOME_FOLDER_LAUNCH_SUMMARY.md">Welcome Folder Launch — Final Summary</a></li>
+</ul>
 
-    <p>
-      <strong>Polymorphic</strong><br/>
-      Engineering liaison per internal assignment
-    </p>
-  </section>
+---
 
-  <!-- FOOTER -->
-  <footer>
-    This CASE Workspace is authoritative for governance and lifecycle rules.
-    Implementation details may vary by runtime but must satisfy the constraints defined herein.
-  </footer>
+<h2>Decision and Release Documents</h2>
 
-</main>
+<ul>
+  <li><a href="CEO_DECISION_BRIEF_v1.md">CEO Decision Brief — Authorization Request</a></li>
+  <li><a href="PACKET_SEGMENTATION_PLAN_v1.md">Packet Segmentation and Release Strategy</a></li>
+  <li><a href="COMPLETION_SUMMARY.md">Completion Summary</a></li>
+</ul>
+
+---
+
+<p class="meta">
+  VAULT is a governance operating system.
+  This packet is the contract.
+</p>
+
 </body>
 </html>
