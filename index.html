@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Polymorphic × PublicLogic — CASE Workspace</title>
+  <title>Polymorphic × PublicLogic — Chartered CASE Workspace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Mermaid -->
@@ -29,76 +29,102 @@
 
     body {
       margin: 0;
-      padding: 40px;
+      padding: 48px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color: var(--ink);
       background: white;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     header {
       border-bottom: 2px solid var(--rule);
-      margin-bottom: 32px;
-      padding-bottom: 16px;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin: 0;
       font-weight: 600;
     }
 
     h2 {
-      margin-top: 48px;
-      font-size: 1.4rem;
+      margin-top: 56px;
+      font-size: 1.5rem;
       border-bottom: 1px solid var(--rule);
-      padding-bottom: 6px;
+      padding-bottom: 8px;
     }
 
     h3 {
       margin-top: 28px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
 
     p {
-      max-width: 900px;
+      max-width: 960px;
     }
 
     .meta {
       color: var(--muted);
       font-size: 0.95rem;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .panel {
       background: var(--panel);
       border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 20px;
-      margin-top: 20px;
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 24px;
     }
 
-    ul {
-      padding-left: 20px;
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .nav-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 18px;
+      background: white;
+    }
+
+    .nav-card h4 {
+      margin: 0 0 8px 0;
+      font-size: 1.05rem;
+    }
+
+    .nav-card p {
+      margin: 0 0 10px 0;
+      font-size: 0.95rem;
+      color: var(--muted);
     }
 
     a {
       color: var(--accent);
       text-decoration: none;
+      font-weight: 500;
     }
 
     a:hover {
       text-decoration: underline;
     }
 
+    ul {
+      padding-left: 20px;
+    }
+
     footer {
-      margin-top: 64px;
-      padding-top: 20px;
+      margin-top: 80px;
+      padding-top: 24px;
       border-top: 1px solid var(--rule);
       color: var(--muted);
       font-size: 0.9rem;
@@ -113,133 +139,128 @@
 <body>
 <main>
 
-  <header>
-    <h1>Polymorphic × PublicLogic</h1>
-    <div class="meta">
-      Chartered CASE Workspace · Engineering & Governance Integration<br/>
-      Status: Active · Authority Bound · Canonical
-    </div>
-  </header>
+<header>
+  <h1>Polymorphic × PublicLogic</h1>
+  <div class="meta">
+    Chartered CASE Workspace · Governance & Engineering Integration<br/>
+    Status: Active · Authority-Bound · Canonical
+  </div>
+</header>
 
-  <section>
-    <h2>Purpose</h2>
-    <p>
-      This repository is a <strong>Chartered CASE Workspace</strong> supporting engineering collaboration
-      between Polymorphic and PublicLogic. It contains the authoritative governance models,
-      lifecycle definitions, and system constraints required to implement VAULT-aligned
-      municipal workflows safely and defensibly.
-    </p>
+<section>
+  <h2>What This Is</h2>
+  <p>
+    This repository is a <strong>Chartered CASE Workspace</strong>. It is the authoritative,
+    governed environment in which Polymorphic and PublicLogic align on lifecycle rules,
+    authority boundaries, and system invariants required to implement VAULT-aligned
+    municipal systems safely and defensibly.
+  </p>
 
-    <p>
-      This is not a demo repository, a backlog, or an exploratory prototype.
-      It is a governed workspace in which scope, authority, and lifecycle rules are explicit.
-    </p>
-  </section>
+  <p>
+    This is not a demo, backlog, or prototype. It is a durable institutional workspace
+    designed to survive turnover, audits, and system evolution.
+  </p>
+</section>
 
-  <section>
-    <h2>CASE Lifecycle (Canonical)</h2>
-
-    <div class="panel">
-      <div class="mermaid">
+<section>
+  <h2>Canonical CASE Lifecycle</h2>
+  <div class="panel">
+    <div class="mermaid">
 flowchart LR
-  %% =========================
-  %% AUTHORITY LAYER
-  %% =========================
   CW["Chartered Workspace<br/>Authority Defined<br/>Statute • Policy • Delegation"]
-
-  %% =========================
-  %% CASE INSTANTIATION
-  %% =========================
   CW --> CREATE["Instantiate CASE Workspace<br/>CASE = Chartered Accountability<br/>and Succession Environment"]
-
   CREATE --> ID["Record Identity<br/>CaseID (Immutable)<br/>CaseType (Immutable)<br/>Subject Captured"]
-
-  %% =========================
-  %% SCOPE & CLOCKS
-  %% =========================
   ID --> SCOPE["Define Scope v1<br/>Scope Versioned<br/>History Preserved"]
-
   SCOPE --> DEADLINES["Compute Deadlines<br/>Statutory or Business<br/>Enforcement Rules Loaded"]
-
-  %% =========================
-  %% EXECUTION LOOP
-  %% =========================
   DEADLINES --> EXECUTE["Execute Work<br/>All Activity Inside CASE<br/>No External Work"]
-
   EXECUTE --> ASSETS["Create Assets<br/>Forms • Decisions • Letters<br/>Versioned • Retention Set"]
-
   ASSETS --> GATES["Evaluate Gates<br/>Legal • Compliance • Time • Payment"]
-
-  %% =========================
-  %% ENFORCEMENT LOOP
-  %% =========================
   GATES -->|Gate Failed| BLOCK["Set Transition Blockers<br/>Enforcement Flags Triggered"]
-
   BLOCK --> EXECUTE
-
-  %% =========================
-  %% DECISION & FINALIZATION
-  %% =========================
   GATES -->|All Gates Pass| DECISION["Record Decision<br/>Authority Applied<br/>Reason Logged"]
-
   DECISION --> LOCK_ASSETS["Lock Final Assets<br/>Immutable<br/>New Versions Only"]
-
-  %% =========================
-  %% CLOSURE
-  %% =========================
   LOCK_ASSETS --> CLOSE["Close CASE<br/>Closure Reason Recorded<br/>Timestamp Set"]
-
   CLOSE --> LOCK_CASE["Lock CASE<br/>Audit Log Sealed<br/>CASE Immutable"]
-
-  %% =========================
-  %% RETENTION & DESTRUCTION
-  %% =========================
   LOCK_CASE --> RETAIN["Retention Period<br/>Per Policy or Statute"]
-
   RETAIN --> DESTROY["Destroy or Archive<br/>Per Retention Rules<br/>Event Logged"]
-
-  %% =========================
-  %% CYCLE RETURNS TO AUTHORITY
-  %% =========================
   DESTROY --> CW
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>Repository Structure</h2>
-    <div class="panel">
-      <ul>
-        <li><strong>00_CASE_METADATA</strong> — Charter, scope, contacts, change log</li>
-        <li><strong>01_AUTHORITY</strong> — Delegation, constraints, governance basis</li>
-        <li><strong>02_CANONICAL_MODELS</strong> — Lifecycle, record classes, gates</li>
-        <li><strong>03_DIAGRAMS</strong> — Rendered SVG artifacts</li>
-        <li><strong>04_MODULES</strong> — VAULTPRR, VAULTCLERK, VAULTONBOARD</li>
-        <li><strong>05_ENGINEERING_INTERFACE</strong> — Contracts, invariants, anti-patterns</li>
-        <li><strong>06_DECISIONS</strong> — Decision log and assumptions</li>
-        <li><strong>99_APPENDICES</strong> — References and archival material</li>
-      </ul>
+<section>
+  <h2>Workspace Index</h2>
+  <div class="nav-grid">
+
+    <div class="nav-card">
+      <h4>CASE Metadata</h4>
+      <p>Charter, scope, contacts, and change control.</p>
+      <a href="./00_CASE_METADATA/case-charter.md">Open →</a>
     </div>
-  </section>
 
-  <section>
-    <h2>Contacts</h2>
-    <p>
-      <strong>PublicLogic</strong><br/>
-      Nathan Boudreau · Principal<br/>
-      Allison Weiss Rothschild, PhD · Behavioral Systems Partner
-    </p>
+    <div class="nav-card">
+      <h4>Authority & Delegation</h4>
+      <p>Why this work exists and how authority is assigned.</p>
+      <a href="./01_AUTHORITY/authority-basis.md">Open →</a>
+    </div>
 
-    <p>
-      <strong>Polymorphic</strong><br/>
-      Engineering liaison per internal assignment
-    </p>
-  </section>
+    <div class="nav-card">
+      <h4>Canonical Models</h4>
+      <p>Lifecycle, record classes, gates, and immutability.</p>
+      <a href="./02_CANONICAL_MODELS/case-lifecycle.md">Open →</a>
+    </div>
 
-  <footer>
-    This CASE Workspace is authoritative for governance and lifecycle rules.
-    Implementation details may vary by runtime but must satisfy the constraints defined herein.
-  </footer>
+    <div class="nav-card">
+      <h4>Rendered Diagrams</h4>
+      <p>SVG artifacts generated from canonical sources.</p>
+      <a href="./03_DIAGRAMS/">Browse →</a>
+    </div>
+
+    <div class="nav-card">
+      <h4>VAULT Modules</h4>
+      <p>Bounded module specifications.</p>
+      <a href="./04_MODULES/">Browse →</a>
+    </div>
+
+    <div class="nav-card">
+      <h4>Engineering Interface</h4>
+      <p>Implementation contract, invariants, and anti-patterns.</p>
+      <a href="./05_ENGINEERING_INTERFACE/implementation-contract.md">Open →</a>
+    </div>
+
+    <div class="nav-card">
+      <h4>Decision Log</h4>
+      <p>Recorded decisions and accepted assumptions.</p>
+      <a href="./06_DECISIONS/decision-log.md">Open →</a>
+    </div>
+
+    <div class="nav-card">
+      <h4>Appendices</h4>
+      <p>References, terminology, and archived material.</p>
+      <a href="./99_APPENDICES/">Browse →</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Stewardship & Contacts</h2>
+  <p>
+    <strong>PublicLogic</strong><br/>
+    Nathan Boudreau · Principal<br/>
+    Allison Weiss Rothschild, PhD · Behavioral Systems Partner
+  </p>
+
+  <p>
+    <strong>Polymorphic</strong><br/>
+    Engineering liaison per internal assignment
+  </p>
+</section>
+
+<footer>
+  This CASE Workspace is authoritative for governance, lifecycle, and constraint definitions.
+  Implementations may vary by runtime but must satisfy the canonical models and invariants defined herein.
+</footer>
 
 </main>
 </body>
