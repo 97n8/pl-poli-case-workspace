@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Polymorphic × PublicLogic — CASE Workspace</title>
+  <title>Polymorphic × PublicLogic — Engineering CASE Workspace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Mermaid -->
@@ -43,25 +43,25 @@
 
     header {
       border-bottom: 2px solid var(--rule);
-      margin-bottom: 32px;
-      padding-bottom: 16px;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin: 0;
       font-weight: 600;
     }
 
     h2 {
-      margin-top: 48px;
-      font-size: 1.4rem;
+      margin-top: 56px;
+      font-size: 1.5rem;
       border-bottom: 1px solid var(--rule);
       padding-bottom: 6px;
     }
 
     h3 {
-      margin-top: 28px;
+      margin-top: 32px;
       font-size: 1.1rem;
     }
 
@@ -79,12 +79,16 @@
       background: var(--panel);
       border: 1px solid var(--rule);
       border-radius: 6px;
-      padding: 20px;
+      padding: 22px;
       margin-top: 20px;
     }
 
     ul {
       padding-left: 20px;
+    }
+
+    li {
+      margin: 6px 0;
     }
 
     a {
@@ -97,8 +101,8 @@
     }
 
     footer {
-      margin-top: 64px;
-      padding-top: 20px;
+      margin-top: 72px;
+      padding-top: 24px;
       border-top: 1px solid var(--rule);
       color: var(--muted);
       font-size: 0.9rem;
@@ -107,37 +111,67 @@
     .mermaid {
       margin-top: 24px;
     }
+
+    .callout {
+      background: #ffffff;
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin-top: 24px;
+    }
   </style>
 </head>
 
 <body>
 <main>
 
+  <!-- HEADER -->
   <header>
     <h1>Polymorphic × PublicLogic</h1>
     <div class="meta">
-      Chartered CASE Workspace · Engineering & Governance Integration<br/>
+      Engineering CASE Workspace<br/>
       Status: Active · Authority Bound · Canonical
     </div>
   </header>
 
+  <!-- PURPOSE -->
   <section>
     <h2>Purpose</h2>
     <p>
-      This repository is a <strong>Chartered CASE Workspace</strong> supporting engineering collaboration
-      between Polymorphic and PublicLogic. It contains the authoritative governance models,
-      lifecycle definitions, and system constraints required to implement VAULT-aligned
-      municipal workflows safely and defensibly.
+      This repository is a <strong>Chartered CASE Workspace</strong> governing the engineering
+      collaboration between Polymorphic and PublicLogic.
     </p>
-
     <p>
-      This is not a demo repository, a backlog, or an exploratory prototype.
-      It is a governed workspace in which scope, authority, and lifecycle rules are explicit.
+      It contains the authoritative governance models, lifecycle definitions,
+      and system constraints required to implement VAULT-aligned municipal workflows
+      safely, defensibly, and with continuity through turnover.
     </p>
+    <div class="callout">
+      This is not a backlog, a demo, or an exploratory prototype.<br/>
+      Work that is not represented here is <strong>out of scope by definition</strong>.
+    </div>
   </section>
 
+  <!-- HOW TO USE -->
   <section>
-    <h2>CASE Lifecycle (Canonical)</h2>
+    <h2>How to Use This Workspace</h2>
+    <div class="panel">
+      <ol>
+        <li>Read <a href="Read_First.md">Read First</a></li>
+        <li>Review <a href="CASE_Workspace.md">CASE Workspace Definition</a></li>
+        <li>Confirm <a href="Authority_and_Scope.md">Authority and Scope</a></li>
+        <li>Understand constraints in <a href="What_Is_Non_Negotiable.md">What Is Non-Negotiable</a></li>
+        <li>Then proceed to module-level materials</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CANONICAL LIFECYCLE -->
+  <section>
+    <h2>Canonical CASE Lifecycle</h2>
+    <p>
+      All work governed by this CASE follows the lifecycle below.
+      Implementations may vary, but this structure must be satisfied.
+    </p>
 
     <div class="panel">
       <pre class="mermaid">
@@ -178,28 +212,50 @@ flowchart LR
     </div>
   </section>
 
+  <!-- NAVIGATION -->
   <section>
-    <h2>Repository Structure</h2>
+    <h2>Canonical Materials</h2>
     <div class="panel">
+      <h3>Authority & Governance</h3>
       <ul>
-        <li><strong>00_CASE_METADATA</strong> — Charter, scope, contacts, change log</li>
-        <li><strong>01_AUTHORITY</strong> — Delegation, constraints, governance basis</li>
-        <li><strong>02_CANONICAL_MODELS</strong> — Lifecycle, record classes, gates</li>
-        <li><strong>03_DIAGRAMS</strong> — Rendered SVG artifacts</li>
-        <li><strong>04_MODULES</strong> — VAULTPRR, VAULTCLERK, VAULTONBOARD</li>
-        <li><strong>05_ENGINEERING_INTERFACE</strong> — Contracts, invariants, anti-patterns</li>
-        <li><strong>06_DECISIONS</strong> — Decision log and assumptions</li>
-        <li><strong>99_APPENDICES</strong> — References and archival material</li>
+        <li><a href="Authority_and_Scope.md">Authority and Scope</a></li>
+        <li><a href="Escalation_SLA.md">Escalation and SLA</a></li>
+        <li><a href="Audit_and_Evidence_Model.md">Audit and Evidence Model</a></li>
+      </ul>
+
+      <h3>Core Models</h3>
+      <ul>
+        <li><a href="Record_Classes.md">Record Classes</a></li>
+        <li><a href="Timer_and_Deadline_Model.md">Timer and Deadline Model</a></li>
+        <li><a href="SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md">System Architectures</a></li>
+      </ul>
+
+      <h3>Modules</h3>
+      <ul>
+        <li><a href="00_PRR_Charter.md">VAULT PRR</a></li>
+        <li><a href="00_CLERK_Charter.md">VAULT Clerk</a></li>
+        <li><a href="00_FISCAL_Charter.md">VAULT Fiscal</a></li>
+        <li><a href="00_FIX_Charter.md">VAULT Fix</a></li>
+        <li><a href="00_TIME_Charter.md">VAULT Time</a></li>
+        <li><a href="00_ONBOARD_Charter.md">VAULT Onboard</a></li>
+      </ul>
+
+      <h3>Completion & Verification</h3>
+      <ul>
+        <li><a href="PRE_RELEASE_AUDIT.md">Pre-Release Audit</a></li>
+        <li><a href="Testing_Validation_Checklist.md">Testing and Validation</a></li>
+        <li><a href="FINAL_CONSOLIDATION_COMPLETE.md">Final Consolidation</a></li>
       </ul>
     </div>
   </section>
 
+  <!-- CONTACTS -->
   <section>
-    <h2>Contacts</h2>
+    <h2>Stewardship & Contacts</h2>
     <p>
       <strong>PublicLogic</strong><br/>
-      Nathan Boudreau · Principal<br/>
-      Allison Weiss Rothschild, PhD · Behavioral Systems Partner
+      Nathan Boudreau, Principal<br/>
+      Allison Weiss Rothschild, PhD, Behavioral Systems Partner
     </p>
 
     <p>
@@ -208,6 +264,7 @@ flowchart LR
     </p>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     This CASE Workspace is authoritative for governance and lifecycle rules.
     Implementation details may vary by runtime but must satisfy the constraints defined herein.
