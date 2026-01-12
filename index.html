@@ -1,232 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAULT Master Engineering Packet v1.0 — Index & Navigation Hub</title>
-    <style>
-        @page { margin: 0.75in 0.75in; size: letter; }
-        body {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 11pt;
-            line-height: 1.5;
-            color: #000;
-            max-width: 7.5in;
-            margin: 0 auto;
-            padding: 0.5in 0.5in 1in;
-            background: #fff;
-        }
-        h1 {
-            font-size: 18pt;
-            font-weight: bold;
-            margin: 0 0 0.5em;
-            text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 0.3em;
-        }
-        .header-block {
-            text-align: center;
-            margin-bottom: 1.5em;
-            font-size: 10pt;
-            color: #333;
-        }
-        .header-block strong { font-weight: bold; }
-        h2 {
-            font-size: 14pt;
-            font-weight: bold;
-            margin: 1.5em 0 0.75em;
-            border-bottom: 1px solid #666;
-            padding-bottom: 0.2em;
-        }
-        h3 {
-            font-size: 12pt;
-            font-weight: bold;
-            margin: 1.2em 0 0.6em;
-        }
-        p, li {
-            margin: 0.6em 0;
-        }
-        ul, ol {
-            margin: 0.6em 0 0.6em 1.8em;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1em 0;
-            font-size: 10pt;
-        }
-        th, td {
-            border: 1px solid #666;
-            padding: 0.4em 0.6em;
-            text-align: left;
-            vertical-align: top;
-        }
-        th {
-            background: #f0f0f0;
-            font-weight: bold;
-        }
-        .module-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 0.8em 0;
-        }
-        .module-list li {
-            margin: 0.5em 0;
-            padding-left: 1.8em;
-            text-indent: -1.8em;
-        }
-        .module-list li strong {
-            display: inline-block;
-            width: 6em;
-        }
-        .code-block {
-            background: #f8f8f8;
-            border: 1px solid #ddd;
-            padding: 1em;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 9.5pt;
-            white-space: pre;
-            overflow-x: auto;
-            margin: 1em 0;
-        }
-        .footer-note {
-            font-size: 9pt;
-            color: #444;
-            text-align: center;
-            margin-top: 2em;
-            border-top: 1px solid #ccc;
-            padding-top: 0.8em;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: underline;
-        }
-        a:hover {
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Locked VAULT Master Engineering Packet v1.0 — Authoritative governance workspace for Polymorphic × PublicLogic collaboration."/>
+  <title>VAULT Master Engineering Packet v1.0 — Index & Navigation Hub</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root { --bg: #ffffff; --text: #111111; --accent: #6d28d9; --link: #7c3aed; --code: #f3f4f6; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; line-height: 1.6; max-width: 900px; margin: 0 auto; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { text-align: center; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem; }
+    h1, h2 { color: var(--accent); }
+    .boundary { font-style: italic; font-weight: 500; margin: 1rem 0; padding: 1rem; background: #f9fafb; border-left: 4px solid var(--accent); }
+    .diagram { font-weight: bold; color: #c026d3; }
+    ul { padding-left: 1.2rem; }
+    .section { margin: 2.5rem 0; }
+    .audience { font-size: 0.95rem; margin-top: 1rem; }
+    footer { text-align: center; margin-top: 4rem; font-size: 0.9rem; color: #6b7280; border-top: 1px solid #e5e7eb; padding-top: 1.5rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+  </style>
 </head>
 <body>
+  <a href="#main" class="sr-only">Skip to main content</a>
 
-    <h1>VAULT Master Engineering Packet v1.0<br>Index & Navigation Hub</h1>
+  <header>
+    <h1>VAULT Master Engineering Packet v1.0</h1>
+    <p>Index & Navigation Hub — Polymorphic × PublicLogic Collaboration</p>
+    <p class="boundary">
+      This workspace is the authoritative source of record for governance logic, module boundaries, engineering specifications, and decision history in the Polymorphic × PublicLogic VAULT collaboration. All artifacts are versioned; immutability is defined at the artifact level (see individual files for declarations). This index reflects the authoritative state as of the lock date.<br>
+      <strong>Locked: v1.0 — January 12, 2026</strong>
+    </p>
+    <p class="audience">
+      <strong>Primary audiences</strong>: Engineering teams (Polimorphic & PublicLogic), legal/compliance reviewers, municipal operators implementing VAULT.<br>
+      <strong>Secondary audiences</strong>: External auditors, researchers, or future collaborators needing traceable context.
+    </p>
+  </header>
 
-    <div class="header-block">
-        <strong>VAULT</strong> is a governed framework of immutable CASE containers and canonical models that enforce institutional legitimacy by preventing unowned risk transfer onto individuals.<br><br>
-        <strong>Version:</strong> 1.0 — Locked January 12, 2026<br>
-        <strong>Authority:</strong> PublicLogic LLC<br>
-        <strong>Status:</strong> Authoritative governance reference — all implementations, modules, and derivatives subordinate to this packet<br>
-        <strong>GitHub Pages:</strong> <a href="https://97n8.github.io/pl-poli-case-workspace/">https://97n8.github.io/pl-poli-case-workspace/</a><br>
-        <strong>Repository:</strong> <a href="https://github.com/97n8/pl-poli-case-workspace">https://github.com/97n8/pl-poli-case-workspace</a>
-    </div>
+  <main id="main">
+    <nav aria-label="VAULT Master Packet Navigation">
+      <section class="section">
+        <h2>30-Minute Orientation Path</h2>
+        <ol>
+          <li><a href="./Read_First.md">Read_First.md</a> — Essential entry point</li>
+          <li><a href="./Welcome.md">Welcome.md</a> — Overview & context</li>
+          <li><a href="./Audience_and_Use.md">Audience_and_Use.md</a> — How to navigate & use this workspace</li>
+          <li><a href="./CASE_Workspace.md">CASE_Workspace.md</a> — Structure & governance model</li>
+          <li><a href="./flow.md">flow.md</a> — Core VAULT process flows (Mermaid rendered)</li>
+        </ol>
+      </section>
 
-    <h2>30-Minute Orientation Path (Recommended First Pass)</h2>
-    <p>Read these four documents <strong>in this exact order</strong> to understand what VAULT is, why it exists, its boundaries, and whether it applies:</p>
-    <ol>
-        <li><a href="./Read_First.md">Read_First.md</a> — What this packet is and how to use it (5–7 min)</li>
-        <li><a href="./Audience_and_Use.md">Audience_and_Use.md</a> — Who this is for + escalation paths (5 min)</li>
-        <li><a href="./What_Is_Out_of_Scope.md">What_Is_Out_of_Scope.md</a> — Explicit exclusions & boundaries (5 min)</li>
-        <li><a href="./01_VAULT_CORE_CANON/CASE_Workspace.md">CASE_Workspace.md</a> — The root immutable CASE container (10–15 min)</li>
-    </ol>
-    <p>After these, you will know the purpose, authority model, and critical constraints. Proceed based on your role.</p>
+      <section class="section">
+        <h2>Key Diagrams & Flows (Mermaid)</h2>
+        <ul>
+          <li><a href="./flow.md" class="diagram">flow.md</a> — Latest core governance flows</li>
+          <li><a href="./FLOWCHARTS_ALL_MODULES_v1.md" class="diagram">FLOWCHARTS_ALL_MODULES_v1.md</a> — All modules consolidated</li>
+          <li><a href="./VAULTPRR_Process_Flowchart_v1.md" class="diagram">VAULTPRR_Process_Flowchart_v1.md</a></li>
+          <li><a href="./VAULT_CLERK_Process_Flowchart_v1.md" class="diagram">VAULT_CLERK_Process_Flowchart_v1.md</a></li>
+          <li><a href="./SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md" class="diagram">SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md</a></li>
+          <li><a href="./VAULTPRR_System_Architecture_v1.md" class="diagram">VAULTPRR_System_Architecture_v1.md</a></li>
+          <li><a href="./VAULT_CLERK_Governance_Architecture_v1.md" class="diagram">VAULT_CLERK_Governance_Architecture_v1.md</a></li>
+        </ul>
+      </section>
 
-    <h2>Core Canon — The Six Must-Master Documents</h2>
-    <p>These six files define the entire VAULT framework. Master them first.</p>
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Document</th>
-                <th>Purpose</th>
-                <th>Link</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>Read_First.md</td><td>Entry point & orientation</td><td><a href="./Read_First.md">Open</a></td></tr>
-            <tr><td>2</td><td>Authority_and_Scope.md</td><td>Binding authority & institutional purpose</td><td><a href="./01_VAULT_CORE_CANON/Authority_and_Scope.md">Open</a></td></tr>
-            <tr><td>3</td><td>CASE_Workspace.md</td><td>Root immutable work container (critical)</td><td><a href="./01_VAULT_CORE_CANON/CASE_Workspace.md">Open</a></td></tr>
-            <tr><td>4</td><td>Record_Classes.md</td><td>Official record classification & lifecycle</td><td><a href="./01_VAULT_CORE_CANON/Record_Classes.md">Open</a></td></tr>
-            <tr><td>5</td><td>Timer_and_Deadline_Model.md</td><td>Statutory deadline & timer enforcement</td><td><a href="./01_VAULT_CORE_CANON/Timer_and_Deadline_Model.md">Open</a></td></tr>
-            <tr><td>6</td><td>Audit_and_Evidence_Model.md</td><td>Immutable trust, evidence & audit trail</td><td><a href="./01_VAULT_CORE_CANON/Audit_and_Evidence_Model.md">Open</a></td></tr>
-        </tbody>
-    </table>
+      <section class="section">
+        <h2>Module Charters</h2>
+        <ul>
+          <li><a href="./00_CLERK_Charter.md">00_CLERK_Charter.md</a></li>
+          <li><a href="./00_FISCAL_Charter.md">00_FISCAL_Charter.md</a></li>
+          <li><a href="./00_FIX_Charter.md">00_FIX_Charter.md</a></li>
+          <li><a href="./00_ONBOARD_Charter.md">00_ONBOARD_Charter.md</a></li>
+          <li><a href="./00_PRR_Charter.md">00_PRR_Charter.md</a></li>
+          <li><a href="./00_TIME_Charter.md">00_TIME_Charter.md</a></li>
+          <li><a href="./MODULE_CHARTERS_v1.md">MODULE_CHARTERS_v1.md</a> (compiled)</li>
+        </ul>
+      </section>
 
-    <h2>Role-Based Next Steps</h2>
+      <section class="section">
+        <h2>VAULT Module Specifications & Encoding</h2>
+        <ul>
+          <li><a href="./VAULT_CLERK_Encoding_Specification_v1.md">VAULT_CLERK_Encoding_Specification_v1.md</a></li>
+          <li><a href="./VAULT_CLERK_Governance_Architecture_v1.md">VAULT_CLERK_Governance_Architecture_v1.md</a></li>
+          <li><a href="./VAULT_FISCAL_Encoding_Specification_v1.md">VAULT_FISCAL_Encoding_Specification_v1.md</a></li>
+          <li><a href="./VAULT_FIX_Encoding_Specification_v1.md">VAULT_FIX_Encoding_Specification_v1.md</a></li>
+          <li><a href="./VAULTPRR_Encoding_Specification_v1.md">VAULTPRR_Encoding_Specification_v1.md</a></li>
+          <li><a href="./VAULTPRR_Governance_Architecture_v1.md">VAULTPRR_Governance_Architecture_v1.md</a></li>
+          <li><a href="./VAULT_ONBOARD_Governance_Encoding_v1.md">VAULT_ONBOARD_Governance_Encoding_v1.md</a></li>
+          <li><a href="./VAULT_TIME_Governance_Encoding_v1.md">VAULT_TIME_Governance_Encoding_v1.md</a></li>
+          <li><a href="./VAULT_Master_Packet_COMPLETE_SUMMARY.md">VAULT_Master_Packet_COMPLETE_SUMMARY.md</a></li>
+        </ul>
+      </section>
 
-    <h3>Engineer / Architect / Implementer</h3>
-    <ul>
-        <li>Complete the 30-minute path above</li>
-        <li>Read: <a href="./03_IMPLEMENTATION_GUIDANCE/What_Engineers_May_Choose.md">What_Engineers_May_Choose.md</a> and <a href="./03_IMPLEMENTATION_GUIDANCE/What_Is_Non_Negotiable.md">What_Is_Non_Negotiable.md</a></li>
-        <li>Study reference implementation: <a href="./02_MODULES/PRR/00_PRR_Charter.md">PRR Charter</a> + <a href="./02_MODULES/PRR/VAULTPRR_Process_Flowchart_v1.md">VAULTPRR_Process_Flowchart_v1.md</a></li>
-        <li>Then explore your target module(s) starting with its charter</li>
-    </ul>
+      <section class="section">
+        <h2>Decisions, Summaries & References</h2>
+        <ul>
+          <li><a href="./CEO_DECISION_BRIEF_v1.md">CEO_DECISION_BRIEF_v1.md</a></li>
+          <li><a href="./VERSION_HISTORY.md">VERSION_HISTORY.md</a></li>
+          <li><a href="./COMPLETION_SUMMARY.md">COMPLETION_SUMMARY.md</a></li>
+          <li><a href="./FINAL_CONSOLIDATION_COMPLETE.md">FINAL_CONSOLIDATION_COMPLETE.md</a></li>
+          <li><a href="./Glossary.md">Glossary.md</a></li>
+          <li><a href="./Authority_and_Scope.md">Authority_and_Scope.md</a></li>
+          <li><a href="./What_Is_Non_Negotiable.md">What_Is_Non_Negotiable.md</a></li>
+          <li><a href="./What_Is_Out_of_Scope.md">What_Is_Out_of_Scope.md</a></li>
+        </ul>
+      </section>
 
-    <h3>Governance / Legal / Compliance</h3>
-    <ul>
-        <li>Complete 30-minute path</li>
-        <li>Focus on charters + non-negotiables for each relevant module</li>
-        <li>Reference: <a href="./Escalation_SLA.md">Escalation_SLA.md</a> and <a href="./99_APPENDICES/Glossary.md">Glossary.md</a></li>
-    </ul>
+      <section class="section">
+        <h2>Cross-Cutting & Operational Artifacts</h2>
+        <ul>
+          <li><a href="./Cross_Module_Interactions.md">Cross_Module_Interactions.md</a></li>
+          <li><a href="./Escalation_SLA.md">Escalation_SLA.md</a></li>
+          <li><a href="./Audit_and_Evidence_Model.md">Audit_and_Evidence_Model.md</a></li>
+          <li><a href="./Timer_and_Deadline_Model.md">Timer_and_Deadline_Model.md</a></li>
+          <li><a href="./Record_Classes.md">Record_Classes.md</a></li>
+          <li><a href="./Testing_Validation_Checklist.md">Testing_Validation_Checklist.md</a></li>
+          <li><a href="./Error_Handling_Recovery.md">Error_Handling_Recovery.md</a></li>
+        </ul>
+      </section>
+    </nav>
+  </main>
 
-    <h3>Operations / End-User / Support</h3>
-    <ul>
-        <li>Start with <a href="./Read_First.md">Read_First.md</a> + relevant module charter</li>
-        <li>Skim <a href="./01_VAULT_CORE_CANON/CASE_Workspace.md">CASE_Workspace.md</a> to understand the container model</li>
-        <li>Use <a href="./99_APPENDICES/Glossary.md">Glossary.md</a> for terms</li>
-    </ul>
+  <footer>
+    <p>PublicLogic VAULT Framework • Authoritative & governed collaboration workspace • Contact: info@publiclogic.com for escalation or clarification.</p>
+    <p><a href="https://github.com/97n8/pl-poli-case-workspace">View source on GitHub (distribution mirror; authority defined within this packet)</a> • Locked January 12, 2026</p>
+  </footer>
 
-    <h2>The Six VAULT Modules — Direct Entry Points</h2>
-    <p>Start with the charter for your focus area:</p>
-    <ul class="module-list">
-        <li><strong>PRR</strong> (Public Records Requests) → <a href="./02_MODULES/PRR/00_PRR_Charter.md">00_PRR_Charter.md</a></li>
-        <li><strong>CLERK</strong> (Records / Licensing) → <a href="./02_MODULES/CLERK/00_CLERK_Charter.md">00_CLERK_Charter.md</a></li>
-        <li><strong>FISCAL</strong> (Budget / Invoices / Procurement) → <a href="./02_MODULES/FISCAL/00_FISCAL_Charter.md">00_FISCAL_Charter.md</a></li>
-        <li><strong>TIME</strong> (Deadlines / Scheduling) → <a href="./02_MODULES/TIME/00_TIME_Charter.md">00_TIME_Charter.md</a></li>
-        <li><strong>FIX</strong> (Corrections / Work Orders) → <a href="./02_MODULES/FIX/00_FIX_Charter.md">00_FIX_Charter.md</a></li>
-        <li><strong>ONBOARD</strong> (Setup / Training) → <a href="./02_MODULES/ONBOARD/00_ONBOARD_Charter.md">00_ONBOARD_Charter.md</a></li>
-    </ul>
-
-    <h2>Consolidated References & Visuals</h2>
-    <ul>
-        <li>All process flowcharts → <a href="./02_MODULES/FLOWCHARTS_ALL_MODULES_v1.md">FLOWCHARTS_ALL_MODULES_v1.md</a></li>
-        <li>All system architectures → <a href="./02_MODULES/SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md">SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md</a></li>
-        <li>Cross-module coordination → <a href="./Cross_Module_Interactions.md">Cross_Module_Interactions.md</a></li>
-        <li>Full glossary → <a href="./99_APPENDICES/Glossary.md">Glossary.md</a></li>
-        <li>Change & version history → <a href="./99_APPENDICES/VERSION_HISTORY.md">VERSION_HISTORY.md</a></li>
-    </ul>
-
-    <h2>Directory Overview (Logical View)</h2>
-    <div class="code-block">
-pl-poli-case-workspace/
-├── Read_First.md                  ← START HERE
-├── INDEX.md                       ← this file
-├── Glossary.md
-├── VERSION_HISTORY.md
-├── index.html                     ← rendered landing page
-├── 01_VAULT_CORE_CANON/           ← canonical models
-├── 02_MODULES/                    ← module-specific folders
-│   ├── PRR/
-│   ├── CLERK/
-│   ├── FISCAL/
-│   ├── TIME/
-│   ├── FIX/
-│   └── ONBOARD/
-├── 03_IMPLEMENTATION_GUIDANCE/    ← flexibility vs hard rules
-└── 99_APPENDICES/                 ← reference & supporting materials
-    </div>
-    <p><em>Note: The repository is mostly flat at root for simplicity; subfolders are used where logical. Use browser search or GitHub file finder for quick location.</em></p>
-
-    <h2>Questions, Flags, Escalation</h2>
-    <ul>
-        <li>Governance/policy ambiguity? → Check charter + non-negotiables first → escalate to <a href="mailto:info@publiclogic.com">info@publiclogic.com</a></li>
-        <li>Technical feasibility / divergence? → See What_Engineers_May_Choose.md; surface early</li>
-        <li>Unclear term? → <a href="./99_APPENDICES/Glossary.md">Glossary.md</a></li>
-        <li>Update needed? → Document scenario → follow escalation path in Audience_and_Use.md</li>
-    </ul>
-
-    <div class="footer-note">
-        This packet is the single source of truth for VAULT governance. All module implementations, code, and operations must align with it.<br>
-        Last updated: January 12, 2026
-    </div>
-
+  <script>
+    // Mermaid global init (assumed to run in isolated context; downstream .md files handle their own rendering)
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  </script>
 </body>
 </html>
