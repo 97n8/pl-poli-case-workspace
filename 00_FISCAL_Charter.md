@@ -1,253 +1,342 @@
 # VAULT FISCAL Module — Charter
-
-**Accounts Payable, Procurement, Budget • Municipal Finance**
+**Accounts Payable • Procurement • Budget Encumbrance • Municipal Finance**
 
 ---
 
 ## Module Purpose
 
-VAULT FISCAL enforces procurement and payment processes as CASE-based work.
+VAULT FISCAL enforces strict, auditable procurement and payment processes using the CASE-based architecture. Every financial work unit is encapsulated as a single, immutable CASE.
 
-Examples:
-* Invoice intake and payment
-* Purchase order processing
-* Approval workflows
-* Budget encumbrance
-* Vendor management
+**Core Examples**:
+- Invoice intake, 3-way match, approval, and payment
+- Purchase order creation and issuance
+- Multi-level approval workflows
+- Budget availability checks and encumbrance
+- Vendor onboarding and management
 
-Each invoice or PO is one CASE.
-
----
-
-## Statutory Authority
-
-**M.G.L. c. 41, §23** — Municipal Finance
-**M.G.L. c. 149** — Public Procurement Law
+**Principle**: One invoice = one CASE; one PO = one CASE. No external documents or decisions exist outside the CASE.
 
 ---
 
-## CASE Model for FISCAL (Invoice Example)
+## Statutory Authority & Compliance Foundation
 
-### Identity
+- **M.G.L. c. 41 §56** — Warrants for payment of bills (primary): Requires department/board approval after verifying charges are correct, goods/services ordered/delivered/rendered; town accountant examines and draws warrant; treasurer pays only on approved warrant; disallowance for fraudulent/unlawful/excessive claims.
+- **M.G.L. c. 41 §52** — Approval of bills (supplemental): Auditor/selectmen may disallow claims and document reasons.
+- **M.G.L. c. 149 §§44A–44M** — Public construction procurement (when applicable): Governs bidding for building-related work; intersects with AP for progress payments/invoices.
+- **M.G.L. c. 30 §39M** — Public works bidding (supplies/services over certain thresholds).
+- **Best Practices**: 3-way match (PO + Invoice + Receipt) exceeds statutory minimums but aligns with MA DLS/auditor recommendations and GFOA standards for fraud prevention and fiscal control.
+
+VAULT FISCAL enforces these via gates, locked assets, and transition blockers — ensuring warrant-like approval before payment.
+
+---
+
+## CASE Model — Invoice Example
+
+### 1. Identity (Immutable)
 
 ```json
 {
   "CaseID": "fiscal-2026-0892",
   "CaseType": "FISCAL",
   "SubType": "Invoice",
-  "CreatedTimestamp": "2026-02-01T14:30:00Z"
+  "CreatedTimestamp": "2026-02-01T14:30:00Z",
+  "CreatedBy": "accounting@lawrence.ma.us"
 }
-```
-
-### Subject
-
-```json
-{
+2. Subject (Sufficient for quick understanding)
+JSON{
   "VendorIdentity": {
     "VendorID": "V-001",
     "Name": "MainTech Services",
-    "Address": "456 Tech Blvd"
+    "Address": "456 Tech Blvd, Anytown, MA"
   },
   "Amount": 4500.00,
   "Currency": "USD",
   "InvoiceNumber": "INV-2026-001",
   "PeriodCovered": "2026-01-01 to 2026-01-31"
 }
-```
-
-### Scope
-
-```json
-{
+3. Scope (Versioned)
+JSON{
   "ScopeDefinition": {
-    "Description": "Professional services - IT support",
+    "Description": "Professional IT support services per contract",
     "GLCode": "4100.001",
-    "CostCenter": "IT",
+    "CostCenter": "IT Department",
     "BudgetAuthority": "Director of IT"
-  }
+  },
+  "ScopeVersion": 1
 }
-```
-
-### Deadlines
-
-```json
-{
+4. Deadlines (Enforced with Consequences)
+JSON{
   "PaymentDue": {
     "DueDate": "2026-03-02",
-    "Description": "Net 30 per contract"
+    "Description": "Net 30 per contract; flag late payment interest if applicable"
   },
-  "VarianceWindow": {
+  "VarianceResolutionWindow": {
     "DueDate": "2026-02-20",
-    "Description": "3-way match (PO/receipt/invoice) must be resolved"
+    "Description": "Resolve 3-way match variances; blocker if missed"
+  },
+  "ApprovalRoutingDeadline": {
+    "DueDate": "2026-02-15",
+    "Description": "Escalate stalled approvals per policy"
   }
 }
-```
-
-### Assets
-
-```json
-{
+5. Assets (All Inside CASE)
+JSON{
   "Assets": [
-    {"AssetType": "Invoice", "RetentionClass": "KEEPER"},
-    {"AssetType": "PurchaseOrder", "RetentionClass": "KEEPER"},
-    {"AssetType": "Receipt", "RetentionClass": "KEEPER"},
+    {"AssetType": "Invoice", "RetentionClass": "KEEPER", "Locked": true},
+    {"AssetType": "PurchaseOrder", "RetentionClass": "KEEPER", "Locked": true},
+    {"AssetType": "Receipt", "RetentionClass": "KEEPER", "Locked": true},
     {"AssetType": "ApprovalSignature", "RetentionClass": "KEEPER", "Locked": true},
+    {"AssetType": "VarianceReport", "RetentionClass": "REFERENCE", "Locked": false},
     {"AssetType": "PaymentConfirmation", "RetentionClass": "TRANSACTIONAL"}
   ]
 }
-```
 
----
+Module-Specific Rules
+3-Way Match (Mandatory Gate)
+Before proceeding to payment:
 
-## Module-Specific Rules
+Invoice amount matches PO (or variance approved).
+Receipt amount matches invoice (proof of delivery/rendering per §56).
+All three documented as assets.
 
-### 3-Way Match
+Variance → Create VarianceReport, require budget authority approval, log as blocker until resolved.
+Approval Chain (Warrant-Equivalent per §56)
 
-Before payment:
-1. Invoice amount matches PO amount
-2. Receipt amount matches invoice
-3. All three are documented
+Department head: Verify correctness/delivery.
+Accounting: Confirm coding, budget availability.
+Finance Director/Treasurer/Selectmen: Final authority per thresholds.
 
-If variance: Require approval from vendor/budget authority before payment.
+All approvals recorded as locked ApprovalSignature assets.
+Payment Methods
 
-### Approval Chain
+Check, ACH, credit card, wire (per town policy).
+PaymentConfirmation asset generated post-processing.
 
-Invoices may require multiple approvals:
-1. Department head (correctness)
-2. Accounting (coding, budget availability)
-3. Finance director (payment authority)
+Budget Encumbrance
+Pre-commit funds on PO creation; check unencumbered balance before approval/payment.
 
-CASE records all approvals with signatures.
+Asset Types Table
 
-### Payment Methods
 
-Payment can be:
-* Check
-* ACH transfer
-* Credit card
-* Other per municipal policy
 
-CASE records payment method and confirmation.
 
----
 
-## Process Flow (High Level)
 
-```
-Intake → 3-Way Match → Approval Chain → Payment Processing → Reconciliation → Closure
-```
 
----
 
-## Asset Types in FISCAL
 
-| Asset | Retention | Locked? | Purpose |
-|-------|-----------|---------|---------|
-| Invoice | KEEPER | Yes | Original invoice from vendor |
-| PurchaseOrder | KEEPER | Yes | Authorization to purchase |
-| Receipt | KEEPER | Yes | Evidence goods/services received |
-| ApprovalSignature | KEEPER | Yes | Authorized by appropriate authority |
-| PaymentConfirmation | TRANSACTIONAL | No | Proof of payment |
-| Variance Report | REFERENCE | No | If amount differences, investigation |
 
----
 
-## Decision Tables
 
-### Gate 1: 3-Way Match Variance
 
-| Invoice Amt | PO Amt | Receipt Amt | Match? | Action |
-|-----|-----|-----|---|---|
-| $1,000 | $1,000 | $1,000 | YES ✓ | Proceed |
-| $1,000 | $900 | $1,000 | NO | Variance: invoice exceeds PO |
-| $1,000 | $1,000 | $950 | NO | Variance: receipt differs |
-| $1,100 | $1,000 | $1,100 | NO | Variance: invoice > PO (over-spend?) |
 
-**Variance Resolution:** Require approval from budget authority before payment
 
----
 
-### Gate 2: Budget Availability
 
-| Amount | Budget Available | Encumbered | Can Proceed? | Action |
-|---|---|---|---|---|
-| $5,000 | $10,000 | $0 | YES ✓ | Proceed |
-| $5,000 | $3,000 | $0 | NO | Reject: insufficient budget |
-| $5,000 | $8,000 | $5,000 | NO | Reject: insufficient unencumbered |
-| $5,000 | $10,000 | $6,000 | YES ✓ | Proceed (if $5K available) |
 
----
 
-### Approval Matrix
 
-| Amount | Department | Authority | Signature |
-|---|---|---|---|
-| $0 - $1,000 | Any | Department Head | Required |
-| $1,001 - $5,000 | Any | Finance Director | Required |
-| $5,001 - $25,000 | Any | Treasurer | Required |
-| $25,001+ | Any | Board of Selectmen | Required |
 
----
 
-## Process Flow (High-Level)
 
-```
-[Invoice Intake]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AssetTypeRetentionClassLocked?PurposeInvoiceKEEPERYesOriginal vendor-submitted invoicePurchaseOrderKEEPERYesPre-authorization to vendorReceiptKEEPERYesProof of goods/services received/renderedApprovalSignatureKEEPERYesDigitally signed approval (per §56)VarianceReportREFERENCENoDocumentation of differences & resolutionsPaymentConfirmationTRANSACTIONALNoBank/treasurer proof of disbursement
+
+Decision Tables
+Gate 1: 3-Way Match Variance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Invoice AmtPO AmtReceipt AmtMatch?Action / Blocker$1,000$1,000$1,000YES ✓Proceed$1,000$900$1,000NOVariance: Invoice exceeds PO; require approval$1,000$1,000$950NOVariance: Receipt under-delivered; investigate$1,100$1,000$1,100NOVariance: Over-spend; budget authority sign-off
+Resolution: Approved variance → lock ApprovalSignature; unresolved → blocker.
+Gate 2: Budget Availability
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Requested AmtAvailableEncumberedUnencumberedProceed?Action$5,000$10,000$0$10,000YES ✓Proceed$5,000$3,000$0$3,000NOReject: Insufficient$5,000$8,000$5,000$3,000NOReject: Over-encumbered$5,000$10,000$6,000$4,000YES ✓Proceed (if sufficient)
+Approval Matrix (Threshold-Based per §56 & Policy)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amount RangeAuthority RequiredSignature Level$0 – $1,000Department HeadRequired$1,001 – $5,000Finance DirectorRequired$5,001 – $25,000TreasurerRequired$25,001+Board of SelectmenRequired
+
+High-Level Process Flow
+textInvoice Intake
   ↓
-[Locate PO] → [Match PO to Invoice]
+Locate / Match PO
   ↓
-[Locate Receipt] → [Match Receipt to Invoice]
+Locate / Match Receipt
   ↓
-[3-Way Match Pass?]
-  ├─ NO → [Log Variance] → [Request Approval] → [Recheck]
-  └─ YES → [Check Budget Available]
-  ↓
-[Budget Available?]
-  ├─ NO → [Reject: insufficient budget]
-  └─ YES → [Route to Approval Authority per amount]
-  ↓
-[Approval Signature] → [LOCKED]
-  ↓
-[Calculate Payment Method] (check, ACH, card)
-  ↓
-[Process Payment] → [Confirmation Record]
-  ↓
-[Post to GL] → [Reconciliation] → [LOCKED]
-  ↓
-[CLOSED]
-```
+3-Way Match Gate?
+  ├─ NO ──► Log Variance → Request Approval → Recheck (Blocker if unresolved)
+  └─ YES ──► Budget Availability Gate?
+               ├─ NO ──► Reject: Insufficient Funds
+               └─ YES ──► Route Approval Chain (per Matrix)
+                            ↓
+                       Approval Signature(s) → LOCKED
+                            ↓
+                       Select Payment Method
+                            ↓
+                       Process Payment → Confirmation
+                            ↓
+                       GL Posting → Reconciliation
+                            ↓
+                       CLOSED (All Assets Locked, Audit Sealed)
 
----
+Compliance Checklist (Before Closure)
 
-## Compliance Checklist for FISCAL CASE
+ Invoice, PO, Receipt recorded and matched (or variance approved)
+ 3-way match gate passed (per §56 delivery verification)
+ Budget availability/encumbrance confirmed
+ Full approval chain completed (warrant-equivalent signatures)
+ Payment method selected and processed
+ PaymentConfirmation and GL posting verified
+ Reconciliation complete
+ Key assets (Invoice/PO/Receipt/Approvals) LOCKED
+ All deadlines enforced (no unresolved blockers)
+ Audit log complete and sealed
+ Closure reason recorded (e.g., "Paid per M.G.L. c. 41 §56")
 
-Before closing:
 
-- [ ] Invoice receipt recorded
-- [ ] PO located and matched
-- [ ] Receipt confirmed (goods/services delivered)
-- [ ] 3-way match verified (or variance documented and approved)
-- [ ] Budget availability checked
-- [ ] Approval chain completed (per amount thresholds)
-- [ ] Payment processed with confirmation
-- [ ] GL posting completed and verified
-- [ ] Reconciliation completed
-- [ ] Key assets locked (approval, payment confirmation)
-- [ ] Audit log sealed
-- [ ] No transition blockers remain
+Module Expansion Notes
+Future features:
 
----
+Vendor master data sync/integration
+Budget/ERP interface (e.g., via Polimorphic + SSI partnership for cloud accounting/AP automation)
+Multi-currency handling
+Recurring invoices (auto-sub-CASEs)
+Credit/debit memo linkage
+Audit/legal hold flags (prevent closure/destruction)
+AI-assisted variance detection/routing (leverage Polimorphic workflows)
 
-## Module Expansion Notes
 
-Detailed implementation will include:
-* Vendor master data integration
-* Budget interface (if separate system)
-* Multi-currency support (if needed)
-* Recurring invoice handling
-* Debit memo / credit memo process
-* Audit hold / legal hold capability
-
----
-
-*VAULT FISCAL follows the same CASE architecture as PRR. Finance-specific rules (3-way match, approval chain) are module-specific.*
+VAULT FISCAL fully inherits the CASE architecture (immutable ID, versioned scope, locked assets, enforced timers, sealed audit). Finance rules (3-way match, warrant-style approvals, budget gates) are enforced as module-specific invariants — delivering audit-proof, MA-compliant municipal finance operations.
