@@ -1,53 +1,56 @@
 # VAULT Core Canon: CASE Workspace
 
-**Universal Architecture • All Modules**
+**Universal Architecture • Applies to All Modules**
 
 ---
 
-## What is a CASE?
+## What Is a CASE?
 
-A CASE is the **root container for a single work unit** in VAULT.
+A CASE is the **root container for a single unit of work** in VAULT.
 
-Everything that matters about that work unit lives inside the CASE and nowhere else.
+All authoritative facts, decisions, and artifacts for that work unit live **inside the CASE**.
 
 Examples:
-* One public records request = one CASE (VAULTPRR)
-* One license application = one CASE (VAULT CLERK)
-* One invoice = one CASE (VAULT FISCAL)
-* One employee = one CASE (VAULT ONBOARD)
-* One timesheet = one CASE (VAULT TIME)
 
-**Core Principle:** If it is not inside a CASE, it does not exist in VAULT.
+- One public records request = one CASE (VAULTPRR)
+- One license application = one CASE (VAULT CLERK)
+- One invoice = one CASE (VAULT FISCAL)
+- One employee onboarding = one CASE (VAULT ONBOARD)
+- One timesheet = one CASE (VAULT TIME)
+
+**Core principle:** If it is not inside a CASE, it does not exist in VAULT.
 
 ---
 
 ## CASE Entity Model
 
-Every CASE contains:
+Every CASE contains the following components.
 
-### 1. Identity
+### 1. Identity (immutable)
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | **CaseID** | UUID | Immutable unique identifier for this CASE |
 | **CaseType** | Enum | PRR, ONBOARD, INVOICE, LICENSE, TIMESHEET, etc. |
-| **CreatedTimestamp** | DateTime UTC | When CASE was opened |
+| **CreatedTimestamp** | DateTime (UTC) | When the CASE was opened |
 | **CreatedBy** | String | Actor who opened the CASE (role or username) |
 
-**Immutable after creation.** Never change CaseID or CaseType.
+**Rule:** Identity fields are treated as immutable after creation.
 
 ---
 
-### 2. Subject (varies by module)
+### 2. Subject (module-specific, indexable)
+
+The CASE subject is the minimum set of fields required to understand what the CASE is about **without opening assets**.
 
 Examples:
 
-**PRR:** RequesterIdentity, IntakeRecord
-**INVOICE:** Vendor, Amount, GLCode
-**ONBOARD:** Employee, Department, StartDate
-**LICENSE:** Applicant, ApplicationType, PropertyAddress
+- **PRR:** RequesterIdentity, IntakeRecord
+- **INVOICE:** Vendor, Amount, GLCode
+- **ONBOARD:** Employee, Department, StartDate
+- **LICENSE:** Applicant, ApplicationType, PropertyAddress
 
-**Rule:** Must be sufficient to understand what the CASE is about without opening assets.
+**Rule:** Subject must be sufficient for indexing, routing, and audit review without asset inspection.
 
 ---
 
@@ -57,23 +60,22 @@ Examples:
 |-----------|------|-------------|
 | **ScopeDefinition** | Object | What is included in this CASE |
 | **ScopeVersion** | Integer | Current version (starts at 1) |
-| **ScopeHistory** | Array | All previous versions with timestamps and reasons |
+| **ScopeHistory** | Array | Prior versions with timestamps and reasons |
 
-**Rule:** If scope changes (e.g., PRR requester clarifies or expands request), create a new version. Do not overwrite.
+**Rule:** Scope changes create a new version. Prior versions are preserved. Scope is not overwritten.
 
 ---
 
-### 4. Deadlines (if applicable)
+### 4. Deadlines (where applicable)
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | **Deadlines** | Object | All statutory or business deadlines |
-| **TollingHistory** | Array | When clock was paused and why |
-| **EnforcementFlags** | Object | Which rules have triggered (e.g., FeesAllowed, ExtensionNeeded) |
+| **TollingHistory** | Array | When the clock was paused and why |
+| **EnforcementFlags** | Object | Rules triggered (e.g., FeesAllowed, ExtensionNeeded) |
 
-**Modules that have deadlines:** PRR, CLERK (some licenses), FISCAL (some invoices)
-
-**Modules that do not:** ONBOARD (single-pass process)
+**Modules that commonly include deadlines:** PRR, CLERK (some licenses), FISCAL (some invoices)  
+**Modules that may not:** ONBOARD (typically single-pass)
 
 ---
 
@@ -81,257 +83,275 @@ Examples:
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| **CurrentState** | Enum | Where in the process this CASE is (e.g., OPEN, ASSESSMENT, GATHER, DELIVERY, CLOSED) |
-| **ClosureReason** | Enum | Why CASE was closed (e.g., Delivered, Withheld, Cancelled) |
-| **ClosureTimestamp** | DateTime UTC | When CASE was closed (null if open) |
-| **CanTransition** | Boolean | Whether this CASE can move to the next state |
-| **TransitionBlockers** | Array | What is preventing transition (e.g., ["Payment not received", "Counsel review pending"]) |
+| **CurrentState** | Enum | Current lifecycle state (e.g., OPEN, ASSESSMENT, GATHER, DELIVERY, CLOSED) |
+| **ClosureReason** | Enum | Why the CASE was closed (e.g., Delivered, Withheld, Cancelled) |
+| **ClosureTimestamp** | DateTime (UTC) | When the CASE closed (null if open) |
+| **CanTransition** | Boolean | Whether the CASE can transition |
+| **TransitionBlockers** | Array | Reasons the CASE cannot transition (e.g., “Payment not received”, “Counsel review pending”) |
 
-**Rule:** Before transition, all TransitionBlockers must be empty.
+**Rule:** Prior to transition, `TransitionBlockers` must be empty.
 
 ---
 
-### 6. Assets (all documents, decisions, artifacts)
+### 6. Assets (documents, decisions, artifacts)
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| **Assets** | Array | All documents, forms, letters, decisions, etc. in this CASE |
-| **AssetCount** | Integer | How many assets |
-| **TotalAssetSize** | Bytes | Storage used |
+| **Assets** | Array | Documents, forms, letters, decisions, records, and artifacts |
+| **AssetCount** | Integer | Count of assets |
+| **TotalAssetSize** | Bytes | Storage size used |
 
-**Each Asset has:**
-```
+Each Asset includes:
+
+
+
 AssetID: UUID
 AssetType: Enum (FormResponse, Letter, Decision, Record, etc.)
 Filename: String
 CreatedTimestamp: DateTime UTC
 CreatedBy: String
 RetentionClass: Enum (KEEPER, REFERENCE, TRANSACTIONAL)
-IsLocked: Boolean (cannot be mutated if true)
-LockedTimestamp: DateTime UTC (when locked)
+IsLOCKED: Boolean
+LOCKEDTimestamp: DateTime UTC
 VersionChain: Array (all versions, newest first)
 Tags: Array (Exemption, Redaction, etc.)
-```
 
-**Rule:** Once an asset is LOCKED, it cannot be edited. New versions must be created.
+
+**Rule:** When an asset becomes LOCKED, it is immutable. Corrections are issued as new versions.
 
 ---
 
-### 7. Audit Log (immutable)
+### 7. Audit Log (append-only)
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| **AuditLog** | Array | All events in this CASE |
-| **EventCount** | Integer | How many events recorded |
+| **AuditLog** | Array | Append-only event history for the CASE |
+| **EventCount** | Integer | Count of events recorded |
 
-**Each LogEntry contains:**
-```
+Each LogEntry contains:
+
+
+
 EventID: UUID
-Timestamp: DateTime UTC (precise)
-Actor: String (who made the change)
-Action: Enum (Create, Update, Lock, Transition, Enforce, Error)
-StepID: String (which step in process)
-AssetIDs: Array (which assets affected)
-OldValue: Any (what changed from)
-NewValue: Any (what changed to)
-Reason: String (why)
-RuleApplied: String (if enforcement, which rule)
-ErrorCode: String (if error, code)
-Evidence: Any (supporting data)
-```
+Timestamp: DateTime UTC
+Actor: String
+Action: Enum (Create, Update, LOCK, Transition, Enforce, Error)
+StepID: String
+AssetIDs: Array
+OldValue: Any
+NewValue: Any
+Reason: String
+RuleApplied: String
+ErrorCode: String
+Evidence: Any
 
-**Rule:** Audit log is immutable. New entries are appended, never deleted or edited.
+
+**Rule:** AuditLog is append-only. Entries are not deleted or edited.
 
 ---
 
 ## CASE Lifecycle
 
-```
-1. CREATE      → CASE opens, ID assigned, subject recorded, deadlines computed
-2. OPEN        → Work happens, assets created, decisions made
-3. DECISION    → Critical gates are evaluated (e.g., T25 forecast, exemption review)
-4. CLOSURE     → All gates passed, CASE validated, closure reason recorded
-5. LOCKED      → CASE is immutable, audit trail is sealed
-6. RETAINED    → CASE sits in archive per retention class
-7. DESTROYED   → At end of retention, destroyed per policy
-```
 
-**Transition rules:**
-* Can only move forward
-* Cannot transition if blockers exist
-* Closure is irreversible (no reopening in v1.0)
+
+CREATE → CASE opens, ID assigned, subject recorded, deadlines computed (if applicable)
+
+OPEN → Work occurs, assets created, decisions recorded
+
+DECISION → Required gates evaluated (e.g., T25 forecast, exemption review)
+
+CLOSURE → Gates satisfied, closure reason recorded, closure validation completed
+
+LOCKED → CASE becomes immutable and audit trail is sealed
+
+RETAINED → CASE stored per retention requirements
+
+DESTROYED → CASE destroyed at end of retention (per policy)
+
+
+**Lifecycle rules:**
+- Transitions move forward only
+- Transitions require no blockers
+- Closure is irreversible in v1.0 (no reopen)
 
 ---
 
-## What Happens Inside a CASE
+## What Happens Inside a CASE (Examples)
 
-### Assets Are Created
+### Asset Creation
 
-When work is done (form filled, letter drafted, decision made), an asset is created:
+When work is performed, an asset is created:
 
-```
+
+
 Step: Assessment
-Asset Created: ASSESSMENT_DECISION (asset type: Decision)
-  Content: "Records are responsive and not exempt"
-  CreatedBy: "rao@town.example.com"
-  Locked: false
-  RetentionClass: KEEPER
-Log Entry: "Decision recorded"
-```
+Asset Created: ASSESSMENT_DECISION (AssetType: Decision)
+Content: "Records are responsive and not exempt"
+CreatedBy: "rao@town.example.com
+"
+IsLOCKED: false
+RetentionClass: KEEPER
+Audit: "Decision recorded"
 
-### Assets Are Locked
 
-When work is final, the asset is locked:
+### Asset Locking
 
-```
+When an output is final, it is LOCKED:
+
+
+
 Asset: WITHHOLDING_LETTER
-Status: Locked
-LockedBy: "rao@town.example.com"
-LockedTimestamp: "2026-01-15T14:32:00Z"
-Reason: "Withholding decision is final per M.G.L. c. 66"
-```
+IsLOCKED: true
+LOCKEDBy: "rao@town.example.com
+"
+LOCKEDTimestamp: "2026-01-15T14:32:00Z"
+Reason: "Final determination"
 
-Once locked, it cannot be edited. Corrections create a new version.
 
-### Decisions Are Made
+Once LOCKED, modifications are represented as a new version in the version chain.
+
+### Decision Gates
 
 When a gate is evaluated:
 
-```
+
+
 Gate: T25 Forecast
 Result: FAIL (completion > 25 days)
 Action: Extension Required
 EnforcementFlag: ExtensionNeeded = true
 TransitionBlocker: "Extension agreement or petition required"
-Log Entry: "T25 gate failed; extension required"
-```
+Audit: "T25 gate failed; extension required"
 
-### Timers Are Enforced
+
+### Timer Enforcement
 
 When a deadline is missed:
 
-```
+
+
 Timer: T10
 DueDate: 2026-01-20
 ActualResponse: 2026-01-25
 Result: MISS
 EnforcementFlag: FeesAllowed = false
-Log Entry: "T10 deadline missed; fees waived per M.G.L. c. 66, §10(d)"
-```
+Audit: "T10 missed; fees not permitted under governing rule"
 
-### CASE Is Closed
+
+### Closure
 
 When all gates pass:
 
-```
-Status: OPEN → CLOSED
+
+
+State: OPEN → CLOSED
 ClosureReason: Delivered
 ClosureTimestamp: 2026-01-25T16:45:00Z
-Assets Locked: 5 (all response and delivery records)
-AuditLog Sealed: 23 entries
-RetentionClass: KEEPER (7 years minimum)
-```
+AssetsLOCKED: 5
+AuditEntries: 23
+RetentionClass: KEEPER
+
 
 ---
 
-## CASE Invariants (Rules That Never Change)
+## CASE Invariants (Non-Negotiable)
 
-1. **One ID per CASE** — CaseID is immutable and unique
-2. **One subject per CASE** — Do not mix work units; create separate CASEs
-3. **One closure per CASE** — Once closed, cannot reopen (v1.0)
-4. **All assets inside** — No documents exist outside CASE boundaries
-5. **All decisions recorded** — Every choice gets an audit entry
-6. **No mutation after lock** — Locked assets cannot be edited
-7. **Timers are enforced** — Deadlines trigger consequences, not reminders
-8. **Audit trail is complete** — Every action creates an entry
+1. **One ID per CASE** — `CaseID` is unique and immutable
+2. **One work unit per CASE** — do not combine distinct work units
+3. **One closure per CASE** — closure is final in v1.0
+4. **All assets inside** — authoritative documents live in the CASE
+5. **All decisions recorded** — decisions generate audit entries
+6. **No mutation after LOCK** — LOCKED assets are immutable
+7. **Timers are enforced** — deadlines trigger consequences
+8. **Audit trail is complete** — every action is logged
 
 ---
 
-## CASE in Different Modules
+## CASE in Different Modules (Illustrative)
 
 ### VAULTPRR (Public Records Request)
 
-```
+
+
 CaseID: prr-2026-001
 CaseType: PRR
 Subject: RequesterIdentity (Jane Doe), IntakeChannel (email)
 Scope: "All correspondence regarding Zoning Board variance decision"
-ScopeVersion: 2 (requester clarified initially)
+ScopeVersion: 2
 Deadlines: T10=2026-01-20, T25=2026-02-03, T90=2026-05-01
-Status: DELIVERY
+State: DELIVERY
 Assets: [Intake Form, Assessment, Search Memo, Withholding Letter, Approved Records, Delivery Confirmation]
 AuditLog: [23 entries]
-ClosureReason: Delivered (when delivery confirmed)
-```
+ClosureReason: Delivered
+
 
 ### VAULT CLERK (License)
 
-```
+
+
 CaseID: clerk-2026-0145
 CaseType: LICENSE
-Subject: ApplicantIdentity (ABC Plumbing LLC), ApplicationType (Contractor)
+Subject: Applicant (ABC Plumbing LLC), ApplicationType (Contractor)
 Scope: "Annual contractor license renewal"
 ScopeVersion: 1
-Deadlines: T10=2026-02-10 (municipal review window)
-Status: INSPECTION
+Deadlines: T10=2026-02-10
+State: INSPECTION
 Assets: [Application, Proof of Insurance, Background Check, Inspection Form]
 AuditLog: [12 entries]
-ClosureReason: Pending (still open)
-```
+
 
 ### VAULT FISCAL (Invoice)
 
-```
+
+
 CaseID: fiscal-2026-0892
 CaseType: INVOICE
 Subject: Vendor (MainTech Services), Amount ($4,500), GLCode (4100.001)
 Scope: "Professional services through 2026-01-31"
 ScopeVersion: 1
-Deadlines: T10=2026-02-15 (payment terms)
-Status: PAID
+Deadlines: T10=2026-02-15
+State: PAID
 Assets: [Invoice, PO, Receipt, Check Register Entry, Payment Confirmation]
 AuditLog: [8 entries]
 ClosureReason: Paid
-```
+
 
 ---
 
-## CASE Queries
+## Required Query Support
 
-VAULT systems must support these queries:
+VAULT implementations must support:
 
-**Find all CASEs:**
-* By CaseID (exact)
-* By CaseType (all PRRs, all invoices)
-* By Status (open, closed, blocked)
-* By CreatedDate (range)
-* By ClosureReason (breakdown)
+**Across CASEs**
+- By `CaseID` (exact)
+- By `CaseType`
+- By `CurrentState`
+- By `CreatedTimestamp` range
+- By `ClosureReason`
 
-**Within a CASE:**
-* Get all assets of type X
-* Get all log entries by actor Y
-* Get all enforced rules applied
-* Get timeline of state transitions
+**Within a CASE**
+- Assets by `AssetType`
+- Audit entries by `Actor`
+- Enforcement flags and applied rules
+- Timeline of transitions
 
 ---
 
-## CASE Compliance Checklist
+## Closure Validation Checklist
 
-Before closing a CASE:
+Prior to closure:
 
-- [ ] CaseID is valid and immutable
-- [ ] CaseType is set and immutable
-- [ ] Subject is recorded
-- [ ] Scope is final (or justified as versioned)
-- [ ] All deadlines have been computed
-- [ ] All assets are recorded inside CASE
-- [ ] All critical gates have been evaluated
+- [ ] `CaseID` and `CaseType` present and immutable
+- [ ] Subject recorded
+- [ ] Scope final, or version history justified
+- [ ] Deadlines computed (if applicable)
+- [ ] Required gates evaluated
 - [ ] No transition blockers remain
-- [ ] Closure reason is set
-- [ ] All LOCKED assets are immutable
-- [ ] Audit log is complete and sealed
-- [ ] Retention class is set
+- [ ] Closure reason set
+- [ ] Required assets LOCKED
+- [ ] Audit log complete and sealed
+- [ ] Retention class assigned
 
 ---
 
-*CASE Workspace is the foundation of all VAULT modules. If you do not understand CASE, you cannot implement VAULT. Re-read until it is clear.*
+*CASE is the common substrate across all modules. If anything here is ambiguous during implementation, please flag it early so it can be clarified before runtime decisions are locked.*
