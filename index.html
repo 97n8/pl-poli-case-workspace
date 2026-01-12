@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Locked VAULT Master Engineering Packet v1.0 – Authoritative governance & SOP hub for Polymorphic × PublicLogic collaboration."/>
   <title>VAULT Master Engineering Packet v1.0 – Living SOP & Navigation Hub</title>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <style>
     :root {
       --bg: #ffffff;
@@ -75,13 +74,12 @@
 </head>
 <body>
   <a href="#main" class="sr-only">Skip to main content</a>
-
   <header>
     <h1>VAULT Master Engineering Packet v1.0</h1>
     <p>Living SOP & Navigation Hub – Polymorphic × PublicLogic Collaboration</p>
     <p class="boundary">
-      This workspace is the authoritative source of record for governance logic, module boundaries, engineering specifications, and decision history in the Polymorphic × PublicLogic VAULT collaboration.  
-      All artifacts are versioned; immutability is defined at the artifact level (see individual files).  
+      This workspace is the authoritative source of record for governance logic, module boundaries, engineering specifications, and decision history in the Polymorphic × PublicLogic VAULT collaboration.
+      All artifacts are versioned; immutability is defined at the artifact level (see individual files).
       This index reflects the authoritative state as of the lock date.<br>
       <strong>Locked: v1.0 — January 12, 2026</strong>
     </p>
@@ -90,10 +88,8 @@
       <strong>Secondary audiences</strong>: External auditors, researchers, future collaborators needing traceable context.
     </p>
   </header>
-
   <main id="main">
     <nav aria-label="VAULT Master Packet Navigation">
-
       <!-- Orientation -->
       <section class="section">
         <h2>30-Minute Orientation Path</h2>
@@ -104,12 +100,11 @@
           <li><a href="./CASE_Workspace.md">CASE_Workspace.md</a> – Structure & governance model</li>
         </ol>
       </section>
-
       <!-- Core visual -->
       <section class="section">
         <h2>Core Visual – VAULT Canonical Governance Cycle</h2>
         <div class="diagram-inline">
-          <div class="mermaid">
+          <pre class="mermaid">
 graph LR
     A[Authority Declared] -->|Authority Declared| B[CASE & Record<br>Established]
     B -->|CASE Initiated & Recorded| C[Governed Flow<br>Executed]
@@ -118,29 +113,25 @@ graph LR
     E -->|Outcome Captured| F[Archival &<br>Retention]
     F -->|Records Archived / Retained| G[Governance Review<br>& Authority Update]
     G -->|Authority Reviewed & Updated| A
-
 classDef purple fill:#d7bde2,stroke:#8e44ad,stroke-width:2px,color:#000,font-weight:bold
-classDef blue   fill:#a9d4e6,stroke:#2980b9,stroke-width:2px,color:#000,font-weight:bold
-classDef green  fill:#a9dfbf,stroke:#27ae60,stroke-width:2px,color:#000,font-weight:bold
+classDef blue fill:#a9d4e6,stroke:#2980b9,stroke-width:2px,color:#000,font-weight:bold
+classDef green fill:#a9dfbf,stroke:#27ae60,stroke-width:2px,color:#000,font-weight:bold
 classDef orange fill:#f9e79f,stroke:#f39c12,stroke-width:2px,color:#000,font-weight:bold
-classDef red    fill:#f5b7b1,stroke:#c0392b,stroke-width:2px,color:#000,font-weight:bold
-classDef gray   fill:#d5d8dc,stroke:#7f8c8d,stroke-width:2px,color:#000,font-weight:bold
-
+classDef red fill:#f5b7b1,stroke:#c0392b,stroke-width:2px,color:#000,font-weight:bold
+classDef gray fill:#d5d8dc,stroke:#7f8c8d,stroke-width:2px,color:#000,font-weight:bold
 class A,G purple
 class B blue
 class C green
 class D orange
 class E red
 class F gray
-          </div>
+          </pre>
           <p><small>The foundational closed-loop governance cycle. All module flows and operations are subordinate to this model.</small></p>
         </div>
       </section>
-
       <!-- Modules -->
       <section class="section">
         <h2>The Six VAULT Modules – Complete SOP Access</h2>
-
         <h3>CLERK Module</h3>
         <ul>
           <li><a href="./00_CLERK_Charter.md">Charter</a></li>
@@ -148,27 +139,23 @@ class F gray
           <li><a href="./VAULT_CLERK_Governance_Architecture_v1.md">Governance Architecture</a></li>
           <li><a href="./VAULT_CLERK_Process_Flowchart_v1.md">Process Flowchart</a></li>
         </ul>
-
         <h3>FISCAL Module</h3>
         <ul>
           <li><a href="./00_FISCAL_Charter.md">Charter</a></li>
           <li><a href="./VAULT_FISCAL_Encoding_Specification_v1.md">Encoding Specification</a></li>
           <li><a href="./VAULT_FISCAL_Governance_Architecture_v1.md">Governance Architecture</a></li>
         </ul>
-
         <h3>FIX Module</h3>
         <ul>
           <li><a href="./00_FIX_Charter.md">Charter</a></li>
           <li><a href="./VAULT_FIX_Encoding_Specification_v1.md">Encoding Specification</a></li>
           <li><a href="./VAULT_FIX_Governance_Architecture_v1.md">Governance Architecture</a></li>
         </ul>
-
         <h3>ONBOARD Module</h3>
         <ul>
           <li><a href="./00_ONBOARD_Charter.md">Charter</a></li>
           <li><a href="./VAULT_ONBOARD_Governance_Encoding_v1.md">Governance Encoding</a></li>
         </ul>
-
         <h3>PRR Module</h3>
         <ul>
           <li><a href="./00_PRR_Charter.md">Charter</a></li>
@@ -177,14 +164,12 @@ class F gray
           <li><a href="./VAULTPRR_Process_Flowchart_v1.md">Process Flowchart</a></li>
           <li><a href="./VAULTPRR_System_Architecture_v1.md">System Architecture</a></li>
         </ul>
-
         <h3>TIME Module</h3>
         <ul>
           <li><a href="./00_TIME_Charter.md">Charter</a></li>
           <li><a href="./VAULT_TIME_Governance_Encoding_v1.md">Governance Encoding</a></li>
         </ul>
       </section>
-
       <!-- Consolidated & Cross-cutting -->
       <section class="section">
         <h2>Consolidated & Cross-Cutting Artifacts</h2>
@@ -204,7 +189,6 @@ class F gray
           <li><a href="./Glossary.md">Glossary</a></li>
         </ul>
       </section>
-
       <!-- Decisions & Scope -->
       <section class="section">
         <h2>Decisions, Scope & Governance References</h2>
@@ -216,16 +200,15 @@ class F gray
           <li><a href="./VAULT_Master_Packet_COMPLETE_SUMMARY.md">Master Packet Summary</a></li>
         </ul>
       </section>
-
     </nav>
   </main>
-
   <footer>
     <p>PublicLogic VAULT Framework • Authoritative & governed collaboration workspace • Contact: info@publiclogic.com for escalation or clarification.</p>
     <p><a href="https://github.com/97n8/pl-poli-case-workspace">View source on GitHub (distribution mirror; authority resides in this packet)</a> • Locked January 12, 2026</p>
   </footer>
 
-  <script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     mermaid.initialize({
       startOnLoad: true,
       theme: 'default',
