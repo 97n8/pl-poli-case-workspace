@@ -1,203 +1,194 @@
-VAULT Master Engineering Packet v1.0
+# VAULT Master Engineering Packet v1.0
 
-Framework-as-a-Standard™ • Canonical Module Architecture
+<sub><strong>Framework-as-a-Standard™ • Canonical Module Architecture</strong></sub>
 
-What This Packet Is
+---
 
-This packet is the authoritative engineering specification for VAULT, PublicLogic’s governed operating system for municipal work.
+## Purpose
 
-It provides the canonical source of truth for how VAULT is structured, enforced, and implemented at runtime.
+This repository contains the **authoritative engineering specification** for **VAULT**, PublicLogic’s governed operating system for municipal work.
 
-Specifically, it contains:
+It defines the **canonical architecture**, **governance constraints**, and **implementation contracts** required to implement VAULT at runtime.  
+This repository is written for **engineering teams**, not end users.
 
-VAULT Core Canon — the universal CASE architecture, record classification rules, timer model, and audit framework
+---
 
-Module Specifications — PRR, CLERK, FISCAL, TIME, FIX, and ONBOARD, each expressed as a governed CASE instantiation
+## What This Is
 
-Implementation Guidance — clear boundaries between engineering discretion and non-negotiable governance requirements
+This packet serves as the **single source of truth** for VAULT engineering.
 
-Governance Gap Protocol — the formal process for identifying and resolving ambiguity
+It includes:
 
-This packet is intended for Polymorphic engineering and other approved runtime partners implementing VAULT at scale.
+- **VAULT Core Canon**  
+  Universal CASE model, authority boundaries, record classes, timers, and audit requirements
 
-What This Packet Is Not
+- **Module Specifications**  
+  PRR, CLERK, FISCAL, TIME, FIX, and ONBOARD as governed CASE instantiations
 
-To avoid confusion, this packet is intentionally limited in scope. It is:
+- **Implementation Guidance**  
+  Clear separation between engineering discretion and non-negotiable governance
 
-Not a product specification — no UI, UX, or design guidance is included
+- **Governance Gap Protocol**  
+  The formal escalation path for ambiguity or uncovered risk
 
-Not training material — it is not written for municipal staff or non-engineering audiences
+This repository is intended for **Polymorphic engineering** and other approved runtime partners implementing VAULT at scale.
 
-Not a configuration guide — client-specific configuration occurs after engineering is complete
+---
 
-Not a standard operating procedure — SOPs are derived after the engineering layer is locked
+## What This Is Not
 
-Not interpretive — all statements in this packet are governance requirements, not suggestions
+To maintain clarity and prevent misuse, this repository is **explicitly not**:
 
-How to Read This Packet
-First Pass: Orientation
+- A product or UI specification
+- Training material for municipal staff
+- A client configuration guide
+- A standard operating procedure
+- An interpretive or advisory document
 
-Begin with the following files, in order:
+All requirements herein are **normative governance constraints**, not recommendations.
 
-Read_First.md
+---
 
-Audience_and_Use.md
+## How to Read This Repository
 
-What_Is_Out_of_Scope.md
+### 1. Orientation
 
-This pass establishes intent, audience boundaries, and scope.
+Start here:
 
-Second Pass: Architecture Foundation
+1. `Read_First.md`
+2. `Audience_and_Use.md`
+3. `What_Is_Out_of_Scope.md`
 
-Next, review 01_VAULT_CORE_CANON/ in the following order:
+These documents define intent, audience boundaries, and scope.
 
-CASE_Workspace.md — the root entity and lifecycle model
+---
 
-Authority_and_Scope.md — PublicLogic and runtime responsibility boundaries
+### 2. Core Architecture
 
-Record_Classes.md — immutability rules and LOCKED assets
+Proceed to `01_VAULT_CORE_CANON/` in order:
 
-Timer_and_Deadline_Model.md — deadline computation and enforcement
+1. `CASE_Workspace.md`  
+   Root entity and lifecycle model
 
-Audit_and_Evidence_Model.md — audit trail and evidentiary requirements
+2. `Authority_and_Scope.md`  
+   PublicLogic and runtime responsibility boundaries
 
-Cross_Module_Interactions.md — module independence in v1.0
+3. `Record_Classes.md`  
+   Immutability rules and LOCKED assets
 
-Important: CASE_Workspace.md is foundational. All other components depend on it.
+4. `Timer_and_Deadline_Model.md`  
+   Deadline computation and enforcement
 
-Third Pass: Module Implementation
+5. `Audit_and_Evidence_Model.md`  
+   Audit trail and evidentiary requirements
 
-Then proceed to 02_MODULES/, starting with PRR as the reference implementation:
+6. `Cross_Module_Interactions.md`  
+   Module independence in v1.0
 
-PRR/ — Public Records Requests (read first)
+> **Do not skip `CASE_Workspace.md`.**  
+> All other components depend on it.
 
-CLERK/ — Licensing and clerk functions
+---
 
-FISCAL/ — Accounts Payable and Budget
+### 3. Module Implementations
 
-TIME/ — Timesheet entry and approval
+Modules are located in `02_MODULES/`.
 
-FIX/ — Work orders and issue tracking
-
-ONBOARD/ — Employee onboarding
+Begin with **PRR**, which serves as the reference implementation.
 
 Each module follows the same structure:
 
-00_[MODULE]_Charter.md — high-level overview
+1. `00_[MODULE]_Charter.md`
+2. `VAULT_[MODULE]_Governance_Architecture_v1.md`
+3. `VAULT_[MODULE]_Encoding_Specification_v1.md`
 
-VAULT_[MODULE]_Governance_Architecture_v1.md — statutory and governance rules
+Shared diagrams are located in:
 
-VAULT_[MODULE]_Encoding_Specification_v1.md — implementation contract
+- `FLOWCHARTS_ALL_MODULES_v1.md`
+- `SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md`
 
-Shared visuals in FLOWCHARTS_ALL_MODULES_v1.md and SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md
+---
 
-Fourth Pass: Implementation Guidance
+### 4. Implementation Guidance
 
-Finally, review 03_IMPLEMENTATION_GUIDANCE/:
+Finally, review `03_IMPLEMENTATION_GUIDANCE/`:
 
-What_Engineers_May_Choose.md
+- `What_Engineers_May_Choose.md`
+- `What_Is_Non_Negotiable.md`
+- `Testing_Validation_Checklist.md`
+- `Error_Handling_Recovery.md`
+- `Technology_Trade_Off_Analysis.md`
+- `Escalation_SLA.md`
 
-What_Is_Non_Negotiable.md
+---
 
-Testing_Validation_Checklist.md
+## Core Principle
 
-Error_Handling_Recovery.md
+> **VAULT functions as an operating system.**  
+> **Modules function as loadable kernels within that system.**
 
-Technology_Trade_Off_Analysis.md
+Accordingly:
 
-Escalation_SLA.md
+- Every unit of work instantiates exactly one CASE
+- All decisions and artifacts are recorded
+- Closure gates are enforced before exit
+- Evidence is immutable after closure
+- Every CASE is auditable and verifiable
 
-Core Principle
+**No work exists outside a CASE.**  
+**No CASE is mutable after closure.**
 
-VAULT functions as an operating system.
-Modules function as loadable kernels that operate within that system.
+---
 
-Accordingly, every module:
+## Ownership and Responsibility
 
-Instantiates exactly one CASE per unit of work
+| Area | Owner | Responsibility |
+|-----|------|---------------|
+| VAULT Core Canon | PublicLogic | Architecture, domain model, governance constraints |
+| Module Specifications | PublicLogic | Statutory rules, control flow, decision gates |
+| Encoding and Runtime | Polymorphic | State machines, schemas, timers, error handling |
+| Storage and Integration | Polymorphic | Databases, APIs, external systems |
+| UI and UX | Polymorphic + Client | Interface layered on canonical structure |
 
-Records all decisions and artifacts
+---
 
-Enforces closure gates prior to exit
-
-Maintains immutable evidence
-
-Can be audited and independently verified
-
-No work exists outside a CASE.
-No CASE is mutable after closure.
-
-Ownership and Responsibility
-Area	Owner	Responsibility
-VAULT Core Canon	PublicLogic	Framework architecture, domain model, enforcement principles
-Module Specifications	PublicLogic	Statutory rules, control flow, decision gates
-Encoding and Runtime	Polymorphic	State machines, schemas, timers, error handling
-Storage and Integration	Polymorphic	Databases, APIs, external system connections
-UI and UX	Polymorphic + Client	User experience layered on the canonical structure
-Governance Gap Protocol
+## Governance Gap Protocol
 
 If ambiguity, dependency, or new risk is identified during implementation:
 
-Pause — do not proceed in a way that introduces uncertainty
+1. Pause implementation
+2. Document the ambiguity and its impact
+3. Escalate to PublicLogic at **info@publiclogic.com**
+4. Await clarification or amendment
+5. Resume with guidance in hand
 
-Document — clearly describe the ambiguity, its impact, and the decision required
-
-Escalate — submit the issue to PublicLogic at info@publiclogic.com
-
-Await guidance — PublicLogic will issue clarification or a formal amendment
-
-Resume — continue implementation with the clarified direction
-
-Stop Rule:
-If implementation introduces dependency or risk that cannot be resolved within the current governance model, work pauses until clarification is issued.
+If governance cannot resolve the risk, implementation pauses until it can.
 
 This protocol exists to protect the system, the implementers, and the institutions relying on it.
 
-Repository Structure
+---
+
+## Repository Structure
+
+
+
 VAULT_MASTER_ENGINEERING_PACKET_v1.0/
 ├── 00_README/
-│   ├── Read_First.md
-│   ├── Audience_and_Use.md
-│   └── What_Is_Out_of_Scope.md
-│
 ├── 01_VAULT_CORE_CANON/
-│   ├── CASE_Workspace.md
-│   ├── Authority_and_Scope.md
-│   ├── Record_Classes.md
-│   ├── Timer_and_Deadline_Model.md
-│   ├── Audit_and_Evidence_Model.md
-│   └── Cross_Module_Interactions.md
-│
 ├── 02_MODULES/
-│   ├── PRR/
-│   ├── CLERK/
-│   ├── FISCAL/
-│   ├── FIX/
-│   ├── TIME/
-│   ├── ONBOARD/
-│   ├── FLOWCHARTS_ALL_MODULES_v1.md
-│   └── SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md
-│
 ├── 03_IMPLEMENTATION_GUIDANCE/
-│   ├── What_Engineers_May_Choose.md
-│   ├── What_Is_Non_Negotiable.md
-│   ├── Testing_Validation_Checklist.md
-│   ├── Error_Handling_Recovery.md
-│   ├── Technology_Trade_Off_Analysis.md
-│   └── Escalation_SLA.md
-│
 ├── 99_APPENDICES/
-│   ├── Glossary.md
-│   └── VERSION_HISTORY.md
-│
 ├── INDEX.md
 └── COMPLETION_SUMMARY.md
 
-In One Sentence
 
-This packet defines VAULT Core once and expresses each module as a governed specialization. You are implementing one system, not multiple products.
+---
 
-Questions or clarifications may be directed to info@publiclogic.com
-. We respond promptly.
+## In One Sentence
 
-VAULT Master Engineering Packet v1.0 • PublicLogic LLC • January 2026
+This repository defines VAULT Core once and expresses each module as a governed specialization.  
+You are implementing **one system**, not multiple products.
+
+---
+
+<sub>VAULT Master Engineering Packet v1.0 • PublicLogic LLC • January 2026</sub>
