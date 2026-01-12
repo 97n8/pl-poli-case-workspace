@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VAULT – PublicLogic Smart Systems</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({startOnLoad:true, theme:'neutral', flowchart:{useMaxWidth:true}});
+  </script>
+  <style>
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.6;
+      color: #111827;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      font-size: 11pt;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 15mm auto;
+      background: white;
+      border: 2.5mm solid #1f2937;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      position: relative;
+      page-break-after: always;
+    }
+    .content {
+      padding: 26mm 22mm 32mm 22mm;
+    }
+    .header {
+      text-align: center;
+      padding: 18mm 0 10mm;
+      background: #1f2937;
+      color: white;
+      margin: -26mm -22mm 18mm -22mm;
+      page-break-after: avoid;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.2em;
+      letter-spacing: 0.8px;
+    }
+    .header .tag {
+      font-size: 1.05em;
+      margin: 0.6em 0 0;
+      opacity: 0.92;
+    }
+    .repo {
+      font-size: 0.98em;
+      margin-top: 1.2em;
+    }
+    .repo a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+    h2 {
+      color: #1e293b;
+      font-size: 1.42em;
+      border-bottom: 1.5px solid #d1d5db;
+      padding-bottom: 5px;
+      margin: 18mm 0 9mm;
+      page-break-after: avoid;
+    }
+    h3 {
+      color: #374151;
+      font-size: 1.22em;
+      margin: 14mm 0 5mm;
+      page-break-after: avoid;
+    }
+    .vignette {
+      background: #f9fafb;
+      border-left: 5px solid #3b82f6;
+      padding: 11px 13px;
+      margin: 11mm 0;
+      font-size: 0.98em;
+      border-radius: 0 6px 6px 0;
+      page-break-inside: avoid;
+    }
+    .mermaid-container {
+      background: white;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      margin: 11mm 0;
+      page-break-inside: avoid;
+    }
+    .source {
+      font-size: 9pt;
+      color: #4b5563;
+      margin-top: -6px;
+      display: block;
+      font-style: italic;
+    }
+    details {
+      margin: 7mm 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #f9fafb;
+    }
+    summary {
+      padding: 10px 14px;
+      background: #f3f4f6;
+      cursor: pointer;
+      font-weight: 600;
+      color: #1f2937;
+      list-style: none;
+    }
+    summary:hover { background: #e5e7eb; }
+    .tree {
+      list-style: none;
+      padding-left: 1.6em;
+      margin: 7mm 0;
+    }
+    .tree li { margin: 5px 0; }
+    .tree a { color: #1d4ed8; text-decoration: none; }
+    .tree a:hover { text-decoration: underline; }
+    .footer {
+      position: absolute;
+      bottom: 16mm;
+      left: 22mm;
+      right: 22mm;
+      text-align: center;
+      font-size: 9pt;
+      color: #6b7280;
+      border-top: 1px solid #d1d5db;
+      padding-top: 8px;
+    }
+    @media print {
+      .page { box-shadow: none; border: none; margin: 0; }
+      body { margin: 0; background: white; }
+      .header { page-break-after: avoid; }
+      .vignette, .mermaid-container { page-break-inside: avoid; }
+      a { text-decoration: none; color: #000; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <div class="header">
+      <h1>PublicLogic Smart Systems</h1>
+      <p class="tag">Stronger Communities</p>
+      <p class="repo">
+        VAULT Framework • Version 1.0 • January 2026<br/>
+        <a href="https://github.com/97n8/pl-poli-case-workspace" target="_blank">github.com/97n8/pl-poli-case-workspace</a>
+      </p>
+    </div>
+
+    <h2>Full Repository Folder Tree (All Files Active & Linked)</h2>
+    <details open>
+      <summary>VAULT_MASTER_PACKET_v1.0/ (Main Folder)</summary>
+      <ul class="tree">
+        <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/INDEX.md" target="_blank">INDEX.md</a> – Navigation Guide</li>
+        <li>00_README/ (Orientation)</li>
+        <ul class="tree">
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Read_First.md" target="_blank">Read_First.md</a></li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Audience_and_Use.md" target="_blank">Audience_and_Use.md</a></li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/What_Is_Out_of_Scope.md" target="_blank">What_Is_Out_of_Scope.md</a></li>
+        </ul>
+        <li>01_VAULT_CORE_CANON/ (Foundation)</li>
+        <ul class="tree">
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/CASE_Workspace.md" target="_blank">CASE_Workspace.md</a> – Core CASE Definition</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Authority_and_Scope.md" target="_blank">Authority_and_Scope.md</a> – Who Owns What</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Record_Classes.md" target="_blank">Record_Classes.md</a> – Retention & Locking</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Timer_and_Deadline_Model.md" target="_blank">Timer_and_Deadline_Model.md</a> – Enforced Timers</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Audit_and_Evidence_Model.md" target="_blank">Audit_and_Evidence_Model.md</a> – Immutable Audit Log</li>
+        </ul>
+        <li>Modules (Charters & Specs)</li>
+        <ul class="tree">
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/00_PRR_Charter.md" target="_blank">00_PRR_Charter.md</a> – Public Records</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/VAULTPRR_Encoding_Specification_v1.md" target="_blank">VAULTPRR_Encoding_Specification_v1.md</a> – PRR Encoding</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/00_CLERK_Charter.md" target="_blank">00_CLERK_Charter.md</a> – Licenses & Permits</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/VAULT_CLERK_Encoding_Specification_v1.md" target="_blank">VAULT_CLERK_Encoding_Specification_v1.md</a> – CLERK Encoding</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/00_FISCAL_Charter.md" target="_blank">00_FISCAL_Charter.md</a> – Paying Bills</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/VAULT_FISCAL_Encoding_Specification_v1.md" target="_blank">VAULT_FISCAL_Encoding_Specification_v1.md</a> – FISCAL Encoding</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/00_TIME_Charter.md" target="_blank">00_TIME_Charter.md</a> – Timesheets</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/00_FIX_Charter.md" target="_blank">00_FIX_Charter.md</a> – Work Orders</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/00_ONBOARD_Charter.md" target="_blank">00_ONBOARD_Charter.md</a> – Employee Onboarding</li>
+        </ul>
+        <li>Guidance & Testing</li>
+        <ul class="tree">
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Testing_Validation_Checklist.md" target="_blank">Testing_Validation_Checklist.md</a> – Validation Tests</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Error_Handling_Recovery.md" target="_blank">Error_Handling_Recovery.md</a> – Error Rules</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Escalation_SLA.md" target="_blank">Escalation_SLA.md</a> – Governance Escalation</li>
+        </ul>
+        <li>Appendices</li>
+        <ul class="tree">
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/Glossary.md" target="_blank">Glossary.md</a> – Key Terms</li>
+          <li><a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/VERSION_HISTORY.md" target="_blank">VERSION_HISTORY.md</a> – Change Log</li>
+        </ul>
+      </ul>
+    </details>
+
+    <h2>Core Principle – The CASE</h2>
+    <p>Every municipal task is captured in one secure CASE. Nothing is left outside. Nothing is lost when people change or systems shift.</p>
+
+    <h2>Real Town Examples – All Six Modules</h2>
+
+    <h3>VAULTPRR – Public Records Requests</h3>
+    <div class="vignette">
+      January 5, 2026: Resident emails for school override vote emails. Assistant logs → CASE prr-2026-023. T10 Jan 19. RAO clarifies Wednesday. Reply Thursday. Acknowledgment Jan 20 (missed T10) → fees auto-waived. 18 emails + 3 memos; 2 redacted. Delivered Feb 4. Closes Feb 4; T90 to May 5. 22 log entries sealed.
+    </div>
+    <div class="mermaid-container mermaid">
+flowchart LR
+    A[Received] --> B[CASE + Timers]
+    B --> C[Review / Clarify]
+    C -->|More Needed| D[Tolling Loop]
+    D --> C
+    C --> E[Gather]
+    E --> F[Exemption Check]
+    F --> G[T10 Check]
+    G -->|Missed| H[Fees Waived]
+    G --> I[Deliver]
+    I --> J[Close + T90]
+    </div>
+    <p class="source">Source: <a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/FLOWCHARTS_ALL_MODULES_v1.md" target="_blank">FLOWCHARTS_ALL_MODULES_v1.md</a></p>
+
+    <h3>VAULT CLERK – Licenses & Permits</h3>
+    <div class="vignette">
+      Feb 10, 2026: Food truck renewal online → CASE clerk-2026-178. Clerk checks Feb 12 (insurance, health OK). Inspection Feb 18 passes. Clerk approves Feb 19 ($200 fee). Certificate locked Feb 20, expires 2027. Closes Feb 20; appeal window open. 14 log steps.
+    </div>
+    <div class="mermaid-container mermaid">
+flowchart LR
+    A[Intake] --> B[Completeness]
+    B -->|OK| C[Assessment]
+    B -->|No| D[Clarify → B]
+    C -->|Inspect?| E[Schedule & Inspect]
+    E --> F[Review]
+    F --> G[Approval Pending]
+    G --> H[Approved / Denied / Deemed]
+    H --> I[Closed]
+    </div>
+    <p class="source">Source: <a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/FLOWCHARTS_ALL_MODULES_v1.md" target="_blank">FLOWCHARTS_ALL_MODULES_v1.md</a></p>
+
+    <h3>VAULT FISCAL – Accounts Payable & Procurement</h3>
+    <div class="vignette">
+      March 3, 2026: DPW submits $4,800 snow-plow invoice → CASE fiscal-2026-156. Matches PO $4,500 + receipt. $300 over approved March 4. Budget OK. Finance approves March 5 (locked signature). ACH March 6, confirmed March 8. GL reconciled March 10. Closes March 10.
+    </div>
+    <div class="mermaid-container mermaid">
+flowchart LR
+    A[Invoice] --> B[Validation]
+    B --> C[3-Way Match]
+    C -->|Match| D[Budget]
+    C -->|Variance| E[Approval]
+    E --> D
+    D -->|OK| F[Approval Routing]
+    D -->|No| G[Reject]
+    F --> H[Pending]
+    H --> I[Approved / Denied]
+    I --> J[Payment & Reconcile]
+    J --> K[Closed]
+    </div>
+    <p class="source">Source: <a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/FLOWCHARTS_ALL_MODULES_v1.md" target="_blank">FLOWCHARTS_ALL_MODULES_v1.md</a></p>
+
+    <h3>VAULT TIME – Timesheets & Payroll</h3>
+    <div class="vignette">
+      Week ending March 8, 2026: John Smith submits timesheet → CASE time-2026-w10-045. 43 hours (3 OT snow). Superintendent approves March 10. Finance approves March 11. Locked March 11. Payroll March 12; deposit March 20. Closes March 12.
+    </div>
+    <div class="mermaid-container mermaid">
+flowchart LR
+    A[Entry] --> B[Validation]
+    B --> C[Supervisor]
+    C --> D{Overtime?}
+    D -->|Yes| E[Finance]
+    D -->|No| F[Lock]
+    E -->|OK| F
+    E -->|No| G[Revise]
+    F --> H[Payroll]
+    H --> I[Closed]
+    </div>
+    <p class="source">Source: <a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/FLOWCHARTS_ALL_MODULES_v1.md" target="_blank">FLOWCHARTS_ALL_MODULES_v1.md</a></p>
+
+    <h3>VAULT FIX – Work Orders & Maintenance</h3>
+    <div class="vignette">
+      Feb 15, 2026: Library leak reported → CASE fix-2026-089 (HIGH). Assigned Plumbing. Fixed Feb 17. Inspector checks Feb 18. Director signs Feb 19. Locked & closed Feb 19.
+    </div>
+    <div class="mermaid-container mermaid">
+flowchart LR
+    A[Reported] --> B[Triage]
+    B --> C[Schedule]
+    C --> D[In Progress]
+    D --> E[Review]
+    E -->|Good| F[Closed]
+    E -->|Bad| D
+    </div>
+    <p class="source">Source: <a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/FLOWCHARTS_ALL_MODULES_v1.md" target="_blank">FLOWCHARTS_ALL_MODULES_v1.md</a></p>
+
+    <h3>VAULT ONBOARD – Employee Onboarding</h3>
+    <div class="vignette">
+      Jan 25, 2026: Alice Johnson accepts offer → CASE onboard-2026-emp-012. Background check Jan 26. Starts March 2: I-9, badge. Training March 3. Shadowing March 4–6. Supervisor signs March 7. Locked & closed March 7. Payroll ready.
+    </div>
+    <div class="mermaid-container mermaid">
+flowchart LR
+    A[Intake] --> B[Pre-Start]
+    B --> C[Day One]
+    C --> D[Setup]
+    D --> E[Training]
+    E --> F[Review]
+    F --> G[Sign-off]
+    G --> H[Closed]
+    </div>
+    <p class="source">Source: <a href="https://github.com/97n8/pl-poli-case-workspace/blob/main/FLOWCHARTS_ALL_MODULES_v1.md" target="_blank">FLOWCHARTS_ALL_MODULES_v1.md</a></p>
+
+    <div class="footer">
+      <p>PublicLogic Smart Systems • Stronger Communities • January 2026</p>
+      <p>Repo: <a href="https://github.com/97n8/pl-poli-case-workspace" target="_blank">github.com/97n8/pl-poli-case-workspace</a></p>
+      <p>Print: A4/Letter portrait, default margins, background on</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
