@@ -1,220 +1,127 @@
 # Audience and Use
 
-## Primary Audience
+## Intended Audience
 
-**Polymorphic Engineering (and similar runtime partners)**
+This packet is intended for **Polymorphic engineering and architecture teams** responsible for implementing VAULT at runtime.
 
-This packet is written for engineers, architects, and technical decision-makers who are responsible for:
+It is written for engineers and technical leads who are making implementation decisions related to:
 
-* State machine implementation
-* Data schema design and validation
-* Timer computation and enforcement
-* Integration with external systems
-* Error handling and recovery
-* Audit trail capture and maintenance
-
-**You are the decision-maker on:**
-* Storage architecture (relational, document, event-sourced)
-* Integration patterns (APIs, webhooks, queues)
-* Error recovery and retry logic
-* Performance and scalability
-* Deployment and operations
-
-**You are NOT responsible for:**
-* Statutory interpretation (that's governance)
-* Business rule changes (those go through PublicLogic)
-* End-user experience design (layered on top)
-* Municipal policy decisions (client responsibility)
+- State machine design and execution
+- Data schema definition and validation
+- Timer computation and enforcement
+- Integration with external systems
+- Error handling and recovery
+- Audit trail capture and persistence
 
 ---
 
-## Secondary Audiences
+## Roles and Responsibilities
 
-### Municipal Staff (Derivative)
+### Polymorphic Engineering
 
-Once VAULT is live, municipal staff use simplified documentation derived from this packet:
+Polymorphic engineering teams are responsible for technical and operational decisions, including:
 
-* Standard Operating Procedures (SOP)
-* Training materials
-* Quick reference guides
-* Help text embedded in UI
+- Storage architecture (relational, document, or event-sourced)
+- Integration patterns (APIs, webhooks, queues)
+- Error recovery and retry strategies
+- Performance, scalability, and reliability
+- Deployment and operational management
 
-**These are NOT in this packet.** They are built *after* engineering is locked.
+PublicLogic relies on Polymorphic to implement these elements in a way that satisfies the governance requirements defined in this packet.
 
-### PublicLogic Internal (Expanded)
+---
 
-PublicLogic uses this packet as the foundation for:
+### PublicLogic Governance
 
-* Client implementation guidance
-* Change control and amendments
-* Audit and compliance validation
-* Sales and partnership documentation
+PublicLogic retains responsibility for:
 
-### Legal and Governance (Reference)
+- Statutory interpretation
+- Governance rules and decision gates
+- Authority boundaries
+- Record classification and immutability requirements
+- Change control to the VAULT Core Canon and module specifications
 
-Municipal counsel, auditors, and oversight bodies can reference this packet to understand:
-
-* Statutory enforcement architecture
-* Decision gate rationale
-* Record retention and immutability rules
-* Audit trail capabilities
+Business rule changes and governance interpretation are handled through PublicLogic rather than through implementation-level adjustment.
 
 ---
 
 ## How This Packet Is Used
 
-### At Implementation Time
+### During Implementation
 
-Engineers use this packet to:
+Polymorphic engineers may use this packet to:
 
-* Understand requirements before writing code
-* Identify decision gates and their consequences
-* Design data models that satisfy immutability rules
-* Implement state machines without interpretation
-* Validate implementation against specification
+- Understand governance requirements prior to implementation
+- Identify required decision gates and enforcement points
+- Design data models that support immutability and auditability
+- Implement state machines directly from specification
+- Validate behavior against the encoding specifications
 
-**Example workflow:**
-
-1. Engineer reads "Timer_and_Deadline_Model.md"
-2. Engineer identifies T10, T20, T25, T90 requirements
-3. Engineer designs timer computation logic
-4. Engineer implements state machine transitions guarded by timers
-5. Engineer validates against Encoding Specification
-6. Engineer escalates ambiguity if any arises
-
-### At Deployment Time
-
-Operations teams use this packet to:
-
-* Understand what each module does
-* Validate configuration against governance rules
-* Set up audit logging and retention policies
-* Identify escalation procedures
-
-### At Audit Time
-
-Auditors and compliance teams use this packet to:
-
-* Verify CASE structure and content
-* Validate timer enforcement
-* Check immutability of locked assets
-* Confirm audit trail completeness
+Where implementation questions arise, Polymorphic is encouraged to flag them early so they can be resolved before code is finalized.
 
 ---
 
-## What You Should NOT Do
+### During Deployment and Operation
 
-**Do not:**
+This packet may also be referenced to:
 
-* Interpret governance as "suggestions" or "best practices"
-* Optimize around enforcement rules (e.g., skip T10 check to "save processing")
-* Create special cases or exceptions to CASE structure
-* Allow mutation of LOCKED assets
-* Disable audit logging "for performance"
-* Skip timer computation "if deadline appears far off"
-
-**These are structural requirements.** They protect the municipality, its staff, and the system itself.
+- Confirm runtime configuration aligns with governance rules
+- Verify audit logging and retention behavior
+- Understand escalation expectations when edge cases arise
 
 ---
 
-## What You SHOULD Do
+## Guidance for Implementation
 
-**Do:**
+This packet is intended to be read as **normative governance guidance**, not as advisory material.
 
-* Read the VAULT Core Canon before coding
-* Implement exactly as specified
-* Escalate ambiguity immediately (do not guess)
-* Test timer computation against real-world dates
-* Validate CASE closure conditions
-* Document your design decisions against this packet
+Where the specification defines required behavior, Polymorphic implementation should reflect that behavior directly. Where implementation choices are left open, Polymorphic engineering judgment applies.
+
+If uncertainty arises between governance intent and technical execution, escalation is preferred over assumption.
 
 ---
 
-## Governance vs. Technical
+## Governance and Technical Boundaries
 
-### Governance (This Packet)
+In general:
 
-* Why timers exist
-* What constitutes enforcement
-* What records must be immutable
-* What facts must be audited
-* What decisions are irreversible
+- Questions of **what must happen** are governance questions
+- Questions of **how it is implemented** are technical questions
 
-### Technical (Your Responsibility)
+Examples:
 
-* How to compute timers efficiently
-* Whether to use SQL, NoSQL, or event sourcing
-* How to scale audit logging
-* How to optimize storage
-* How to handle failure modes
+- “Must this deadline be enforced?”  
+  Governance defines this.
 
-**If you are asking:** "Can we skip the timer check?"
-**Answer:** No. That is governance, not technical.
-
-**If you are asking:** "Should we use PostgreSQL or DynamoDB?"
-**Answer:** Either, as long as timers are enforced exactly as specified.
+- “How should the deadline be computed or stored?”  
+  Polymorphic engineering determines this.
 
 ---
 
-## Getting Help
+## Coordination and Escalation
 
-### Questions About Implementation
+When clarification is needed:
 
-* Scope: Does this state machine handle appeals?
-* Design: Should timer computation happen at intake or at the next step?
-* Integration: How should we connect to external records systems?
+1. Polymorphic documents the question or ambiguity
+2. The issue is escalated through Polymorphic technical leadership
+3. PublicLogic provides clarification or, where appropriate, a specification update
+4. Implementation proceeds with guidance in place
 
-**Send to:** Polymorphic engineering leadership
-**Resolution:** Internal engineering decision; may inform PublicLogic of constraints
-
-### Questions About Governance
-
-* Scope: Does M.G.L. c. 66, §10 allow partial disclosure if search fails?
-* Requirements: Can we defer closure validation to a manual weekly review?
-* Authority: Should appeals be handled by this module or escalated?
-
-**Send to:** info@publiclogic.com
-**Resolution:** PublicLogic clarifies governance; may amend specification
+This process exists to ensure alignment and avoid rework.
 
 ---
 
-## Version and Change Control
+## Versioning and Change Control
 
-**Current Version:** VAULT Master Engineering Packet v1.0 (January 2026)
+This packet reflects **VAULT Master Engineering Packet v1.0 (January 2026)**.
 
-**Changes to VAULT Core Canon:**
-* Require PublicLogic approval
-* Are versioned and documented
-* Are communicated to all active implementations
-* May require re-validation of running systems
+Changes to VAULT Core Canon or module specifications:
 
-**Changes to Module Specifications:**
-* May be module-specific or core-level
-* Follow same change control
-* Are tracked in CHANGE_LOG.md
+- Are managed by PublicLogic
+- Are versioned and documented
+- Are communicated to active implementation partners
+- May require validation of existing implementations
 
 ---
 
-## Escalation Path
-
-If you hit ambiguity:
-
-```
-Engineer identifies ambiguity
-    ↓
-Document: What is ambiguous? Why does it matter? What decision is needed?
-    ↓
-Send to: Polymorphic Technical Lead
-    ↓
-Polymorphic escalates to: info@publiclogic.com
-    ↓
-PublicLogic responds with: Clarification or Specification Amendment
-    ↓
-Resume implementation with clarification in hand
-```
-
-**Target turnaround:** 2-3 business days
-
----
-
-*This document defines the intended use of VAULT Master Engineering Packet. If you are reading this and your use case differs, ask before proceeding.*
+*This document is provided to support Polymorphic’s implementation of VAULT. If any aspect of this packet creates uncertainty during implementation, please raise it early so it can be resolved collaboratively.*
