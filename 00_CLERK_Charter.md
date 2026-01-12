@@ -1,98 +1,115 @@
-# VAULT CLERK Module — Charter
+# VAULT CLERK Module — Charter (Final v1.0)
 
-**Licensing and Clerk Work • Municipal Governance**
+**Licensing, Permits & Clerk Functions • Municipal Governance**
+
+Current Date Reference: January 2026
 
 ---
 
 ## Module Purpose
 
-VAULT CLERK enforces licensing and clerk functions as CASE-based processes.
+VAULT CLERK manages all licensing, permitting, and clerk-issued record processes as standardized **CASE** objects.
 
-Examples:
-* Contractor licenses
-* Plumbing / electrical / gas permits
-* Food service permits
-* Marriage licenses
-* Vital records
-* Regulatory approvals
+Examples of supported processes:
+- Marriage intentions & licenses
+- Vital records requests & certified copies
+- Business certificates (DBA/fictitious names)
+- Contractor / home improvement contractor registrations
+- Plumbing, gas fitting, electrical, and other specialty trade permits
+- Food service / retail food establishment permits
+- Dog licenses
+- Raffle / bazaar permits
+- Alcohol license applications (intake only)
+- Transient vendor / hawker / peddler licenses
 
-Each application is one CASE. Process is identical regardless of license type.
+Each application or request = **one CASE**. Core process structure remains identical across types; differences are handled via configuration.
 
 ---
 
-## Statutory Authority
+## Statutory & Regulatory Authority (Primary Examples)
 
-**M.G.L. c. 101** — Licenses and Permits (varies by specific license)
+| Process Type                  | Primary Statute(s)                          | Local Oversight                     | Typical Issuing/Approving Authority    |
+|-------------------------------|---------------------------------------------|-------------------------------------|----------------------------------------|
+| Marriage License              | M.G.L. c. 207                               | Town/City Clerk                     | Clerk / Assistant Clerk                |
+| Vital Records (copies)        | M.G.L. c. 46; 950 CMR 100                   | Town/City Clerk (local registrar)   | Clerk / RVRS interface                 |
+| Business Certificate (DBA)    | M.G.L. c. 110 § 5                           | Town/City Clerk                     | Clerk                                  |
+| Dog License                   | M.G.L. c. 140 §§ 136–174                    | Town/City Clerk                     | Clerk                                  |
+| Plumbing / Gas / Electrical   | M.G.L. c. 142, c. 143 §§ 3, 3Z; 248 CMR     | Local plumbing/wire/gas inspectors  | Inspector(s) + Clerk issuance          |
+| Food Service Permit           | M.G.L. c. 94; 105 CMR 590 (state sanitary code) | Board of Health                     | Health Director / Agent                |
+| Contractor Registration       | M.G.L. c. 142A; local bylaws; BBRS          | Building Department / Clerk         | Building Inspector / Clerk             |
+| Transient Vendor / Hawker     | M.G.L. c. 101                               | Selectmen / Clerk                   | Selectmen / Clerk                      |
 
-Different license types have different timelines and review requirements. VAULT CLERK is modular: configure per license type.
+VAULT CLERK is **license-type configurable** to reflect statutory timelines, required documents, fees, inspection needs, and approval authorities.
 
 ---
 
 ## CASE Model for CLERK
 
 ### Identity
-
 ```json
 {
   "CaseID": "clerk-2026-0145",
   "CaseType": "CLERK",
+  "SubType": "Marriage_License",              // or "Food_Permit", "Plumbing_Permit", etc.
   "CreatedTimestamp": "2026-02-01T10:15:00Z",
-  "CreatedBy": "clerk@town.example.com"
+  "CreatedBy": "clerk@town.example.gov"
 }
 ```
 
 ### Subject
-
 ```json
 {
-  "ApplicantIdentity": {
-    "Name": "ABC Plumbing LLC",
-    "Type": "Business"
+  "Applicant": {
+    "Name": "Jane Doe & John Smith",
+    "Type": "Individual",                     // or "Business", "Organization"
+    "Contact": { "Email": "...", "Phone": "..." }
   },
-  "ApplicationType": "Contractor_License_Annual",
-  "PropertyAddress": "123 Main Street" (if applicable)
+  "ApplicationType": "Marriage_Intentions",
+  "RelatedProperty": "N/A",                   // or full address if applicable
+  "PriorCaseID": "clerk-2025-0892"            // for renewals / related matters
 }
 ```
 
 ### Scope
-
 ```json
 {
   "ScopeDefinition": {
-    "LicenseType": "Contractor",
-    "ServiceArea": "Plumbing",
-    "ApplicationPeriod": "2026-2027",
-    "RequiredDocuments": ["Proof of Insurance", "Background Check", "Bonding"]
+    "LicenseType": "Marriage",
+    "StatutoryAuthority": "M.G.L. c. 207 §§ 19–37",
+    "LocalBylaw": null,
+    "ApplicationPeriod": "2026",
+    "RequiredDocuments": ["PhotoID", "BirthCertificate", "DivorceDecree_if_applicable"],
+    "Fee": 50.00,
+    "FeePaid": false,
+    "InspectionRequired": false,
+    "ApprovalAuthorities": ["Clerk"]
   },
   "ScopeVersion": 1
 }
 ```
 
-### Deadlines
-
+### Deadlines & Milestones
 ```json
 {
-  "T10": {
-    "DueDate": "2026-02-15",
-    "Description": "Initial municipal review window"
-  },
-  "ApprovalDue": {
-    "DueDate": "2026-03-01",
-    "Description": "Inspection completion and approval decision"
+  "Milestones": {
+    "T10_Completeness": { "DueDate": "2026-02-08", "Description": "Initial review window" },
+    "InspectionDue":      null,
+    "DecisionDue":        { "DueDate": "2026-02-15", "Description": "Final issuance/denial" },
+    "AppealWindow":       { "Days": 30, "Statute": "M.G.L. c. 30A if applicable" }
   }
 }
 ```
 
 ### Assets
-
 ```json
 {
   "Assets": [
-    {"AssetType": "Application", "RetentionClass": "REFERENCE"},
-    {"AssetType": "ProofOfInsurance", "RetentionClass": "REFERENCE"},
-    {"AssetType": "BackgroundCheckResult", "RetentionClass": "KEEPER"},
-    {"AssetType": "InspectionReport", "RetentionClass": "KEEPER"},
-    {"AssetType": "ApprovalCertificate", "RetentionClass": "KEEPER", "Locked": true}
+    { "AssetType": "ApplicationForm",      "RetentionClass": "REFERENCE" },
+    { "AssetType": "ProofOfAge_ID",        "RetentionClass": "REFERENCE" },
+    { "AssetType": "InspectionReport",     "RetentionClass": "KEEPER", "Locked": true },
+    { "AssetType": "MarriageCertificate",  "RetentionClass": "KEEPER", "Locked": true },
+    { "AssetType": "DenialLetter",         "RetentionClass": "KEEPER", "Locked": true },
+    { "AssetType": "RenewalNotice",        "RetentionClass": "TRANSACTIONAL" }
   ]
 }
 ```
@@ -101,137 +118,126 @@ Different license types have different timelines and review requirements. VAULT 
 
 ## Module-Specific Rules
 
-### License Types
+- **Configurable per LicenseType**:
+  - Required documents list
+  - Fee amount & payment status tracking
+  - Inspection requirement + inspector role
+  - Approval authority chain (single or multi-step)
+  - Statutory / bylaw deadlines
+  - Renewal cycle & auto-notice generation
 
-Each license type may have different:
-* Required documents
-* Inspection requirements
-* Approval authority
-* Fee structure
-* Renewal timeline
+- **Approval Authority Chain** (example for multi-step):
+  ```json
+  "Approvals": [
+    { "Authority": "Health Agent",   "Status": "Pending", "DueDate": "2026-02-10" },
+    { "Authority": "Clerk",          "Status": "Pending" }
+  ]
+  ```
 
-Configure these per license type. Core CASE structure remains identical.
-
-### Approval Authority
-
-Some licenses require:
-* Health Inspector approval
-* Building Inspector approval
-* Board of Selectmen approval
-
-CLERK records who approved and when.
-
-### Denial
-
-If application is denied:
-* Reason must be documented
-* Requester may request administrative review
-* Appeal window may exist (per statute)
+- **Denial & Appeal**:
+  - Denial requires documented reason(s)
+  - DenialLetter asset must be generated & locked
+  - Appeal window tracked (if statutory)
+  - Appeal may trigger new sub-case or reopen
 
 ---
 
-## Process Flow (High Level)
+## High-Level Process Flow
 
 ```
-Intake → Review Requirements → Request Documents → 
-  Inspection/Evaluation → Approval/Denial → Issuance → Closure
-```
-
----
-
-## Asset Types in CLERK
-
-| Asset | Retention | Locked? | Purpose |
-|-------|-----------|---------|---------|
-| Application | REFERENCE | No | What was requested |
-| SupportingDocuments | REFERENCE | No | Submitted by applicant |
-| ApprovalCertificate | KEEPER | Yes | Issued license/approval |
-| DenialLetter | KEEPER | Yes | If denied, reason |
-| InspectionReport | KEEPER | Yes | Evidence of inspection |
-| RenewalNotice | TRANSACTIONAL | No | Reminder to renew |
-
----
-
-## Decision Tables
-
-### Gate 1: Document Completeness
-
-| Application Type | Required Documents | Missing → Action |
-|------------------|-------------------|------------------|
-| Contractor | Insurance, Background, Bonding | Request clarification; clock tolled |
-| Plumbing | License, Insurance, Exam | Request clarification; clock tolled |
-| Food Service | Health Cert, Insurance, Training | Request clarification; clock tolled |
-
----
-
-### Gate 2: Inspection Needed?
-
-| Application Type | Inspection Required? | If Required, By When? |
-|------------------|-----|---|
-| Contractor | Yes | Within 14 days |
-| Plumbing | Yes | Within 10 days |
-| Food Service | Yes | Within 7 days |
-| Mail-in License | No | N/A |
-
----
-
-### Gate 3: Approval Authority
-
-| Application Type | Authority | Signature Required? |
-|-----|----|----|
-| Contractor | Building Inspector | Yes (locked) |
-| Plumbing | Plumbing Inspector | Yes (locked) |
-| Food Service | Health Director | Yes (locked) |
-
----
-
-## Process Flow (High-Level)
-
-```
-[Intake]
+Intake (application + fee)
   ↓
-[Completeness Check] ← Clarification loop if needed
+Completeness Check → [Clarification Request Loop] (clock tolled)
   ↓
-[Inspection Needed?]
-  ├─ YES → [Schedule Inspection] → [Conduct Inspection] → [Inspection Results]
-  └─ NO → [Skip to Approval Gate]
+Inspection Required?
+  ├─ Yes → Schedule → Conduct → Record Results
+  └─ No  ────────────────────────────────┐
+                                         ↓
+Approval Authority(ies) Review
   ↓
-[Approval Authority Reviews] → [Approve / Deny Decision]
-  ├─ Approve → [Issue Certificate] → [LOCKED]
-  ├─ Deny → [Issue Denial Letter] → [LOCKED]
-  └─ Request Info → [Clarification Loop]
+Decision: Approve / Deny / More Info
+  ├─ Approve → Issue Certificate → Lock assets → Notify
+  ├─ Deny    → Issue Denial Letter → Lock → Notify + Appeal rights
+  └─ More Info → Clarification Loop
   ↓
-[CLOSED]
+Closure Checklist → Seal audit log → CLOSED
 ```
 
 ---
 
-## Compliance Checklist for CLERK CASE
+## Asset Retention & Locking Summary
 
-Before closing:
-
-- [ ] Application received and recorded
-- [ ] All required documents collected (completeness check passed)
-- [ ] Inspection scheduled (if required)
-- [ ] Inspection completed and results recorded
-- [ ] Approval authority reviewed application
-- [ ] Approval or denial decision made and documented
-- [ ] Certificate issued OR denial letter sent (LOCKED)
-- [ ] Key assets locked (approval/denial, inspection report)
-- [ ] Audit log sealed
-- [ ] No transition blockers remain
+| Asset Type            | Retention Class | Locked on Closure? | Purpose                              |
+|-----------------------|-----------------|---------------------|--------------------------------------|
+| Application           | REFERENCE       | No                  | Original request                     |
+| Supporting Docs       | REFERENCE       | No                  | Applicant submissions                |
+| Inspection Report     | KEEPER          | Yes                 | Evidence of compliance               |
+| Approval Certificate  | KEEPER          | Yes                 | Official license/permit/record       |
+| Denial Letter         | KEEPER          | Yes                 | Documented rationale + appeal rights |
+| Renewal Notice        | TRANSACTIONAL   | No                  | Automated reminders                  |
 
 ---
 
-## Module Expansion Notes
+## Gate Decision Tables (Examples – Configurable)
 
-Detailed implementation will include:
-* Complete license-type matrix
-* Inspection procedures and forms
-* Appeals process (if applicable per statute)
-* Renewal workflows (v1.1 scope)
-* Multi-step approvals (board sign-off, etc.)
+**Gate 1: Completeness**
+
+| Type              | Required Documents Example                  | Missing Action                  |
+|-------------------|---------------------------------------------|---------------------------------|
+| Marriage          | IDs, birth certs, prior marriage proof      | Request + toll clock            |
+| Food Service      | Plans, ServSafe, insurance                  | Request + toll clock            |
+| Plumbing Permit   | Licensed plumber name, insurance            | Request + toll clock            |
+
+**Gate 2: Inspection**
+
+| Type              | Inspection? | Typical Inspector     | Target Window |
+|-------------------|-------------|-----------------------|---------------|
+| Food Service      | Yes         | Health Agent          | 7–10 days     |
+| Plumbing Permit   | Yes         | Plumbing Inspector    | 10 days       |
+| Marriage          | No          | N/A                   | N/A           |
+
+**Gate 3: Final Approval**
+
+| Type              | Primary Authority       | Signature / e-Sign Required? |
+|-------------------|-------------------------|------------------------------|
+| Marriage          | Clerk                   | Yes                          |
+| Food Service      | Health Director         | Yes                          |
+| Plumbing Permit   | Plumbing Inspector      | Yes                          |
+| Transient Vendor  | Selectmen (or Clerk)    | Yes (multi if Selectmen)     |
 
 ---
 
-*VAULT CLERK follows the same CASE architecture as PRR. Only license-type-specific rules vary.*
+## Closure Compliance Checklist
+
+Before case can be CLOSED:
+
+- [ ] Application received, timestamped, fee recorded
+- [ ] Completeness check passed (all required documents)
+- [ ] Inspection completed & results recorded (if required)
+- [ ] All required approvals obtained & logged
+- [ ] Decision (approve/deny) documented
+- [ ] Certificate issued OR denial letter sent
+- [ ] All KEEPER assets locked
+- [ ] Applicant notified
+- [ ] Audit trail sealed
+- [ ] No open blockers
+
+---
+
+## Planned Expansion (v1.1+)
+
+- Full license-type configuration matrix
+- Electronic signature integration (M.G.L. c. 110G)
+- Renewal auto-workflow with prior-case linking
+- Multi-board sequential approvals
+- Vital records privacy restrictions & RVRS export
+- Appeal / hearing sub-case workflow
+- Fee receipt & refund tracking
+- Public hearing flag & notice generation
+
+---
+
+VAULT CLERK uses the shared CASE architecture with PRR and other modules.  
+Only license-type-specific configuration tables vary.
+
+This charter reflects Massachusetts General Laws, state regulations, and common municipal clerk / department practices as of January 2026.
