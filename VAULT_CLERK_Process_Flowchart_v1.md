@@ -1,5 +1,4 @@
-# VAULT CLERK™ — Process Flowchart
-
+# VAULT CLERK™ — Process Flowchart  
 **State Machine Visualization • Version 1.0**
 
 ---
@@ -12,133 +11,93 @@ graph TD
     B -->|All required docs| C[ASSESSMENT]
     B -->|Missing docs| D[REQUEST_CLARIFICATION]
     D -->|Docs provided| C
-    
     C -->|InspectionRequired=true| E[INSPECTION_SCHEDULED]
     C -->|InspectionRequired=false| F[APPROVAL_REVIEW]
-    
     E -->|Inspector assigned| G[INSPECTION_PENDING]
     G -->|Inspection completed| H[INSPECTION_REVIEW]
-    
     H -->|PASS| F
-    H -->|FAIL/CONDITIONAL| I[REQUEST_CORRECTIONS]
+    H -->|FAIL / CONDITIONAL| I[REQUEST_CORRECTIONS]
     I -->|Corrections submitted| H
-    
     F -->|Approval authority reviews| J[APPROVAL_PENDING]
     J -->|Authority approves| K[APPROVED]
     J -->|Authority denies| L[DENIED]
     J -->|T_DECISION deadline missed| M[DEEMED_APPROVED]
-    
     K -->|License issued| N[CLOSED]
     L -->|Denial final| N
     M -->|Auto-approval recorded| N
-    
     N -->|Case locked| O[LOCKED]
-    
+
     style A fill:#e1f5ff
     style N fill:#c8e6c9
     style O fill:#ffccbc
     style L fill:#ffcdd2
     style M fill:#fff9c4
-```
 
----
+Gate Decision Points
+Gate: Completeness (B → C or D)
+#mermaid-diagram-mermaid-kzo8cjm{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-diagram-mermaid-kzo8cjm .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-kzo8cjm .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-kzo8cjm .error-icon{fill:#552222;}#mermaid-diagram-mermaid-kzo8cjm .error-text{fill:#552222;stroke:#552222;}#mermaid-diagram-mermaid-kzo8cjm .edge-thickness-normal{stroke-width:1px;}#mermaid-diagram-mermaid-kzo8cjm .edge-thickness-thick{stroke-width:3.5px;}#mermaid-diagram-mermaid-kzo8cjm .edge-pattern-solid{stroke-dasharray:0;}#mermaid-diagram-mermaid-kzo8cjm .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-diagram-mermaid-kzo8cjm .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-diagram-mermaid-kzo8cjm .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-diagram-mermaid-kzo8cjm .marker{fill:#666;stroke:#666;}#mermaid-diagram-mermaid-kzo8cjm .marker.cross{stroke:#666;}#mermaid-diagram-mermaid-kzo8cjm svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-diagram-mermaid-kzo8cjm p{margin:0;}#mermaid-diagram-mermaid-kzo8cjm .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-diagram-mermaid-kzo8cjm .cluster-label text{fill:#333;}#mermaid-diagram-mermaid-kzo8cjm .cluster-label span{color:#333;}#mermaid-diagram-mermaid-kzo8cjm .cluster-label span p{background-color:transparent;}#mermaid-diagram-mermaid-kzo8cjm .label text,#mermaid-diagram-mermaid-kzo8cjm span{fill:#000000;color:#000000;}#mermaid-diagram-mermaid-kzo8cjm .node rect,#mermaid-diagram-mermaid-kzo8cjm .node circle,#mermaid-diagram-mermaid-kzo8cjm .node ellipse,#mermaid-diagram-mermaid-kzo8cjm .node polygon,#mermaid-diagram-mermaid-kzo8cjm .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-diagram-mermaid-kzo8cjm .rough-node .label text,#mermaid-diagram-mermaid-kzo8cjm .node .label text,#mermaid-diagram-mermaid-kzo8cjm .image-shape .label,#mermaid-diagram-mermaid-kzo8cjm .icon-shape .label{text-anchor:middle;}#mermaid-diagram-mermaid-kzo8cjm .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-diagram-mermaid-kzo8cjm .rough-node .label,#mermaid-diagram-mermaid-kzo8cjm .node .label,#mermaid-diagram-mermaid-kzo8cjm .image-shape .label,#mermaid-diagram-mermaid-kzo8cjm .icon-shape .label{text-align:center;}#mermaid-diagram-mermaid-kzo8cjm .node.clickable{cursor:pointer;}#mermaid-diagram-mermaid-kzo8cjm .root .anchor path{fill:#666!important;stroke-width:0;stroke:#666;}#mermaid-diagram-mermaid-kzo8cjm .arrowheadPath{fill:#333333;}#mermaid-diagram-mermaid-kzo8cjm .edgePath .path{stroke:#666;stroke-width:2.0px;}#mermaid-diagram-mermaid-kzo8cjm .flowchart-link{stroke:#666;fill:none;}#mermaid-diagram-mermaid-kzo8cjm .edgeLabel{background-color:white;text-align:center;}#mermaid-diagram-mermaid-kzo8cjm .edgeLabel p{background-color:white;}#mermaid-diagram-mermaid-kzo8cjm .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-kzo8cjm .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-diagram-mermaid-kzo8cjm .cluster rect{fill:hsl(0, 0%, 98.9215686275%);stroke:#707070;stroke-width:1px;}#mermaid-diagram-mermaid-kzo8cjm .cluster text{fill:#333;}#mermaid-diagram-mermaid-kzo8cjm .cluster span{color:#333;}#mermaid-diagram-mermaid-kzo8cjm div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160, 0%, 93.3333333333%);border:1px solid #707070;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-diagram-mermaid-kzo8cjm .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#000000;}#mermaid-diagram-mermaid-kzo8cjm rect.text{fill:none;stroke-width:0;}#mermaid-diagram-mermaid-kzo8cjm .icon-shape,#mermaid-diagram-mermaid-kzo8cjm .image-shape{background-color:white;text-align:center;}#mermaid-diagram-mermaid-kzo8cjm .icon-shape p,#mermaid-diagram-mermaid-kzo8cjm .image-shape p{background-color:white;padding:2px;}#mermaid-diagram-mermaid-kzo8cjm .icon-shape rect,#mermaid-diagram-mermaid-kzo8cjm .image-shape rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-kzo8cjm :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}YESNODocs providedAll required docs
+for license type
+present?ASSESSMENTREQUEST CLARIFICATION
+Clock tolled
+Gate: Inspection Required (C → E or F)
+#mermaid-diagram-mermaid-xukdgm8{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-diagram-mermaid-xukdgm8 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-xukdgm8 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-xukdgm8 .error-icon{fill:#552222;}#mermaid-diagram-mermaid-xukdgm8 .error-text{fill:#552222;stroke:#552222;}#mermaid-diagram-mermaid-xukdgm8 .edge-thickness-normal{stroke-width:1px;}#mermaid-diagram-mermaid-xukdgm8 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-diagram-mermaid-xukdgm8 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-diagram-mermaid-xukdgm8 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-diagram-mermaid-xukdgm8 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-diagram-mermaid-xukdgm8 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-diagram-mermaid-xukdgm8 .marker{fill:#666;stroke:#666;}#mermaid-diagram-mermaid-xukdgm8 .marker.cross{stroke:#666;}#mermaid-diagram-mermaid-xukdgm8 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-diagram-mermaid-xukdgm8 p{margin:0;}#mermaid-diagram-mermaid-xukdgm8 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-diagram-mermaid-xukdgm8 .cluster-label text{fill:#333;}#mermaid-diagram-mermaid-xukdgm8 .cluster-label span{color:#333;}#mermaid-diagram-mermaid-xukdgm8 .cluster-label span p{background-color:transparent;}#mermaid-diagram-mermaid-xukdgm8 .label text,#mermaid-diagram-mermaid-xukdgm8 span{fill:#000000;color:#000000;}#mermaid-diagram-mermaid-xukdgm8 .node rect,#mermaid-diagram-mermaid-xukdgm8 .node circle,#mermaid-diagram-mermaid-xukdgm8 .node ellipse,#mermaid-diagram-mermaid-xukdgm8 .node polygon,#mermaid-diagram-mermaid-xukdgm8 .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-diagram-mermaid-xukdgm8 .rough-node .label text,#mermaid-diagram-mermaid-xukdgm8 .node .label text,#mermaid-diagram-mermaid-xukdgm8 .image-shape .label,#mermaid-diagram-mermaid-xukdgm8 .icon-shape .label{text-anchor:middle;}#mermaid-diagram-mermaid-xukdgm8 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-diagram-mermaid-xukdgm8 .rough-node .label,#mermaid-diagram-mermaid-xukdgm8 .node .label,#mermaid-diagram-mermaid-xukdgm8 .image-shape .label,#mermaid-diagram-mermaid-xukdgm8 .icon-shape .label{text-align:center;}#mermaid-diagram-mermaid-xukdgm8 .node.clickable{cursor:pointer;}#mermaid-diagram-mermaid-xukdgm8 .root .anchor path{fill:#666!important;stroke-width:0;stroke:#666;}#mermaid-diagram-mermaid-xukdgm8 .arrowheadPath{fill:#333333;}#mermaid-diagram-mermaid-xukdgm8 .edgePath .path{stroke:#666;stroke-width:2.0px;}#mermaid-diagram-mermaid-xukdgm8 .flowchart-link{stroke:#666;fill:none;}#mermaid-diagram-mermaid-xukdgm8 .edgeLabel{background-color:white;text-align:center;}#mermaid-diagram-mermaid-xukdgm8 .edgeLabel p{background-color:white;}#mermaid-diagram-mermaid-xukdgm8 .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-xukdgm8 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-diagram-mermaid-xukdgm8 .cluster rect{fill:hsl(0, 0%, 98.9215686275%);stroke:#707070;stroke-width:1px;}#mermaid-diagram-mermaid-xukdgm8 .cluster text{fill:#333;}#mermaid-diagram-mermaid-xukdgm8 .cluster span{color:#333;}#mermaid-diagram-mermaid-xukdgm8 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160, 0%, 93.3333333333%);border:1px solid #707070;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-diagram-mermaid-xukdgm8 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#000000;}#mermaid-diagram-mermaid-xukdgm8 rect.text{fill:none;stroke-width:0;}#mermaid-diagram-mermaid-xukdgm8 .icon-shape,#mermaid-diagram-mermaid-xukdgm8 .image-shape{background-color:white;text-align:center;}#mermaid-diagram-mermaid-xukdgm8 .icon-shape p,#mermaid-diagram-mermaid-xukdgm8 .image-shape p{background-color:white;padding:2px;}#mermaid-diagram-mermaid-xukdgm8 .icon-shape rect,#mermaid-diagram-mermaid-xukdgm8 .image-shape rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-xukdgm8 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}YESNOInspection
+required for
+this license type?SCHEDULE INSPECTION
+Set T_INSPECTIONSKIP TO APPROVAL
+No inspection needed
+Gate: Inspection Results (H → F or I)
+#mermaid-diagram-mermaid-yk8ygsk{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-diagram-mermaid-yk8ygsk .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-yk8ygsk .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-yk8ygsk .error-icon{fill:#552222;}#mermaid-diagram-mermaid-yk8ygsk .error-text{fill:#552222;stroke:#552222;}#mermaid-diagram-mermaid-yk8ygsk .edge-thickness-normal{stroke-width:1px;}#mermaid-diagram-mermaid-yk8ygsk .edge-thickness-thick{stroke-width:3.5px;}#mermaid-diagram-mermaid-yk8ygsk .edge-pattern-solid{stroke-dasharray:0;}#mermaid-diagram-mermaid-yk8ygsk .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-diagram-mermaid-yk8ygsk .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-diagram-mermaid-yk8ygsk .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-diagram-mermaid-yk8ygsk .marker{fill:#666;stroke:#666;}#mermaid-diagram-mermaid-yk8ygsk .marker.cross{stroke:#666;}#mermaid-diagram-mermaid-yk8ygsk svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-diagram-mermaid-yk8ygsk p{margin:0;}#mermaid-diagram-mermaid-yk8ygsk .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-diagram-mermaid-yk8ygsk .cluster-label text{fill:#333;}#mermaid-diagram-mermaid-yk8ygsk .cluster-label span{color:#333;}#mermaid-diagram-mermaid-yk8ygsk .cluster-label span p{background-color:transparent;}#mermaid-diagram-mermaid-yk8ygsk .label text,#mermaid-diagram-mermaid-yk8ygsk span{fill:#000000;color:#000000;}#mermaid-diagram-mermaid-yk8ygsk .node rect,#mermaid-diagram-mermaid-yk8ygsk .node circle,#mermaid-diagram-mermaid-yk8ygsk .node ellipse,#mermaid-diagram-mermaid-yk8ygsk .node polygon,#mermaid-diagram-mermaid-yk8ygsk .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-diagram-mermaid-yk8ygsk .rough-node .label text,#mermaid-diagram-mermaid-yk8ygsk .node .label text,#mermaid-diagram-mermaid-yk8ygsk .image-shape .label,#mermaid-diagram-mermaid-yk8ygsk .icon-shape .label{text-anchor:middle;}#mermaid-diagram-mermaid-yk8ygsk .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-diagram-mermaid-yk8ygsk .rough-node .label,#mermaid-diagram-mermaid-yk8ygsk .node .label,#mermaid-diagram-mermaid-yk8ygsk .image-shape .label,#mermaid-diagram-mermaid-yk8ygsk .icon-shape .label{text-align:center;}#mermaid-diagram-mermaid-yk8ygsk .node.clickable{cursor:pointer;}#mermaid-diagram-mermaid-yk8ygsk .root .anchor path{fill:#666!important;stroke-width:0;stroke:#666;}#mermaid-diagram-mermaid-yk8ygsk .arrowheadPath{fill:#333333;}#mermaid-diagram-mermaid-yk8ygsk .edgePath .path{stroke:#666;stroke-width:2.0px;}#mermaid-diagram-mermaid-yk8ygsk .flowchart-link{stroke:#666;fill:none;}#mermaid-diagram-mermaid-yk8ygsk .edgeLabel{background-color:white;text-align:center;}#mermaid-diagram-mermaid-yk8ygsk .edgeLabel p{background-color:white;}#mermaid-diagram-mermaid-yk8ygsk .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-yk8ygsk .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-diagram-mermaid-yk8ygsk .cluster rect{fill:hsl(0, 0%, 98.9215686275%);stroke:#707070;stroke-width:1px;}#mermaid-diagram-mermaid-yk8ygsk .cluster text{fill:#333;}#mermaid-diagram-mermaid-yk8ygsk .cluster span{color:#333;}#mermaid-diagram-mermaid-yk8ygsk div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160, 0%, 93.3333333333%);border:1px solid #707070;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-diagram-mermaid-yk8ygsk .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#000000;}#mermaid-diagram-mermaid-yk8ygsk rect.text{fill:none;stroke-width:0;}#mermaid-diagram-mermaid-yk8ygsk .icon-shape,#mermaid-diagram-mermaid-yk8ygsk .image-shape{background-color:white;text-align:center;}#mermaid-diagram-mermaid-yk8ygsk .icon-shape p,#mermaid-diagram-mermaid-yk8ygsk .image-shape p{background-color:white;padding:2px;}#mermaid-diagram-mermaid-yk8ygsk .icon-shape rect,#mermaid-diagram-mermaid-yk8ygsk .image-shape rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-yk8ygsk :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}PASSFAIL / CONDITIONALResubmitInspection
+result?APPROVAL REVIEWREQUEST CORRECTIONS
+Clock tolled
+Gate: Approval Decision (J → K, L, or M)
+#mermaid-diagram-mermaid-uqpe9zx{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#000000;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-diagram-mermaid-uqpe9zx .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-uqpe9zx .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-diagram-mermaid-uqpe9zx .error-icon{fill:#552222;}#mermaid-diagram-mermaid-uqpe9zx .error-text{fill:#552222;stroke:#552222;}#mermaid-diagram-mermaid-uqpe9zx .edge-thickness-normal{stroke-width:1px;}#mermaid-diagram-mermaid-uqpe9zx .edge-thickness-thick{stroke-width:3.5px;}#mermaid-diagram-mermaid-uqpe9zx .edge-pattern-solid{stroke-dasharray:0;}#mermaid-diagram-mermaid-uqpe9zx .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-diagram-mermaid-uqpe9zx .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-diagram-mermaid-uqpe9zx .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-diagram-mermaid-uqpe9zx .marker{fill:#666;stroke:#666;}#mermaid-diagram-mermaid-uqpe9zx .marker.cross{stroke:#666;}#mermaid-diagram-mermaid-uqpe9zx svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-diagram-mermaid-uqpe9zx p{margin:0;}#mermaid-diagram-mermaid-uqpe9zx .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#000000;}#mermaid-diagram-mermaid-uqpe9zx .cluster-label text{fill:#333;}#mermaid-diagram-mermaid-uqpe9zx .cluster-label span{color:#333;}#mermaid-diagram-mermaid-uqpe9zx .cluster-label span p{background-color:transparent;}#mermaid-diagram-mermaid-uqpe9zx .label text,#mermaid-diagram-mermaid-uqpe9zx span{fill:#000000;color:#000000;}#mermaid-diagram-mermaid-uqpe9zx .node rect,#mermaid-diagram-mermaid-uqpe9zx .node circle,#mermaid-diagram-mermaid-uqpe9zx .node ellipse,#mermaid-diagram-mermaid-uqpe9zx .node polygon,#mermaid-diagram-mermaid-uqpe9zx .node path{fill:#eee;stroke:#999;stroke-width:1px;}#mermaid-diagram-mermaid-uqpe9zx .rough-node .label text,#mermaid-diagram-mermaid-uqpe9zx .node .label text,#mermaid-diagram-mermaid-uqpe9zx .image-shape .label,#mermaid-diagram-mermaid-uqpe9zx .icon-shape .label{text-anchor:middle;}#mermaid-diagram-mermaid-uqpe9zx .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-diagram-mermaid-uqpe9zx .rough-node .label,#mermaid-diagram-mermaid-uqpe9zx .node .label,#mermaid-diagram-mermaid-uqpe9zx .image-shape .label,#mermaid-diagram-mermaid-uqpe9zx .icon-shape .label{text-align:center;}#mermaid-diagram-mermaid-uqpe9zx .node.clickable{cursor:pointer;}#mermaid-diagram-mermaid-uqpe9zx .root .anchor path{fill:#666!important;stroke-width:0;stroke:#666;}#mermaid-diagram-mermaid-uqpe9zx .arrowheadPath{fill:#333333;}#mermaid-diagram-mermaid-uqpe9zx .edgePath .path{stroke:#666;stroke-width:2.0px;}#mermaid-diagram-mermaid-uqpe9zx .flowchart-link{stroke:#666;fill:none;}#mermaid-diagram-mermaid-uqpe9zx .edgeLabel{background-color:white;text-align:center;}#mermaid-diagram-mermaid-uqpe9zx .edgeLabel p{background-color:white;}#mermaid-diagram-mermaid-uqpe9zx .edgeLabel rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-uqpe9zx .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-diagram-mermaid-uqpe9zx .cluster rect{fill:hsl(0, 0%, 98.9215686275%);stroke:#707070;stroke-width:1px;}#mermaid-diagram-mermaid-uqpe9zx .cluster text{fill:#333;}#mermaid-diagram-mermaid-uqpe9zx .cluster span{color:#333;}#mermaid-diagram-mermaid-uqpe9zx div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(-160, 0%, 93.3333333333%);border:1px solid #707070;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-diagram-mermaid-uqpe9zx .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#000000;}#mermaid-diagram-mermaid-uqpe9zx rect.text{fill:none;stroke-width:0;}#mermaid-diagram-mermaid-uqpe9zx .icon-shape,#mermaid-diagram-mermaid-uqpe9zx .image-shape{background-color:white;text-align:center;}#mermaid-diagram-mermaid-uqpe9zx .icon-shape p,#mermaid-diagram-mermaid-uqpe9zx .image-shape p{background-color:white;padding:2px;}#mermaid-diagram-mermaid-uqpe9zx .icon-shape rect,#mermaid-diagram-mermaid-uqpe9zx .image-shape rect{opacity:0.5;background-color:white;fill:white;}#mermaid-diagram-mermaid-uqpe9zx :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}APPROVEDENYMISSED DEADLINEApproval decision made
+before T_DECISION deadline?APPROVED
+Lock letterDENIED
+Lock letterDEEMED APPROVED
+Auto-generated
 
-## Gate Decision Points
+Timeline Example: Contractor License
+textDay 0 (Jan 15): Application submitted
+   └─ INTAKE → COMPLETENESS_CHECK
+      ✓ Insurance document
+      ✓ Bonding document
+      ✓ Background check form
 
-### Gate: Completeness (B → C or D)
-
-```mermaid
-graph LR
-    A{All required docs<br/>for license type<br/>present?}
-    A -->|YES| B[ASSESSMENT]
-    A -->|NO| C[REQUEST CLARIFICATION<br/>Clock tolled]
-    C -->|Docs provided| B
-```
-
-### Gate: Inspection Required (C → E or F)
-
-```mermaid
-graph LR
-    A{Inspection<br/>required for<br/>this license<br/>type?}
-    A -->|YES| B[SCHEDULE INSPECTION<br/>Set T_INSPECTION]
-    A -->|NO| C[SKIP TO APPROVAL<br/>No inspection needed]
-```
-
-### Gate: Inspection Results (H → F or I)
-
-```mermaid
-graph LR
-    A{Inspection<br/>result?}
-    A -->|PASS| B[APPROVAL REVIEW]
-    A -->|FAIL/CONDITIONAL| C[REQUEST CORRECTIONS<br/>Clock tolled]
-    C -->|Resubmit| A
-```
-
-### Gate: Approval Decision (J → K, L, or M)
-
-```mermaid
-graph LR
-    A{Approval<br/>decision made<br/>before T_DECISION<br/>deadline?}
-    A -->|APPROVE| B[APPROVED<br/>Lock letter]
-    A -->|DENY| C[DENIED<br/>Lock letter]
-    A -->|MISSED DEADLINE| D[DEEMED APPROVED<br/>Auto-generated]
-```
-
----
-
-## Timeline Example: Contractor License
-
-```
-Day 0 (Jan 15): Application submitted
-  └─ INTAKE → COMPLETENESS_CHECK
-     ✓ Insurance document
-     ✓ Bonding document
-     ✓ Background check form
-  
 Day 1 (Jan 16): Completeness verified
-  └─ COMPLETENESS_CHECK → ASSESSMENT
-  
+   └─ COMPLETENESS_CHECK → ASSESSMENT
+
 Day 2 (Jan 17): Inspection scheduled
-  └─ ASSESSMENT → INSPECTION_SCHEDULED → INSPECTION_PENDING
-     Inspector: Building Inspector Jones
-     Date: Jan 19
-  
+   └─ ASSESSMENT → INSPECTION_SCHEDULED → INSPECTION_PENDING
+      Inspector: Building Inspector Jones
+      Date: Jan 19
+
 Day 4 (Jan 19): Inspection conducted
-  └─ INSPECTION_PENDING → INSPECTION_REVIEW
-     Result: PASS
-  
+   └─ INSPECTION_PENDING → INSPECTION_REVIEW
+      Result: PASS
+
 Day 5 (Jan 20): Approval reviewed
-  └─ INSPECTION_REVIEW → APPROVAL_REVIEW → APPROVED
-     Authority: Building Inspector Jones
-     Approval recorded and LOCKED
-  
+   └─ INSPECTION_REVIEW → APPROVAL_REVIEW → APPROVED
+      Authority: Building Inspector Jones
+      Approval recorded and LOCKED
+
 Day 5 (Jan 20): License issued
-  └─ APPROVED → CLOSED
-     License Certificate generated (LOCKED)
-     LicenseExpiry: Jan 20, 2027 (1 year)
-     
-T90 Window Opens: Jan 20 - Feb 19 (30 calendar days)
-  Applicant can appeal if desired
-```
+   └─ APPROVED → CLOSED
+      License Certificate generated (LOCKED)
+      LicenseExpiry:     Jan 20, 2027 (1 year)
+      T90 Window Opens:  Jan 20 – Feb 19 (30 calendar days)
+      Applicant can appeal if desired
 
----
+Error Paths
 
-## Error Paths
+If T_INTAKE missed
+→ INTAKE → REQUEST_CLARIFICATION (hard stop at deadline)
+If T_DECISION missed
+→ APPROVAL_REVIEW → DEEMED_APPROVED (automatic)
+ApprovalStatus = APPROVED
+License issued automatically
+If Inspection fails
+→ INSPECTION_REVIEW → REQUEST_CORRECTIONS (clock tolled)
+Clock paused until corrections submitted + re-inspection
 
-```
-If T_INTAKE missed:
-  INTAKE → REQUEST_CLARIFICATION (hard stop at deadline)
-  
-If T_DECISION missed:
-  APPROVAL_REVIEW → DEEMED_APPROVED (automatic)
-  ApprovalStatus = APPROVED
-  License issued automatically
-  
-If Inspection fails:
-  INSPECTION_REVIEW → REQUEST_CORRECTIONS (tolled)
-  Clock paused until corrections submitted + re-inspection
-```
 
----
-
-*Process flowchart shows all states, transitions, gates, and conditions.*
+Process flowchart shows all states, transitions, gates, and conditions.
