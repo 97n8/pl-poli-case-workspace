@@ -13,63 +13,71 @@
       --link: #7c3aed;
       --code-bg: #f9fafb;
       --border: #e5e7eb;
+      --diagram-bg: #fdfdff;
     }
     body {
       font-family: system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       margin: 0;
-      padding: 2rem;
-      line-height: 1.6;
-      max-width: 1100px;
+      padding: 2.5rem 1.5rem;
+      line-height: 1.65;
+      max-width: 1150px;
       margin: 0 auto;
     }
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
     header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3.5rem;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 1.5rem;
+      padding-bottom: 2rem;
     }
-    h1, h2, h3 { color: var(--accent); }
+    h1, h2, h3 { color: var(--accent); margin-top: 0; }
+    h4 { color: #4c1d95; margin: 1rem 0 0.5rem; font-size: 1.1rem; }
     .boundary {
       font-style: italic;
       font-weight: 500;
-      margin: 1rem 0;
-      padding: 1.2rem;
+      margin: 1.5rem 0 2rem;
+      padding: 1.5rem;
       background: var(--code-bg);
-      border-left: 4px solid var(--accent);
+      border-left: 5px solid var(--accent);
+      border-radius: 6px;
     }
-    .diagram-inline {
-      margin: 2rem 0;
-      padding: 1rem;
+    .diagram-inline, .module-diagram {
+      margin: 2.5rem 0;
+      padding: 1.5rem;
       background: white;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: translateY(10px);
     }
-    ul, ol { padding-left: 1.4rem; }
-    .section { margin: 3rem 0; }
-    .audience { font-size: 0.95rem; margin-top: 1rem; color: #444; }
+    .diagram-inline.visible, .module-diagram.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .module-diagram {
+      background: var(--diagram-bg);
+      border-color: var(--accent);
+      border-width: 1px;
+    }
+    ul { list-style: none; padding-left: 0; margin: 1rem 0; }
+    ul li { margin: 0.6rem 0; }
+    .section { margin: 4.5rem 0; }
+    .audience { font-size: 0.95rem; color: #555; margin-top: 1.2rem; }
+    .note { font-size: 0.9rem; color: #666; font-style: italic; margin: 1rem 0 0; }
     footer {
       text-align: center;
-      margin-top: 5rem;
+      margin-top: 7rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
       font-size: 0.9rem;
       color: #6b7280;
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
     }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      border: 0;
-    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
   </style>
 </head>
 <body>
@@ -88,9 +96,9 @@
       <strong>Secondary audiences</strong>: External auditors, researchers, future collaborators needing traceable context.
     </p>
   </header>
+
   <main id="main">
     <nav aria-label="VAULT Master Packet Navigation">
-      <!-- Orientation -->
       <section class="section">
         <h2>30-Minute Orientation Path</h2>
         <ol>
@@ -100,38 +108,62 @@
           <li><a href="./CASE_Workspace.md">CASE_Workspace.md</a> – Structure & governance model</li>
         </ol>
       </section>
-      <!-- Core visual -->
+
       <section class="section">
         <h2>Core Visual – VAULT Canonical Governance Cycle</h2>
         <div class="diagram-inline">
           <pre class="mermaid">
-graph LR
-    A[Authority Declared] -->|Authority Declared| B[CASE & Record<br>Established]
-    B -->|CASE Initiated & Recorded| C[Governed Flow<br>Executed]
-    C -->|Flow Executed Under Rules| D[Time<br>Enforced]
-    D -->|Temporal Controls Applied| E[Decision<br>Recorded]
-    E -->|Outcome Captured| F[Archival &<br>Retention]
-    F -->|Records Archived / Retained| G[Governance Review<br>& Authority Update]
-    G -->|Authority Reviewed & Updated| A
-classDef purple fill:#d7bde2,stroke:#8e44ad,stroke-width:2px,color:#000,font-weight:bold
-classDef blue fill:#a9d4e6,stroke:#2980b9,stroke-width:2px,color:#000,font-weight:bold
-classDef green fill:#a9dfbf,stroke:#27ae60,stroke-width:2px,color:#000,font-weight:bold
-classDef orange fill:#f9e79f,stroke:#f39c12,stroke-width:2px,color:#000,font-weight:bold
-classDef red fill:#f5b7b1,stroke:#c0392b,stroke-width:2px,color:#000,font-weight:bold
-classDef gray fill:#d5d8dc,stroke:#7f8c8d,stroke-width:2px,color:#000,font-weight:bold
-class A,G purple
-class B blue
-class C green
-class D orange
-class E red
-class F gray
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Inter, Segoe UI, Arial",
+    "fontSize": "14px",
+    "primaryColor": "#f8fafc",
+    "primaryTextColor": "#0f172a",
+    "primaryBorderColor": "#334155",
+    "lineColor": "#334155"
+  }
+}}%%
+
+flowchart LR
+    A[Authority Declared]
+    B[CASE & Record Established]
+    C[Governed Flow Executed]
+    D[Time Enforced]
+    E[Decision Recorded]
+    F[Output Generated]
+    G[Archival & Retention]
+    H[Governance Review & Authority Update]
+
+    A --> B --> C --> D --> E --> F --> G --> H --> A
+
+    %% Semantic Classes
+    class A authority
+    class B case
+    class C flow
+    class D time
+    class E decision
+    class F output
+    class G archive
+    class H review
+
+    %% Class Styling (GitHub Safe)
+    classDef authority fill:#ede9fe,stroke:#6b21a8,stroke-width:2px
+    classDef case fill:#e0f2fe,stroke:#0369a1,stroke-width:2px
+    classDef flow fill:#dcfce7,stroke:#047857,stroke-width:2px
+    classDef time fill:#ffedd5,stroke:#c2410c,stroke-width:2px
+    classDef decision fill:#fee2e2,stroke:#b91c1c,stroke-width:2px
+    classDef output fill:#e0f2fe,stroke:#075985,stroke-width:2px
+    classDef archive fill:#f1f5f9,stroke:#334155,stroke-width:2px
+    classDef review fill:#fae8ff,stroke:#7e22ce,stroke-width:2px
           </pre>
-          <p><small>The foundational closed-loop governance cycle. All module flows and operations are subordinate to this model.</small></p>
+          <p class="note">Foundational closed-loop governance cycle. All module operations are subordinate to this model.</p>
         </div>
       </section>
-      <!-- Modules -->
+
       <section class="section">
         <h2>The Six VAULT Modules – Complete SOP Access</h2>
+
         <h3>CLERK Module</h3>
         <ul>
           <li><a href="./00_CLERK_Charter.md">Charter</a></li>
@@ -139,23 +171,152 @@ class F gray
           <li><a href="./VAULT_CLERK_Governance_Architecture_v1.md">Governance Architecture</a></li>
           <li><a href="./VAULT_CLERK_Process_Flowchart_v1.md">Process Flowchart</a></li>
         </ul>
+        <div class="module-diagram">
+          <h4>CLERK Process Flowchart</h4>
+          <pre class="mermaid">
+graph TD
+    A[INTAKE] -->|Receipt recorded| B[COMPLETENESS_CHECK]
+    B -->|All required docs| C[ASSESSMENT]
+    B -->|Missing docs| D[REQUEST_CLARIFICATION]
+    D -->|Docs provided| C
+    
+    C -->|InspectionRequired=true| E[INSPECTION_SCHEDULED]
+    C -->|InspectionRequired=false| F[APPROVAL_REVIEW]
+    
+    E -->|Inspector assigned| G[INSPECTION_PENDING]
+    G -->|Inspection completed| H[INSPECTION_REVIEW]
+    
+    H -->|PASS| F
+    H -->|FAIL/CONDITIONAL| I[REQUEST_CORRECTIONS]
+    I -->|Corrections submitted| H
+    
+    F -->|Approval authority reviews| J[APPROVAL_PENDING]
+    J -->|Authority approves| K[APPROVED]
+    J -->|Authority denies| L[DENIED]
+    J -->|T_DECISION deadline missed| M[DEEMED_APPROVED]
+    
+    K -->|License issued| N[CLOSED]
+    L -->|Denial final| N
+    M -->|Auto-approval recorded| N
+    
+    N -->|Case locked| O[LOCKED]
+    
+    style A fill:#e1f5ff
+    style N fill:#c8e6c9
+    style O fill:#ffccbc
+    style L fill:#ffcdd2
+    style M fill:#fff9c4
+          </pre>
+          <p class="note">Canonical CASE-based licensing/permit process flow with inspection gates and deemed approval enforcement.</p>
+        </div>
+
         <h3>FISCAL Module</h3>
         <ul>
           <li><a href="./00_FISCAL_Charter.md">Charter</a></li>
           <li><a href="./VAULT_FISCAL_Encoding_Specification_v1.md">Encoding Specification</a></li>
           <li><a href="./VAULT_FISCAL_Governance_Architecture_v1.md">Governance Architecture</a></li>
         </ul>
+        <div class="module-diagram">
+          <h4>FISCAL Process Flowchart</h4>
+          <pre class="mermaid">
+graph TD
+    A[INTAKE] -->|Invoice received| B[VALIDATION]
+    B -->|All fields present| C[MATCHING]
+    B -->|Incomplete| A
+    
+    C -->|3-way match| D{Match<br/>result?}
+    D -->|MATCHED| E[BUDGET_CHECK]
+    D -->|VARIANCE| F[VARIANCE_REVIEW]
+    D -->|NO_PO/NO_RECEIPT| G[REQUEST_DOCUMENTS]
+    
+    F -->|Explained & approved| E
+    G -->|Documents received| C
+    
+    E -->|Budget available| H[APPROVAL_ROUTING]
+    E -->|Insufficient| I[ESCALATE_BUDGET]
+    I -->|Budget approved| H
+    I -->|Budget denied| J[REJECTED]
+    
+    H -->|Authority level| K[APPROVAL_PENDING]
+    K -->|Approved| L[APPROVED]
+    K -->|Denied| J[REJECTED]
+    
+    L -->|Payment scheduled| M[PAYMENT_PROCESSING]
+    M -->|Payment confirmed| N[RECONCILIATION]
+    
+    N -->|GL posted & reconciled| O[CLOSED]
+    
+    J -->|Denial letter sent| O
+    
+    style A fill:#e1f5ff
+    style O fill:#c8e6c9
+    style J fill:#ffcdd2
+    style L fill:#a5d6a7
+    style N fill:#fff9c4
+          </pre>
+          <p class="note">Canonical CASE-based financial process flow with 3-way match and approval gates.</p>
+        </div>
+
         <h3>FIX Module</h3>
         <ul>
           <li><a href="./00_FIX_Charter.md">Charter</a></li>
           <li><a href="./VAULT_FIX_Encoding_Specification_v1.md">Encoding Specification</a></li>
           <li><a href="./VAULT_FIX_Governance_Architecture_v1.md">Governance Architecture</a></li>
         </ul>
+        <div class="module-diagram">
+          <h4>FIX Process Flowchart</h4>
+          <pre class="mermaid">
+graph TD
+    A[INTAKE] -->|Request received| B[TRIAGE]
+    B -->|Priority assigned| C[SCHEDULING]
+    
+    C -->|In-house? | D[ASSIGN_INTERNAL]
+    C -->|Contractor? | E[ASSIGN_CONTRACTOR]
+    
+    D -->|Tech assigned| F[IN_PROGRESS]
+    E -->|Quote approved| F
+    
+    F -->|Work completed| G[COMPLETION_REVIEW]
+    
+    G -->|PASS| H[VERIFIED]
+    G -->|FAIL| I[REQUEST_CORRECTIONS]
+    I -->|Corrections made| G
+    
+    H -->|Completion logged| J[CLOSED]
+    
+    style A fill:#e1f5ff
+    style J fill:#c8e6c9
+    style G fill:#fff9c4
+    style H fill:#a5d6a7
+          </pre>
+          <p class="note">Canonical CASE-based work order/maintenance process flow with priority triage and verification gates.</p>
+        </div>
+
         <h3>ONBOARD Module</h3>
         <ul>
           <li><a href="./00_ONBOARD_Charter.md">Charter</a></li>
           <li><a href="./VAULT_ONBOARD_Governance_Encoding_v1.md">Governance Encoding</a></li>
         </ul>
+        <div class="module-diagram">
+          <h4>ONBOARD Process Flowchart</h4>
+          <pre class="mermaid">
+graph TD
+    A[INTAKE] -->|Offer accepted| B[PRE_START]
+    B -->|Background check| C[DAY_ONE]
+    
+    C -->|Orientation completed| D[SYSTEMS_SETUP]
+    D -->|Accounts created| E[TRAINING]
+    
+    E -->|All modules completed| F[READINESS_REVIEW]
+    F -->|Manager confirms| G[CLOSED]
+    
+    style A fill:#e1f5ff
+    style G fill:#c8e6c9
+    style F fill:#fff9c4
+          </pre>
+          <p class="note">Canonical CASE-based employee onboarding process flow with task completion gates.</p>
+        </div>
+
         <h3>PRR Module</h3>
         <ul>
           <li><a href="./00_PRR_Charter.md">Charter</a></li>
@@ -164,13 +325,120 @@ class F gray
           <li><a href="./VAULTPRR_Process_Flowchart_v1.md">Process Flowchart</a></li>
           <li><a href="./VAULTPRR_System_Architecture_v1.md">System Architecture</a></li>
         </ul>
+        <div class="module-diagram">
+          <h4>PRR Process Flowchart</h4>
+          <pre class="mermaid">
+flowchart TB
+    %% VAULTPRR™ — Massachusetts Public Records Requests
+    %% Canonical CASE-Based Architecture v1.0
+
+    CASE["PRR CASE Workspace"]:::core
+
+    CASE --> TIMERS["Statutory Timers\nT10 | T20 | T25 | T90"]
+    CASE --> ASSETS["Assets\n(All Documents)"]
+    CASE --> LOG["Audit Log"]
+    CASE --> PROCESS["Process Execution"]
+
+    PROCESS --> START([S000: PRR Received])
+    START --> INTAKE["S100: Intake\nFormStep"]
+    INTAKE --> CALC["S200: Compute Timers\nSystemEvent"]
+    CALC --> ASSESS["S300: RAO Initial Assessment\nReviewStep | KEEPER"]
+
+    ASSESS -->|Clarification Needed| CLARIFY["S310: Request Clarification"]
+    CLARIFY --> WAIT["S320: Wait for Response\nWaitState | Clock Tolled"]
+    WAIT -->|Response Received| TOLL["Toll & Recompute Timers"]
+    TOLL --> ASSESS
+    WAIT -->|30 days no response| TIMEOUT["S991: Timeout\nTerminal"]
+
+    ASSESS -->|No Responsive Records| NOREC["S910: No Records Letter\nDocumentStep | LOCKED"]
+    NOREC --> CLOSE_NO["Close CASE\nOutcome: No Records"]
+
+    ASSESS --> FORECAST{"S330: Forecast > T25?"}
+    FORECAST -->|No| GATHER
+    FORECAST -->|Yes + Agreement| AGREED["S340: Extension Agreement\nLOCKED"]
+    FORECAST -->|Yes + No Agreement| PETITION["S350: Petition to Supervisor\nLOCKED"]
+    AGREED --> GATHER
+    PETITION --> GATHER
+
+    ASSESS -->|Proceed| GATHER["S400: Gather / Search Records"]
+    GATHER --> EXEMPT["S500: Exemption Review\nReviewStep | KEEPER"]
+
+    EXEMPT -->|All Exempt| DENY["S920: Withholding Letter\nLOCKED"]
+    DENY --> CLOSE_DENY["Close CASE\nOutcome: Withheld"]
+
+    EXEMPT -->|Partial or None| REDACT{"Redactions Needed?"}
+    REDACT -->|Yes| APPLY["S510: Apply Redactions"]
+    APPLY --> LEGAL["S520: Counsel Review\nGateStep"]
+    LEGAL -->|Revise| APPLY
+    LEGAL -->|Approved| PACKAGE["S600: Response Package\nLOCKED"]
+    REDACT -->|No| PACKAGE
+
+    PACKAGE --> T10CHECK{"S700: T10 Met?"}
+    T10CHECK -->|No| FEEWAIVE["FeesAllowed = false"]
+    T10CHECK -->|Yes| FEES{"Fees Required?"}
+
+    FEES -->|Yes| ESTIMATE["Itemized Fee Estimate"]
+    ESTIMATE --> INVOICE["S710: Invoice"]
+    INVOICE --> PAYMENT{"S720: Payment Received?"}
+    PAYMENT -->|No - 30 days| CLOSE_NONPAY["S930: Close CASE\nOutcome: Non-Payment"]
+    PAYMENT -->|Yes| DELIVER["S800: Deliver Records"]
+
+    FEES -->|No| DELIVER
+    FEEWAIVE --> DELIVER
+
+    DELIVER --> CLOSE_OK["S900: Close CASE\nOutcome: Delivered"]
+
+    classDef core fill:#1e3a8a,stroke:#60a5fa,color:#ffffff,font-weight:bold
+    classDef terminal fill:#7f1d1d,stroke:#fca5a5,color:#ffffff
+    classDef locked fill:#065f46,stroke:#6ee7b7,color:#ffffff
+    classDef system fill:#4c1d95,stroke:#c4b5fd,color:#ffffff
+
+    class CASE core
+    class CLOSE_NO,CLOSE_DENY,CLOSE_NONPAY,CLOSE_OK,TIMEOUT terminal
+    class NOREC,DENY,AGREED,PETITION,PACKAGE locked
+    class CALC,T10CHECK,FEEWAIVE system
+          </pre>
+          <p class="note">Canonical CASE-based public records request process flow with statutory timers and gates.</p>
+        </div>
+
         <h3>TIME Module</h3>
         <ul>
           <li><a href="./00_TIME_Charter.md">Charter</a></li>
           <li><a href="./VAULT_TIME_Governance_Encoding_v1.md">Governance Encoding</a></li>
         </ul>
+        <div class="module-diagram">
+          <h4>TIME Process Flowchart</h4>
+          <pre class="mermaid">
+graph TD
+    A[ENTRY] -->|Employee submits| B[VALIDATION]
+    B -->|Hours valid| C[ALLOCATION]
+    B -->|Invalid| A
+    
+    C -->|Project codes assigned| D[OVERTIME_CHECK]
+    
+    D -->|Overtime > 0| E[FINANCE_REVIEW]
+    D -->|No overtime| F[SUPERVISOR_REVIEW]
+    
+    E -->|Overtime approved| F
+    E -->|Overtime denied| G[REQUEST_CORRECTION]
+    G -->|Corrected| C
+    
+    F -->|Supervisor approves| H[APPROVED]
+    F -->|Supervisor denies| G
+    
+    H -->|Approved| I[PAYROLL_POSTING]
+    I -->|GL posted| J[CLOSED]
+    
+    style A fill:#e1f5ff
+    style J fill:#c8e6c9
+    style H fill:#a5d6a7
+    style E fill:#fff9c4
+    style G fill:#ffcdd2
+          </pre>
+          <p class="note">Canonical CASE-based timesheet process flow with overtime gates and payroll posting.</p>
+        </div>
       </section>
-      <!-- Consolidated & Cross-cutting -->
+
       <section class="section">
         <h2>Consolidated & Cross-Cutting Artifacts</h2>
         <ul>
@@ -189,7 +457,7 @@ class F gray
           <li><a href="./Glossary.md">Glossary</a></li>
         </ul>
       </section>
-      <!-- Decisions & Scope -->
+
       <section class="section">
         <h2>Decisions, Scope & Governance References</h2>
         <ul>
@@ -212,7 +480,16 @@ class F gray
     mermaid.initialize({
       startOnLoad: true,
       theme: 'default',
-      securityLevel: 'loose'
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, curve: 'basis' }
+    });
+    // Smooth reveal for diagrams
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.diagram-inline, .module-diagram').forEach((el, index) => {
+          setTimeout(() => el.classList.add('visible'), index * 200);
+        });
+      }, 400);
     });
   </script>
 </body>
