@@ -1,4 +1,4 @@
-# VAULT FISCAL Module — Charter
+text# VAULT FISCAL Module — Charter
 **Accounts Payable • Procurement • Budget Encumbrance • Municipal Finance**
 
 ---
@@ -117,175 +117,16 @@ Pre-commit funds on PO creation; check unencumbered balance before approval/paym
 
 Asset Types Table
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 AssetTypeRetentionClassLocked?PurposeInvoiceKEEPERYesOriginal vendor-submitted invoicePurchaseOrderKEEPERYesPre-authorization to vendorReceiptKEEPERYesProof of goods/services received/renderedApprovalSignatureKEEPERYesDigitally signed approval (per §56)VarianceReportREFERENCENoDocumentation of differences & resolutionsPaymentConfirmationTRANSACTIONALNoBank/treasurer proof of disbursement
 
 Decision Tables
 Gate 1: 3-Way Match Variance
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Invoice AmtPO AmtReceipt AmtMatch?Action / Blocker$1,000$1,000$1,000YES ✓Proceed$1,000$900$1,000NOVariance: Invoice exceeds PO; require approval$1,000$1,000$950NOVariance: Receipt under-delivered; investigate$1,100$1,000$1,100NOVariance: Over-spend; budget authority sign-off
 Resolution: Approved variance → lock ApprovalSignature; unresolved → blocker.
 Gate 2: Budget Availability
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Requested AmtAvailableEncumberedUnencumberedProceed?Action$5,000$10,000$0$10,000YES ✓Proceed$5,000$3,000$0$3,000NOReject: Insufficient$5,000$8,000$5,000$3,000NOReject: Over-encumbered$5,000$10,000$6,000$4,000YES ✓Proceed (if sufficient)
 Approval Matrix (Threshold-Based per §56 & Policy)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Amount RangeAuthority RequiredSignature Level$0 – $1,000Department HeadRequired$1,001 – $5,000Finance DirectorRequired$5,001 – $25,000TreasurerRequired$25,001+Board of SelectmenRequired
 
