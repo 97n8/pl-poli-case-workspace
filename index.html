@@ -1,72 +1,232 @@
-# VAULT Master Engineering Packet v1.0 — Index & Navigation Hub
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAULT Master Engineering Packet v1.0 — Index & Navigation Hub</title>
+    <style>
+        @page { margin: 0.75in 0.75in; size: letter; }
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #000;
+            max-width: 7.5in;
+            margin: 0 auto;
+            padding: 0.5in 0.5in 1in;
+            background: #fff;
+        }
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin: 0 0 0.5em;
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.3em;
+        }
+        .header-block {
+            text-align: center;
+            margin-bottom: 1.5em;
+            font-size: 10pt;
+            color: #333;
+        }
+        .header-block strong { font-weight: bold; }
+        h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 1.5em 0 0.75em;
+            border-bottom: 1px solid #666;
+            padding-bottom: 0.2em;
+        }
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 1.2em 0 0.6em;
+        }
+        p, li {
+            margin: 0.6em 0;
+        }
+        ul, ol {
+            margin: 0.6em 0 0.6em 1.8em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 0.4em 0.6em;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+        .module-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.8em 0;
+        }
+        .module-list li {
+            margin: 0.5em 0;
+            padding-left: 1.8em;
+            text-indent: -1.8em;
+        }
+        .module-list li strong {
+            display: inline-block;
+            width: 6em;
+        }
+        .code-block {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 1em;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 9.5pt;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        .footer-note {
+            font-size: 9pt;
+            color: #444;
+            text-align: center;
+            margin-top: 2em;
+            border-top: 1px solid #ccc;
+            padding-top: 0.8em;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
 
-**VAULT** is a governed framework of immutable CASE containers and canonical models that enforce institutional legitimacy by preventing unowned risk transfer onto individuals.
+    <h1>VAULT Master Engineering Packet v1.0<br>Index & Navigation Hub</h1>
 
-**Version:** 1.0 — Locked January 12, 2026  
-**Authority:** PublicLogic LLC  
-**Status:** Authoritative governance reference — all implementations, modules, and derivatives subordinate to this packet  
-**GitHub Pages:** https://97n8.github.io/pl-poli-case-workspace/  
-**Repo:** https://github.com/97n8/pl-poli-case-workspace
+    <div class="header-block">
+        <strong>VAULT</strong> is a governed framework of immutable CASE containers and canonical models that enforce institutional legitimacy by preventing unowned risk transfer onto individuals.<br><br>
+        <strong>Version:</strong> 1.0 — Locked January 12, 2026<br>
+        <strong>Authority:</strong> PublicLogic LLC<br>
+        <strong>Status:</strong> Authoritative governance reference — all implementations, modules, and derivatives subordinate to this packet<br>
+        <strong>GitHub Pages:</strong> <a href="https://97n8.github.io/pl-poli-case-workspace/">https://97n8.github.io/pl-poli-case-workspace/</a><br>
+        <strong>Repository:</strong> <a href="https://github.com/97n8/pl-poli-case-workspace">https://github.com/97n8/pl-poli-case-workspace</a>
+    </div>
 
-## 30-Minute Orientation Path (Recommended First Pass)
+    <h2>30-Minute Orientation Path (Recommended First Pass)</h2>
+    <p>Read these four documents <strong>in this exact order</strong> to understand what VAULT is, why it exists, its boundaries, and whether it applies:</p>
+    <ol>
+        <li><a href="./Read_First.md">Read_First.md</a> — What this packet is and how to use it (5–7 min)</li>
+        <li><a href="./Audience_and_Use.md">Audience_and_Use.md</a> — Who this is for + escalation paths (5 min)</li>
+        <li><a href="./What_Is_Out_of_Scope.md">What_Is_Out_of_Scope.md</a> — Explicit exclusions & boundaries (5 min)</li>
+        <li><a href="./01_VAULT_CORE_CANON/CASE_Workspace.md">CASE_Workspace.md</a> — The root immutable CASE container (10–15 min)</li>
+    </ol>
+    <p>After these, you will know the purpose, authority model, and critical constraints. Proceed based on your role.</p>
 
-Read these four documents **in this exact order** to understand what VAULT is, why it exists, its boundaries, and whether it applies:
+    <h2>Core Canon — The Six Must-Master Documents</h2>
+    <p>These six files define the entire VAULT framework. Master them first.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Document</th>
+                <th>Purpose</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Read_First.md</td><td>Entry point & orientation</td><td><a href="./Read_First.md">Open</a></td></tr>
+            <tr><td>2</td><td>Authority_and_Scope.md</td><td>Binding authority & institutional purpose</td><td><a href="./01_VAULT_CORE_CANON/Authority_and_Scope.md">Open</a></td></tr>
+            <tr><td>3</td><td>CASE_Workspace.md</td><td>Root immutable work container (critical)</td><td><a href="./01_VAULT_CORE_CANON/CASE_Workspace.md">Open</a></td></tr>
+            <tr><td>4</td><td>Record_Classes.md</td><td>Official record classification & lifecycle</td><td><a href="./01_VAULT_CORE_CANON/Record_Classes.md">Open</a></td></tr>
+            <tr><td>5</td><td>Timer_and_Deadline_Model.md</td><td>Statutory deadline & timer enforcement</td><td><a href="./01_VAULT_CORE_CANON/Timer_and_Deadline_Model.md">Open</a></td></tr>
+            <tr><td>6</td><td>Audit_and_Evidence_Model.md</td><td>Immutable trust, evidence & audit trail</td><td><a href="./01_VAULT_CORE_CANON/Audit_and_Evidence_Model.md">Open</a></td></tr>
+        </tbody>
+    </table>
 
-1. **[Read_First.md](./Read_First.md)** — What this packet is and how to use it (5–7 min)  
-2. **[Audience_and_Use.md](./Audience_and_Use.md)** — Who this is for + escalation paths (5 min)  
-3. **[What_Is_Out_of_Scope.md](./What_Is_Out_of_Scope.md)** — Explicit exclusions & boundaries (5 min)  
-4. **[CASE_Workspace.md](./01_VAULT_CORE_CANON/CASE_Workspace.md)** — The root immutable CASE container (10–15 min)
+    <h2>Role-Based Next Steps</h2>
 
-After these, you will know the purpose, authority model, and critical constraints. Proceed based on your role.
+    <h3>Engineer / Architect / Implementer</h3>
+    <ul>
+        <li>Complete the 30-minute path above</li>
+        <li>Read: <a href="./03_IMPLEMENTATION_GUIDANCE/What_Engineers_May_Choose.md">What_Engineers_May_Choose.md</a> and <a href="./03_IMPLEMENTATION_GUIDANCE/What_Is_Non_Negotiable.md">What_Is_Non_Negotiable.md</a></li>
+        <li>Study reference implementation: <a href="./02_MODULES/PRR/00_PRR_Charter.md">PRR Charter</a> + <a href="./02_MODULES/PRR/VAULTPRR_Process_Flowchart_v1.md">VAULTPRR_Process_Flowchart_v1.md</a></li>
+        <li>Then explore your target module(s) starting with its charter</li>
+    </ul>
 
-## Core Canon — The Six Must-Master Documents
+    <h3>Governance / Legal / Compliance</h3>
+    <ul>
+        <li>Complete 30-minute path</li>
+        <li>Focus on charters + non-negotiables for each relevant module</li>
+        <li>Reference: <a href="./Escalation_SLA.md">Escalation_SLA.md</a> and <a href="./99_APPENDICES/Glossary.md">Glossary.md</a></li>
+    </ul>
 
-These six files define the entire VAULT framework. Master them first.
+    <h3>Operations / End-User / Support</h3>
+    <ul>
+        <li>Start with <a href="./Read_First.md">Read_First.md</a> + relevant module charter</li>
+        <li>Skim <a href="./01_VAULT_CORE_CANON/CASE_Workspace.md">CASE_Workspace.md</a> to understand the container model</li>
+        <li>Use <a href="./99_APPENDICES/Glossary.md">Glossary.md</a> for terms</li>
+    </ul>
 
-| # | Document                          | Purpose                                      | Link                                                                 |
-|---|-----------------------------------|----------------------------------------------|----------------------------------------------------------------------|
-| 1 | Read_First.md                     | Entry point & orientation                    | [Open](./Read_First.md)                                              |
-| 2 | Authority_and_Scope.md            | Binding authority & institutional purpose    | [Open](./01_VAULT_CORE_CANON/Authority_and_Scope.md)                 |
-| 3 | CASE_Workspace.md                 | Root immutable work container (critical)     | [Open](./01_VAULT_CORE_CANON/CASE_Workspace.md)                      |
-| 4 | Record_Classes.md                 | Official record classification & lifecycle   | [Open](./01_VAULT_CORE_CANON/Record_Classes.md)                      |
-| 5 | Timer_and_Deadline_Model.md       | Statutory deadline & timer enforcement       | [Open](./01_VAULT_CORE_CANON/Timer_and_Deadline_Model.md)            |
-| 6 | Audit_and_Evidence_Model.md       | Immutable trust, evidence & audit trail      | [Open](./01_VAULT_CORE_CANON/Audit_and_Evidence_Model.md)            |
+    <h2>The Six VAULT Modules — Direct Entry Points</h2>
+    <p>Start with the charter for your focus area:</p>
+    <ul class="module-list">
+        <li><strong>PRR</strong> (Public Records Requests) → <a href="./02_MODULES/PRR/00_PRR_Charter.md">00_PRR_Charter.md</a></li>
+        <li><strong>CLERK</strong> (Records / Licensing) → <a href="./02_MODULES/CLERK/00_CLERK_Charter.md">00_CLERK_Charter.md</a></li>
+        <li><strong>FISCAL</strong> (Budget / Invoices / Procurement) → <a href="./02_MODULES/FISCAL/00_FISCAL_Charter.md">00_FISCAL_Charter.md</a></li>
+        <li><strong>TIME</strong> (Deadlines / Scheduling) → <a href="./02_MODULES/TIME/00_TIME_Charter.md">00_TIME_Charter.md</a></li>
+        <li><strong>FIX</strong> (Corrections / Work Orders) → <a href="./02_MODULES/FIX/00_FIX_Charter.md">00_FIX_Charter.md</a></li>
+        <li><strong>ONBOARD</strong> (Setup / Training) → <a href="./02_MODULES/ONBOARD/00_ONBOARD_Charter.md">00_ONBOARD_Charter.md</a></li>
+    </ul>
 
-## Role-Based Next Steps
+    <h2>Consolidated References & Visuals</h2>
+    <ul>
+        <li>All process flowcharts → <a href="./02_MODULES/FLOWCHARTS_ALL_MODULES_v1.md">FLOWCHARTS_ALL_MODULES_v1.md</a></li>
+        <li>All system architectures → <a href="./02_MODULES/SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md">SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md</a></li>
+        <li>Cross-module coordination → <a href="./Cross_Module_Interactions.md">Cross_Module_Interactions.md</a></li>
+        <li>Full glossary → <a href="./99_APPENDICES/Glossary.md">Glossary.md</a></li>
+        <li>Change & version history → <a href="./99_APPENDICES/VERSION_HISTORY.md">VERSION_HISTORY.md</a></li>
+    </ul>
 
-### Engineer / Architect / Implementer
-- Complete the 30-minute path above  
-- Read: **[What_Engineers_May_Choose.md](./03_IMPLEMENTATION_GUIDANCE/What_Engineers_May_Choose.md)** and **[What_Is_Non_Negotiable.md](./03_IMPLEMENTATION_GUIDANCE/What_Is_Non_Negotiable.md)**  
-- Study reference implementation: **[PRR Charter](./02_MODULES/PRR/00_PRR_Charter.md)** + **[VAULTPRR_Process_Flowchart_v1.md](./02_MODULES/PRR/VAULTPRR_Process_Flowchart_v1.md)**  
-- Then explore your target module(s) starting with its charter
+    <h2>Directory Overview (Logical View)</h2>
+    <div class="code-block">
+pl-poli-case-workspace/
+├── Read_First.md                  ← START HERE
+├── INDEX.md                       ← this file
+├── Glossary.md
+├── VERSION_HISTORY.md
+├── index.html                     ← rendered landing page
+├── 01_VAULT_CORE_CANON/           ← canonical models
+├── 02_MODULES/                    ← module-specific folders
+│   ├── PRR/
+│   ├── CLERK/
+│   ├── FISCAL/
+│   ├── TIME/
+│   ├── FIX/
+│   └── ONBOARD/
+├── 03_IMPLEMENTATION_GUIDANCE/    ← flexibility vs hard rules
+└── 99_APPENDICES/                 ← reference & supporting materials
+    </div>
+    <p><em>Note: The repository is mostly flat at root for simplicity; subfolders are used where logical. Use browser search or GitHub file finder for quick location.</em></p>
 
-### Governance / Legal / Compliance
-- Complete 30-minute path  
-- Focus on charters + non-negotiables for each relevant module  
-- Reference: **[Escalation_SLA.md](./Escalation_SLA.md)** and **[Glossary.md](./99_APPENDICES/Glossary.md)**
+    <h2>Questions, Flags, Escalation</h2>
+    <ul>
+        <li>Governance/policy ambiguity? → Check charter + non-negotiables first → escalate to <a href="mailto:info@publiclogic.com">info@publiclogic.com</a></li>
+        <li>Technical feasibility / divergence? → See What_Engineers_May_Choose.md; surface early</li>
+        <li>Unclear term? → <a href="./99_APPENDICES/Glossary.md">Glossary.md</a></li>
+        <li>Update needed? → Document scenario → follow escalation path in Audience_and_Use.md</li>
+    </ul>
 
-### Operations / End-User / Support
-- Start with **[Read_First.md](./Read_First.md)** + relevant module charter  
-- Skim **[CASE_Workspace.md](./01_VAULT_CORE_CANON/CASE_Workspace.md)** to understand the container model  
-- Use **[Glossary.md](./99_APPENDICES/Glossary.md)** for terms
+    <div class="footer-note">
+        This packet is the single source of truth for VAULT governance. All module implementations, code, and operations must align with it.<br>
+        Last updated: January 12, 2026
+    </div>
 
-## The Six VAULT Modules — Direct Entry Points
-
-Start with the charter for your focus area:
-
-- **PRR** (Public Records Requests) → [00_PRR_Charter.md](./02_MODULES/PRR/00_PRR_Charter.md)  
-- **CLERK** (Records / Licensing) → [00_CLERK_Charter.md](./02_MODULES/CLERK/00_CLERK_Charter.md)  
-- **FISCAL** (Budget / Invoices / Procurement) → [00_FISCAL_Charter.md](./02_MODULES/FISCAL/00_FISCAL_Charter.md)  
-- **TIME** (Deadlines / Scheduling) → [00_TIME_Charter.md](./02_MODULES/TIME/00_TIME_Charter.md)  
-- **FIX** (Corrections / Work Orders) → [00_FIX_Charter.md](./02_MODULES/FIX/00_FIX_Charter.md)  
-- **ONBOARD** (Setup / Training) → [00_ONBOARD_Charter.md](./02_MODULES/ONBOARD/00_ONBOARD_Charter.md)
-
-## Consolidated References & Visuals
-
-- All process flowcharts → [FLOWCHARTS_ALL_MODULES_v1.md](./02_MODULES/FLOWCHARTS_ALL_MODULES_v1.md)  
-- All system architectures → [SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md](./02_MODULES/SYSTEM_ARCHITECTURES_ALL_MODULES_v1.md)  
-- Cross-module coordination → [Cross_Module_Interactions.md](./Cross_Module_Interactions.md)  
-- Full glossary → [Glossary.md](./99_APPENDICES/Glossary.md)  
-- Change & version history → [VERSION_HISTORY.md](./99_APPENDICES/VERSION_HISTORY.md)
-
-## Directory Overview (Logical View)
+</body>
+</html>
