@@ -180,13 +180,20 @@
       border-radius: 12px; 
       margin: 3rem 0;
     }
+    .compliance-box { 
+      background: var(--bg); 
+      padding: 2rem; 
+      border-left: 6px solid var(--accent); 
+      border-radius: 0 12px 12px 0;
+      margin: 3rem 0;
+    }
     @media (max-width: 768px) {
       body { padding: 2rem 1rem; font-size: 1rem; }
       h1 { font-size: 2.2rem; }
       h2 { font-size: 1.8rem; }
       .dimensions { grid-template-columns: 1fr; }
       .toc { padding: 1.5rem; }
-      .plain-english, .intro, .highlight, .case-box, .faq { padding: 1.5rem; }
+      .plain-english, .intro, .highlight, .case-box, .faq, .compliance-box { padding: 1.5rem; }
       .mermaid-container { padding: 1rem; }
     }
     @media (max-width: 480px) {
@@ -200,11 +207,11 @@
       .toc { page-break-after: always; }
       .skip-link, .toc { display: none; }
       .mermaid-container { page-break-inside: avoid; }
-      .section, .highlight, .case-box, .dimension, .plain-english, .failure-mode { page-break-inside: avoid; }
+      .section, .highlight, .case-box, .dimension, .plain-english, .failure-mode, .compliance-box { page-break-inside: avoid; }
       h2, h3 { page-break-after: avoid; }
       header, footer { position: static; }
       a { color: inherit; text-decoration: none; }
-      .intro, .highlight, .faq, .plain-english { box-shadow: none; border-left: 6px solid black; }
+      .intro, .highlight, .faq, .plain-english, .compliance-box { box-shadow: none; border-left: 6px solid black; }
       .failure-mode { border-left: 6px solid black; background: #f0f0f0; }
     }
   </style>
