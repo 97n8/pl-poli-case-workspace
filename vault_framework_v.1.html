@@ -187,6 +187,23 @@
       border-radius: 0 12px 12px 0;
       margin: 3rem 0;
     }
+    .raci-table, .checklist { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin: 2rem 0;
+    }
+    .raci-table th, .raci-table td, .checklist th, .checklist td { 
+      border: 1px solid var(--border); 
+      padding: 0.8rem; 
+      text-align: left;
+    }
+    .raci-table th, .checklist th { 
+      background: var(--bg); 
+      font-weight: bold;
+    }
+    .implementation-section { 
+      margin-top: 4rem;
+    }
     @media (max-width: 768px) {
       body { padding: 2rem 1rem; font-size: 1rem; }
       h1 { font-size: 2.2rem; }
@@ -195,12 +212,14 @@
       .toc { padding: 1.5rem; }
       .plain-english, .intro, .highlight, .case-box, .faq, .compliance-box { padding: 1.5rem; }
       .mermaid-container { padding: 1rem; }
+      .raci-table, .checklist { font-size: 0.9rem; }
     }
     @media (max-width: 480px) {
       body { padding: 1.5rem 1rem; }
       h1 { font-size: 2rem; }
       h2 { font-size: 1.6rem; }
       .toc li { margin: 0.6rem 0; }
+      .raci-table, .checklist { font-size: 0.85rem; overflow-x: auto; display: block; }
     }
     @media print {
       body { padding: 0.5in; font-size: 11pt; line-height: 1.5; }
@@ -213,6 +232,7 @@
       a { color: inherit; text-decoration: none; }
       .intro, .highlight, .faq, .plain-english, .compliance-box { box-shadow: none; border-left: 6px solid black; }
       .failure-mode { border-left: 6px solid black; background: #f0f0f0; }
+      .raci-table, .checklist { page-break-inside: avoid; }
     }
   </style>
 </head>
